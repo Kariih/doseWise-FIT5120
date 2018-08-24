@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B33E212FE67C00CB6B1D /* AppDelegate.swift */; };
+		4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B340212FE67C00CB6B1D /* ViewController.swift */; };
+		4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
+		4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */; };
+		4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4249B348212FE67E00CB6B1D /* Assets.xcassets */; };
+		4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */; };
+		4249B357212FE67E00CB6B1D /* DoseWiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B356212FE67E00CB6B1D /* DoseWiseTests.swift */; };
+		4249B362212FE67E00CB6B1D /* DoseWiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4249B353212FE67E00CB6B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4249B333212FE67C00CB6B1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4249B33A212FE67C00CB6B1D;
+			remoteInfo = DoseWise;
+		};
+		4249B35E212FE67E00CB6B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4249B333212FE67C00CB6B1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4249B33A212FE67C00CB6B1D;
+			remoteInfo = DoseWise;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4249B33B212FE67C00CB6B1D /* DoseWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4249B33E212FE67C00CB6B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4249B340212FE67C00CB6B1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4249B343212FE67C00CB6B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4249B346212FE67C00CB6B1D /* DoseWise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoseWise.xcdatamodel; sourceTree = "<group>"; };
+		4249B348212FE67E00CB6B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4249B34B212FE67E00CB6B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4249B34D212FE67E00CB6B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4249B352212FE67E00CB6B1D /* DoseWiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoseWiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4249B356212FE67E00CB6B1D /* DoseWiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseWiseTests.swift; sourceTree = "<group>"; };
+		4249B358212FE67E00CB6B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4249B35D212FE67E00CB6B1D /* DoseWiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoseWiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseWiseUITests.swift; sourceTree = "<group>"; };
+		4249B363212FE67E00CB6B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4249B338212FE67C00CB6B1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B34F212FE67E00CB6B1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B35A212FE67E00CB6B1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4249B332212FE67C00CB6B1D = {
+			isa = PBXGroup;
+			children = (
+				4249B33D212FE67C00CB6B1D /* DoseWise */,
+				4249B355212FE67E00CB6B1D /* DoseWiseTests */,
+				4249B360212FE67E00CB6B1D /* DoseWiseUITests */,
+				4249B33C212FE67C00CB6B1D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4249B33C212FE67C00CB6B1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4249B33B212FE67C00CB6B1D /* DoseWise.app */,
+				4249B352212FE67E00CB6B1D /* DoseWiseTests.xctest */,
+				4249B35D212FE67E00CB6B1D /* DoseWiseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4249B33D212FE67C00CB6B1D /* DoseWise */ = {
+			isa = PBXGroup;
+			children = (
+				4249B33E212FE67C00CB6B1D /* AppDelegate.swift */,
+				4249B340212FE67C00CB6B1D /* ViewController.swift */,
+				4249B342212FE67C00CB6B1D /* Main.storyboard */,
+				4249B348212FE67E00CB6B1D /* Assets.xcassets */,
+				4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */,
+				4249B34D212FE67E00CB6B1D /* Info.plist */,
+				4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */,
+			);
+			path = DoseWise;
+			sourceTree = "<group>";
+		};
+		4249B355212FE67E00CB6B1D /* DoseWiseTests */ = {
+			isa = PBXGroup;
+			children = (
+				4249B356212FE67E00CB6B1D /* DoseWiseTests.swift */,
+				4249B358212FE67E00CB6B1D /* Info.plist */,
+			);
+			path = DoseWiseTests;
+			sourceTree = "<group>";
+		};
+		4249B360212FE67E00CB6B1D /* DoseWiseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */,
+				4249B363212FE67E00CB6B1D /* Info.plist */,
+			);
+			path = DoseWiseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4249B33A212FE67C00CB6B1D /* DoseWise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4249B366212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWise" */;
+			buildPhases = (
+				4249B337212FE67C00CB6B1D /* Sources */,
+				4249B338212FE67C00CB6B1D /* Frameworks */,
+				4249B339212FE67C00CB6B1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoseWise;
+			productName = DoseWise;
+			productReference = 4249B33B212FE67C00CB6B1D /* DoseWise.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4249B351212FE67E00CB6B1D /* DoseWiseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4249B369212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWiseTests" */;
+			buildPhases = (
+				4249B34E212FE67E00CB6B1D /* Sources */,
+				4249B34F212FE67E00CB6B1D /* Frameworks */,
+				4249B350212FE67E00CB6B1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4249B354212FE67E00CB6B1D /* PBXTargetDependency */,
+			);
+			name = DoseWiseTests;
+			productName = DoseWiseTests;
+			productReference = 4249B352212FE67E00CB6B1D /* DoseWiseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4249B35C212FE67E00CB6B1D /* DoseWiseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4249B36C212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWiseUITests" */;
+			buildPhases = (
+				4249B359212FE67E00CB6B1D /* Sources */,
+				4249B35A212FE67E00CB6B1D /* Frameworks */,
+				4249B35B212FE67E00CB6B1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4249B35F212FE67E00CB6B1D /* PBXTargetDependency */,
+			);
+			name = DoseWiseUITests;
+			productName = DoseWiseUITests;
+			productReference = 4249B35D212FE67E00CB6B1D /* DoseWiseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4249B333212FE67C00CB6B1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Monash;
+				TargetAttributes = {
+					4249B33A212FE67C00CB6B1D = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					4249B351212FE67E00CB6B1D = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 4249B33A212FE67C00CB6B1D;
+					};
+					4249B35C212FE67E00CB6B1D = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 4249B33A212FE67C00CB6B1D;
+					};
+				};
+			};
+			buildConfigurationList = 4249B336212FE67C00CB6B1D /* Build configuration list for PBXProject "DoseWise" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4249B332212FE67C00CB6B1D;
+			productRefGroup = 4249B33C212FE67C00CB6B1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4249B33A212FE67C00CB6B1D /* DoseWise */,
+				4249B351212FE67E00CB6B1D /* DoseWiseTests */,
+				4249B35C212FE67E00CB6B1D /* DoseWiseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4249B339212FE67C00CB6B1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */,
+				4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */,
+				4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B350212FE67E00CB6B1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B35B212FE67E00CB6B1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4249B337212FE67C00CB6B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
+				4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */,
+				4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B34E212FE67E00CB6B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4249B357212FE67E00CB6B1D /* DoseWiseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4249B359212FE67E00CB6B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4249B362212FE67E00CB6B1D /* DoseWiseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4249B354212FE67E00CB6B1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4249B33A212FE67C00CB6B1D /* DoseWise */;
+			targetProxy = 4249B353212FE67E00CB6B1D /* PBXContainerItemProxy */;
+		};
+		4249B35F212FE67E00CB6B1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4249B33A212FE67C00CB6B1D /* DoseWise */;
+			targetProxy = 4249B35E212FE67E00CB6B1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4249B342212FE67C00CB6B1D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4249B343212FE67C00CB6B1D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4249B34B212FE67E00CB6B1D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4249B364212FE67E00CB6B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4249B365212FE67E00CB6B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4249B367212FE67E00CB6B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4249B368212FE67E00CB6B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4249B36A212FE67E00CB6B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWiseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWiseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoseWise.app/DoseWise";
+			};
+			name = Debug;
+		};
+		4249B36B212FE67E00CB6B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWiseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWiseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoseWise.app/DoseWise";
+			};
+			name = Release;
+		};
+		4249B36D212FE67E00CB6B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWiseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWiseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DoseWise;
+			};
+			name = Debug;
+		};
+		4249B36E212FE67E00CB6B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F95CP4UK3N;
+				INFOPLIST_FILE = DoseWiseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.monash.DoseWiseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DoseWise;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4249B336212FE67C00CB6B1D /* Build configuration list for PBXProject "DoseWise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4249B364212FE67E00CB6B1D /* Debug */,
+				4249B365212FE67E00CB6B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4249B366212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4249B367212FE67E00CB6B1D /* Debug */,
+				4249B368212FE67E00CB6B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4249B369212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWiseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4249B36A212FE67E00CB6B1D /* Debug */,
+				4249B36B212FE67E00CB6B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4249B36C212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWiseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4249B36D212FE67E00CB6B1D /* Debug */,
+				4249B36E212FE67E00CB6B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4249B346212FE67C00CB6B1D /* DoseWise.xcdatamodel */,
+			);
+			currentVersion = 4249B346212FE67C00CB6B1D /* DoseWise.xcdatamodel */;
+			path = DoseWise.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4249B333212FE67C00CB6B1D /* Project object */;
+}
