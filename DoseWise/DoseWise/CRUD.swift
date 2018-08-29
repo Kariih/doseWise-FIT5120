@@ -4,82 +4,42 @@ import UIKit
 //class for nominee, same attributes with the table,
 // (Not absolute correct, please use it as general guidance) this class should not be passed to DB, for SQLite will manage Id by auto-increment, there will be conflict when u try to assign Id value to an object & pass it to DB.
 
-//class nominee {
-//    var id: Int
-//    var name: String?
-//    var phoneNo: Int
-//
-//    init(id: Int, name: String?, phoneNo: Int){
-//        self.id = id
-//        self.name = name
-//        self.phoneNo = phoneNo
-//    }
-//}
-
 class CRUD {
     
     let queryStatementString = "SELECT * FROM nominee;"
     var db:OpaquePointer?
-    var nomls=[nominee]()
+    var nomls=[Nominee]()
     
-    //this is where create an new entry
+    init(){}
     
-    //    func addNominee(nom:nominee) {
-    //
-    //        let name=nom.name?.trimmingCharacters(in: .whitespacesAndNewlines)
-    //        let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
-    //
-    ////            textFieldPhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-    //
-    //        if(name?.isEmpty)!{
-    //            print("Name is empty")
-    //            return;
-    //        }
-    //
-    //        if(phoneNo.isEmpty){
-    //            print("Phone number is empty")
-    //        }
-    //
-    //        var stmt:OpaquePointer?
-    //
-    //        let insertQuery="INSERT INTO nominee(name,phoneNo) VALUES(?,?)"
-    //
-    //        if sqlite3_prepare(db, insertQuery, -1, &stmt, nil) != SQLITE_OK{
-    //            print("error binding query")
-    //        }
-    //
-    //        if sqlite3_bind_text(stmt, 1, name, -1, nil) != SQLITE_OK{
-    //            print("error binding name")
-    //        }
-    //
-    //        if sqlite3_bind_int(stmt, 2, (phoneNo as NSString).intValue) != SQLITE_OK{
-    //            print("error binding phoneNo")
-    //        }
-    //
-    //        if sqlite3_step(stmt) == SQLITE_DONE {
-    //            print("Nominee saved successfully")
-    //        }
-    //
-    //        readNominees()
-    //
-    //    }
+    func initTables(){
+        createNomineeTable()
+    }
     
-    
-    func addNominee(nom:nominee) {
+    //this is where table created
+    private func createNomineeTable(){
+        
+        let fileUrl=try!
+            FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("nominee.sqlite")
+        
+        if sqlite3_open(fileUrl.path, &db) != SQLITE_OK{
+            print("Error opening database")
+            return
+        }
+        
+        let createTableQuery="CREATE TABLE IF NOT EXISTS nominee(id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, phoneNo Text)"
+        
+        if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK{
+            print("Error creating table")
+            return
+        }
+        print("DB created")
+    }
+        
+    func addNominee(nom:Nominee) {
         
         let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        //            textFieldPhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if(name.isEmpty){
-            print("Name is empty")
-            return;
-        }
-        
-        if(phoneNo.isEmpty){
-            print("Phone number is empty")
-        }
         
         var stmt:OpaquePointer?
         
@@ -100,32 +60,6 @@ class CRUD {
         if sqlite3_step(stmt) == SQLITE_DONE {
             print("Nominee saved successfully")
         }
-        
-        //        readNominees()
-        
-    }
-    
-    
-    //this is where table created
-    func createNomineeTable(){
-        
-        let fileUrl=try!
-            FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("nominee.sqlite")
-        
-        if sqlite3_open(fileUrl.path, &db) != SQLITE_OK{
-            print("Error opening database")
-            return
-        }
-        
-        let createTableQuery="CREATE TABLE IF NOT EXISTS nominee(id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, phoneNo INTEGER)"
-        
-        if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK{
-            print("Error creating table")
-            return
-        }
-        
-        print("Everything is fine")
-        
     }
     
     //select all entries from the table
@@ -164,7 +98,7 @@ class CRUD {
     
     //read all entry from the table, return type is a list of nominee objects
     
-    func readNominees() -> [nominee]{
+    func readNominees() -> [Nominee]{
         
         nomls.removeAll()
         
@@ -177,9 +111,9 @@ class CRUD {
                 let id = sqlite3_column_int(queryStatement, 0)
                 let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
                 let name = String(cString: queryResultCol1!)
-                let tellNo = sqlite3_column_int(queryStatement, 2)
+                let tellNo = sqlite3_column_text(queryStatement, 2)
                 
-                nomls.append(nominee(id: Int(id), name: String(describing: name), phoneNo: Int(tellNo)))
+               // nomls.append(Nominee(id: Int(id), name: String(describing: name), phoneNo: tellNo))
                 
             }
         } else {
@@ -234,11 +168,11 @@ class CRUD {
     //    }
     //
     
-    func updateNominee(nom: nominee) {
+ /*   func updateNominee(nom: Nominee) {
         
         let nomId = String(nom.id)
         let nomName="'"+nom.name+"'"
-        let nomPhone="'"+String(nom.phoneNo)+"'"
+        let nomPhone="'"+nom.phoneNo+"'"
         let ussName="UPDATE nominee SET name ="+nomName
         let ussPhoneNo="UPDATE nominee SET phoneNo ="+nomPhone
         let whereId=" WHERE Id = "+nomId+";"
@@ -268,11 +202,11 @@ class CRUD {
         
         sqlite3_finalize(updateStatement)
     }
-    
+    */
     
     //delete entry
     
-    func deleteNominee(nom: nominee) {
+    /*func deleteNominee(nom: Nominee) {
         
         let nomId = nom.id
         
@@ -295,7 +229,7 @@ class CRUD {
         
         sqlite3_finalize(deleteStatement)
         
-    }
+    }*/
     
     //this is for testing delete func
     

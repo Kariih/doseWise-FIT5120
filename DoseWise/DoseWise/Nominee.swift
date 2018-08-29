@@ -1,11 +1,11 @@
 
-class nominee {
+class Nominee {
     
-    var id: Int
+    var id: Int?
     var name: String
-    var phoneNo: Int
+    var phoneNo: String
     
-    init(id: Int, name: String, phoneNo: Int){
+    init(id: Int, name: String, phoneNo: String){
         self.id = id
         self.name = name
         self.phoneNo = phoneNo
