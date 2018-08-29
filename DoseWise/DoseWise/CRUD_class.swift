@@ -67,12 +67,12 @@ class CRUD {
     
     func addNominee(nom:nominee) {
         
-        let name=nom.name?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
         
         //            textFieldPhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if(name?.isEmpty)!{
+        if(name.isEmpty){
             print("Name is empty")
             return;
         }
@@ -237,7 +237,7 @@ class CRUD {
     func updateNominee(nom: nominee) {
         
         let nomId = String(nom.id)
-        let nomName="'"+nom.name!+"'"
+        let nomName="'"+nom.name+"'"
         let nomPhone="'"+String(nom.phoneNo)+"'"
         let ussName="UPDATE nominee SET name ="+nomName
         let ussPhoneNo="UPDATE nominee SET phoneNo ="+nomPhone

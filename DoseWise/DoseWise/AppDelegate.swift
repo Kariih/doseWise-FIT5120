@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  DoseWise
-//
-//  Created by Hasini Vasudevan on 24/8/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
