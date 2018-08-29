@@ -16,6 +16,8 @@
 		4249B357212FE67E00CB6B1D /* DoseWiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B356212FE67E00CB6B1D /* DoseWiseTests.swift */; };
 		4249B362212FE67E00CB6B1D /* DoseWiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */; };
 		EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0421367E3800938622 /* EditNomeneeViewController.swift */; };
+		6BB31B072136594F00FB3687 /* CRUD_class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B062136594F00FB3687 /* CRUD_class.swift */; };
+		6BB31B092136680B00FB3687 /* nominee_class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B082136680B00FB3687 /* nominee_class.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseWiseUITests.swift; sourceTree = "<group>"; };
 		4249B363212FE67E00CB6B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC356F0421367E3800938622 /* EditNomeneeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNomeneeViewController.swift; sourceTree = "<group>"; };
+		6BB31B062136594F00FB3687 /* CRUD_class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD_class.swift; sourceTree = "<group>"; };
+		6BB31B082136680B00FB3687 /* nominee_class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nominee_class.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */,
 				4249B34D212FE67E00CB6B1D /* Info.plist */,
 				4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */,
+				6BB31B062136594F00FB3687 /* CRUD_class.swift */,
+				6BB31B082136680B00FB3687 /* nominee_class.swift */,
 			);
 			path = DoseWise;
 			sourceTree = "<group>";
@@ -273,6 +279,8 @@
 				EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */,
 				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
 				4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */,
+				6BB31B092136680B00FB3687 /* nominee_class.swift in Sources */,
+				6BB31B072136594F00FB3687 /* CRUD_class.swift in Sources */,
 				4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
