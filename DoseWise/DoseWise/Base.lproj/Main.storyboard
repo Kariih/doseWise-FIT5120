@@ -115,11 +115,11 @@
             </objects>
             <point key="canvasLocation" x="1912.8" y="-174.06296851574214"/>
         </scene>
-        <!--View Controller-->
+        <!--Trigger View Controller-->
         <scene sceneID="C9b-48-IIr">
             <objects>
-                <viewController id="5Bh-Mh-5eR" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wnr-RB-eTe">
+                <viewController storyboardIdentifier="TriggerView" id="5Bh-Mh-5eR" customClass="TriggerViewController" customModule="DoseWise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="showQuizSegue" id="wnr-RB-eTe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -146,6 +146,9 @@
                                 <state key="normal" title="Answer">
                                     <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="answerTriggerQuestion:" destination="5Bh-Mh-5eR" eventType="touchUpInside" id="Wux-sP-dk5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,10 +168,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OtH-Nj-x8f"/>
                     </view>
+                    <connections>
+                        <outlet property="answerTxtLbl" destination="ZZi-U7-KjJ" id="qat-kQ-tgx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1H-Y2-5fD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="-174.06296851574214"/>
+            <point key="canvasLocation" x="1913" y="586"/>
         </scene>
         <!--Scheduler-->
         <scene sceneID="3S6-2r-srg">
