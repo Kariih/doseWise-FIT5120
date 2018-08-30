@@ -211,7 +211,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="cRm-cF-HpL" kind="relationship" relationship="viewControllers" id="haQ-wN-xhu"/>
-                        <segue destination="Bkx-ut-uwi" kind="relationship" relationship="viewControllers" id="vGH-7O-4oC"/>
+                        <segue destination="Bkx-ut-uwi" kind="relationship" relationship="viewControllers" id="a7M-8Z-hSJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkH-v7-HE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,7 +239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDV-x5-vmQ">
-                                <rect key="frame" x="315" y="45" width="30" height="44"/>
+                                <rect key="frame" x="315" y="44.5" width="30" height="44"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -249,7 +249,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-4l-o0C">
-                                <rect key="frame" x="30" y="99" width="315" height="280"/>
+                                <rect key="frame" x="30" y="98.5" width="315" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="AkR-gw-144"/>
@@ -283,7 +283,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="81L-MD-8Dq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nominee" selectedImage="nominee_icon" id="6v3-sk-M19">
+                    <tabBarItem key="tabBarItem" title="Nominee" image="nominee_icon" selectedImage="nominee_icon" id="6v3-sk-M19">
                         <color key="badgeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
