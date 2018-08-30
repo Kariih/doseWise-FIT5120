@@ -24,5 +24,6 @@ class TriggerViewController: UIViewController {
             
             self.present(alert, animated: true)
         }
+        Const.TIMER_IS_TRIGGERED = false
     }
 }

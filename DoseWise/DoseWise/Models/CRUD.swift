@@ -37,6 +37,7 @@ class CRUD {
             return
         }
         print("DB created")
+        sqlite3_close(db)
     }
         
     func addNominee(nom:Nominee) {
@@ -68,6 +69,7 @@ class CRUD {
         if sqlite3_step(stmt) == SQLITE_DONE {
             print("Nominee saved successfully")
         }
+        sqlite3_close(stmt)
     }
     
     //select all entries from the table
