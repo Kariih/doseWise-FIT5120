@@ -54,7 +54,7 @@
 		42A1C7BB2136B8DA006C7145 /* SmsTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsTrigger.swift; sourceTree = "<group>"; };
 		521D608D7A4DD3A3FEDDD6D5 /* Pods-DoseWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D5951D4C069A6B305D3DC /* Pods-DoseWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.release.xcconfig"; sourceTree = "<group>"; };
-		F9A3C99F07D25CC9885C9683 /* Pods_DoseWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoseWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9A3C99F07D25CC9885C9683 /* Pods_DoseWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DoseWise.framework; path = "../../../../Users/bappel/Library/Developer/Xcode/DerivedData/DoseWise-djuvdmmoggbtrqftumemjiyqcllv/Build/Products/Debug-iphoneos/Pods_DoseWise.framework"; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
