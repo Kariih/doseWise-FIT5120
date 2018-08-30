@@ -19,25 +19,30 @@ class EditNomeneeViewController : UIViewController{
         }
     }
 
-    @IBAction func dismissNomineeView(_ sender: Any) {
+    private func dismissView(){
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func dismissNomineeView(_ sender: Any) {
+        dismissView()
     }
     
     @IBAction func deleteNominee(_ sender: Any) {
-        
+        dbPresenter.deleteNominee(nominee: passedNominee)
+        dismissView()
     }
     
     @IBAction func addOrUpdateNominee(_ sender: Any) {
         let name = nomNameLbl.text!
         let phone = nomPhoneLbl.text!
         
-        if !passedNominee.name.isEmpty{
-            //todo
-        }else{
-            if dbPresenter.validateUserInputNominee(name: name, phone: phone){
-                print("TRYING TO ADD NAME \(name) AND PHONE \(phone)")
-                dbPresenter.addNewNominee(nominee: Nominee(id: 1, name: name, phoneNo: phone));
+        if dbPresenter.validateUserInputNominee(name: name, phone: phone){
+            print("TRYING TO ADD NAME \(name) AND PHONE \(phone)")
+            if passedNominee.id != nil{
+                dbPresenter.updateNominee(nominee: Nominee(id: passedNominee.id!, name: name, phoneNo: phone))
+            }else{
+                dbPresenter.addNewNominee(nominee: Nominee(id: 0, name: name, phoneNo: phone));
             }
+            dismiss(animated: true, completion: nil)
         }
     }
 }

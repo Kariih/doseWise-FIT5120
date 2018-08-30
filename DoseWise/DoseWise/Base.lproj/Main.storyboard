@@ -245,7 +245,7 @@
                                     <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mnh-OW-NhS" kind="show" identifier="editNomineeSegueue" id="Rkf-vy-bPH"/>
+                                    <action selector="addNomineeBtnClick:" destination="Bkx-ut-uwi" eventType="touchUpInside" id="ahJ-Zl-ZjK"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-4l-o0C">
@@ -288,6 +288,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="nomineeTableView" destination="Qnr-4l-o0C" id="uqV-Ex-LZs"/>
+                        <segue destination="mnh-OW-NhS" kind="show" identifier="editNomineeSegueue" id="2NB-4U-8aV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jen-u7-A1j" userLabel="First Responder" sceneMemberID="firstResponder"/>

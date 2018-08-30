@@ -12,6 +12,7 @@ class CRUD {
     
     func initTables(){
         createNomineeTable()
+        
     }
     
     private func openDbConnection(){
@@ -43,6 +44,8 @@ class CRUD {
         let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
         
+        print("NAME: \(name)")
+        
         openDbConnection()
         var stmt:OpaquePointer?
         
@@ -53,11 +56,13 @@ class CRUD {
         }
         
         if sqlite3_bind_text(stmt, 1, name, -1, nil) != SQLITE_OK{
-            print("error binding name")
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
         }
         
         if sqlite3_bind_text(stmt, 2, phoneNo, -1, nil) != SQLITE_OK{
-            print("error binding phoneNo")
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding phone: \(errmsg)")
         }
         
         if sqlite3_step(stmt) == SQLITE_DONE {
@@ -92,51 +97,11 @@ class CRUD {
         return nomineeList
     }
     
-    //update
-    
-    //    @IBAction func upd1(_ sender: Any) {
-    //        let nomId = String(1)
-    //        let nomName="'"+"xigouzei"+"'"
-    //        //        let nomName1="'"+nomName!+"'"
-    //        let nomPhone="'"+String(2837510)+"'"
-    //
-    //        let ussName="UPDATE nominee SET name ="+nomName
-    //
-    //        let ussPhoneNo="UPDATE nominee SET phoneNo ="+nomPhone
-    //
-    //        let whereId=" WHERE Id = "+nomId+";"
-    //
-    //        let updateStatementString = ussName+whereId
-    //        let updateStatementString1 = ussPhoneNo+whereId
-    //
-    //        var updateStatement: OpaquePointer? = nil
-    //        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
-    //            if sqlite3_step(updateStatement) == SQLITE_DONE {
-    //                print("Successfully updated name.")
-    //            } else {
-    //                print("Could not update name.")
-    //            }
-    //        } else {
-    //            print("UPDATE name statement could not be prepared")
-    //        }
-    //
-    //        if sqlite3_prepare_v2(db, updateStatementString1, -1, &updateStatement, nil) == SQLITE_OK {
-    //            if sqlite3_step(updateStatement) == SQLITE_DONE {
-    //                print("Successfully updated phoneNo.")
-    //            } else {
-    //                print("Could not update phoneNo.")
-    //            }
-    //        } else {
-    //            print("UPDATE phoneNo statement could not be prepared")
-    //        }
-    //
-    //        sqlite3_finalize(updateStatement)
-    //    }
-    //
-    
- /*   func updateNominee(nom: Nominee) {
+    func updateNominee(nom: Nominee) {
         
-        let nomId = String(nom.id)
+        openDbConnection()
+        
+        let nomId = String(nom.id!)
         let nomName="'"+nom.name+"'"
         let nomPhone="'"+nom.phoneNo+"'"
         let ussName="UPDATE nominee SET name ="+nomName
@@ -168,16 +133,19 @@ class CRUD {
         
         sqlite3_finalize(updateStatement)
     }
-    */
     
     //delete entry
     
-    /*func deleteNominee(nom: Nominee) {
+    func deleteNominee(nom: Nominee) {
         
         let nomId = nom.id
         
+        print("DELETE ID \(nomId!)")
+        
+        openDbConnection()
+        
         let delStmt="DELETE FROM nominee WHERE Id = "
-        let nomNo=String(nomId)+";"
+        let nomNo="\(nomId!);"
         let deleteStatementStirng=delStmt+nomNo
         
         print(deleteStatementStirng)
@@ -195,61 +163,6 @@ class CRUD {
         
         sqlite3_finalize(deleteStatement)
         
-    }*/
-    
-    //this is for testing delete func
-    
-    //    @IBAction func del3(_ sender: Any) {
-    //
-    //        let nomId = 5
-    //
-    //        let delStmt="DELETE FROM nominee WHERE Id = "
-    //        let nomNo=String(nomId)+";"
-    //        let deleteStatementStirng=delStmt+nomNo
-    //
-    //        print(deleteStatementStirng)
-    //
-    //        var deleteStatement: OpaquePointer? = nil
-    //        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
-    //            if sqlite3_step(deleteStatement) == SQLITE_DONE {
-    //                print("Successfully deleted row.")
-    //            } else {
-    //                print("Could not delete row.")
-    //            }
-    //        } else {
-    //            print("DELETE statement could not be prepared")
-    //        }
-    //
-    //        sqlite3_finalize(deleteStatement)
-    //    }
-    
-    //next 2 functions are for showing all entries of the table to the sceern
-    
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        //this method is giving the row count of table view which is
-    //        //total number of noms in the list
-    //        return nomls.count
-    //    }
-    //
-    //
-    //
-    //
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-    //        let nom: nominee
-    //        nom = nomls[indexPath.row]
-    //        let nomName=nom.name
-    //        let nomNo=String(nom.phoneNo)
-    //
-    //        let nomDetail=nomName!+", "+nomNo
-    //
-    //        cell.textLabel?.text = nomDetail
-    //        //        cell.textLabel?.text = String(nom.name + nom.phoneNo)
-    //        return cell
-    //    }
-    //
-    
-    //end of experimenting features
-    
+    }
 }
 
