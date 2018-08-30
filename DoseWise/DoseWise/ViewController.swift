@@ -14,10 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let smstrig = SmsTrigger()
-        smstrig.SendSms(To:"+61481080828",Body:"Hi there! Your friend isn't responding quite well. Could you please check if everything is good?")
-        
     }
 
     override func didReceiveMemoryWarning() {

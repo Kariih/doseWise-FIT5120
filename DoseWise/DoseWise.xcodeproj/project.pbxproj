@@ -20,8 +20,6 @@
 		EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0421367E3800938622 /* EditNomeneeViewController.swift */; };
 		EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0D2136EC3900938622 /* NomineeViewController.swift */; };
 		EC356F112136F8FA00938622 /* DbPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F102136F8FA00938622 /* DbPresenter.swift */; };
-		42A1C7BC2136B8DA006C7145 /* SmsTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1C7BB2136B8DA006C7145 /* SmsTrigger.swift */; };
-		670C297DBD07201C45318B63 /* Pods_DoseWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A3C99F07D25CC9885C9683 /* Pods_DoseWise.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +59,6 @@
 		EC356F0421367E3800938622 /* EditNomeneeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNomeneeViewController.swift; sourceTree = "<group>"; };
 		EC356F0D2136EC3900938622 /* NomineeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeViewController.swift; sourceTree = "<group>"; };
 		EC356F102136F8FA00938622 /* DbPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPresenter.swift; sourceTree = "<group>"; };
-		42A1C7BB2136B8DA006C7145 /* SmsTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsTrigger.swift; sourceTree = "<group>"; };
-		521D608D7A4DD3A3FEDDD6D5 /* Pods-DoseWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.debug.xcconfig"; sourceTree = "<group>"; };
-		C24D5951D4C069A6B305D3DC /* Pods-DoseWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.release.xcconfig"; sourceTree = "<group>"; };
-		F9A3C99F07D25CC9885C9683 /* Pods_DoseWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DoseWise.framework; path = "../../../../Users/bappel/Library/Developer/Xcode/DerivedData/DoseWise-djuvdmmoggbtrqftumemjiyqcllv/Build/Products/Debug-iphoneos/Pods_DoseWise.framework"; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670C297DBD07201C45318B63 /* Pods_DoseWise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +93,6 @@
 				4249B355212FE67E00CB6B1D /* DoseWiseTests */,
 				4249B360212FE67E00CB6B1D /* DoseWiseUITests */,
 				4249B33C212FE67C00CB6B1D /* Products */,
-				7948E33A4218591FFD6C5411 /* Pods */,
-				D76A80918FB0E066A152485D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,7 +113,6 @@
 				EC356F122137D0FE00938622 /* Models */,
 				EC356F0F2136F8DC00938622 /* Pesenters */,
 				EC356F0321367D5200938622 /* ViewControllers */,
-				42A1C7BB2136B8DA006C7145 /* SmsTrigger.swift */,
 				4249B33E212FE67C00CB6B1D /* AppDelegate.swift */,
 				4249B340212FE67C00CB6B1D /* ViewController.swift */,
 				4249B342212FE67C00CB6B1D /* Main.storyboard */,
@@ -183,21 +173,6 @@
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
 			);
 			path = Plain_Objects;
-		7948E33A4218591FFD6C5411 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				521D608D7A4DD3A3FEDDD6D5 /* Pods-DoseWise.debug.xcconfig */,
-				C24D5951D4C069A6B305D3DC /* Pods-DoseWise.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D76A80918FB0E066A152485D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F9A3C99F07D25CC9885C9683 /* Pods_DoseWise.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,11 +182,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4249B366212FE67E00CB6B1D /* Build configuration list for PBXNativeTarget "DoseWise" */;
 			buildPhases = (
-				93FE2D465B681A719A182ABC /* [CP] Check Pods Manifest.lock */,
 				4249B337212FE67C00CB6B1D /* Sources */,
 				4249B338212FE67C00CB6B1D /* Frameworks */,
 				4249B339212FE67C00CB6B1D /* Resources */,
-				277E7B0BC956BA5839EDC945 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,45 +301,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		277E7B0BC956BA5839EDC945 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		93FE2D465B681A719A182ABC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DoseWise-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4249B337212FE67C00CB6B1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -379,7 +313,6 @@
 				EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */,
 				6BB31B092136680B00FB3687 /* Nominee.swift in Sources */,
 				6BB31B072136594F00FB3687 /* CRUD.swift in Sources */,
-				42A1C7BC2136B8DA006C7145 /* SmsTrigger.swift in Sources */,
 				4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +484,6 @@
 		};
 		4249B367212FE67E00CB6B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 521D608D7A4DD3A3FEDDD6D5 /* Pods-DoseWise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -570,7 +502,6 @@
 		};
 		4249B368212FE67E00CB6B1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C24D5951D4C069A6B305D3DC /* Pods-DoseWise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
