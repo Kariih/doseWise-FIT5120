@@ -109,7 +109,9 @@
 		4249B33D212FE67C00CB6B1D /* DoseWise */ = {
 			isa = PBXGroup;
 			children = (
-				EC356F0F2136F8DC00938622 /* presenters */,
+				EC356F132137D11F00938622 /* Plain_Objects */,
+				EC356F122137D0FE00938622 /* Models */,
+				EC356F0F2136F8DC00938622 /* Pesenters */,
 				EC356F0321367D5200938622 /* ViewControllers */,
 				4249B33E212FE67C00CB6B1D /* AppDelegate.swift */,
 				4249B340212FE67C00CB6B1D /* ViewController.swift */,
@@ -118,8 +120,6 @@
 				4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */,
 				4249B34D212FE67E00CB6B1D /* Info.plist */,
 				4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */,
-				6BB31B062136594F00FB3687 /* CRUD.swift */,
-				6BB31B082136680B00FB3687 /* Nominee.swift */,
 			);
 			path = DoseWise;
 			sourceTree = "<group>";
@@ -151,12 +151,28 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		EC356F0F2136F8DC00938622 /* presenters */ = {
+		EC356F0F2136F8DC00938622 /* Pesenters */ = {
 			isa = PBXGroup;
 			children = (
 				EC356F102136F8FA00938622 /* DbPresenter.swift */,
 			);
-			path = presenters;
+			path = Pesenters;
+			sourceTree = "<group>";
+		};
+		EC356F122137D0FE00938622 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6BB31B062136594F00FB3687 /* CRUD.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EC356F132137D11F00938622 /* Plain_Objects */ = {
+			isa = PBXGroup;
+			children = (
+				6BB31B082136680B00FB3687 /* Nominee.swift */,
+			);
+			path = Plain_Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

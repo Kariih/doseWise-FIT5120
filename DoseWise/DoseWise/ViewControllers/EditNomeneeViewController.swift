@@ -6,10 +6,17 @@ class EditNomeneeViewController : UIViewController{
     @IBOutlet weak var nomNameLbl: UITextField!
     @IBOutlet weak var nomPhoneLbl: UITextField!
     
+    var passedNominee = Nominee()
+    
     let dbPresenter = DbPresenter();
     
     override func viewDidLoad(){
         super.viewDidLoad();
+        
+        if passedNominee.id != nil {
+            nomNameLbl.text = passedNominee.name
+            nomPhoneLbl.text = passedNominee.phoneNo
+        }
     }
 
     @IBAction func dismissNomineeView(_ sender: Any) {
@@ -22,9 +29,15 @@ class EditNomeneeViewController : UIViewController{
     
     @IBAction func addOrUpdateNominee(_ sender: Any) {
         let name = nomNameLbl.text!
-        let phone = nomNameLbl.text!
-        if dbPresenter.validateUserInputNominee(name: name, phone: phone){
-            dbPresenter.addNewNominee(nominee: Nominee(id: 1, name: name, phoneNo: phone));
+        let phone = nomPhoneLbl.text!
+        
+        if !passedNominee.name.isEmpty{
+            //todo
+        }else{
+            if dbPresenter.validateUserInputNominee(name: name, phone: phone){
+                print("TRYING TO ADD NAME \(name) AND PHONE \(phone)")
+                dbPresenter.addNewNominee(nominee: Nominee(id: 1, name: name, phoneNo: phone));
+            }
         }
     }
 }

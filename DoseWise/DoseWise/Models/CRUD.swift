@@ -5,10 +5,8 @@ import UIKit
 // (Not absolute correct, please use it as general guidance) this class should not be passed to DB, for SQLite will manage Id by auto-increment, there will be conflict when u try to assign Id value to an object & pass it to DB.
 
 class CRUD {
-    
-    let queryStatementString = "SELECT * FROM nominee;"
     var db:OpaquePointer?
-    var nomls=[Nominee]()
+    var nomineeList=[Nominee]()
     
     init(){}
     
@@ -16,9 +14,7 @@ class CRUD {
         createNomineeTable()
     }
     
-    //this is where table created
-    private func createNomineeTable(){
-        
+    private func openDbConnection(){
         let fileUrl=try!
             FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("nominee.sqlite")
         
@@ -26,6 +22,12 @@ class CRUD {
             print("Error opening database")
             return
         }
+    }
+    
+    //this is where table created
+    private func createNomineeTable(){
+        
+        openDbConnection()
         
         let createTableQuery="CREATE TABLE IF NOT EXISTS nominee(id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, phoneNo Text)"
         
@@ -41,6 +43,7 @@ class CRUD {
         let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
         
+        openDbConnection()
         var stmt:OpaquePointer?
         
         let insertQuery="INSERT INTO nominee(name,phoneNo) VALUES(?,?)"
@@ -53,7 +56,7 @@ class CRUD {
             print("error binding name")
         }
         
-        if sqlite3_bind_int(stmt, 2, (phoneNo as NSString).intValue) != SQLITE_OK{
+        if sqlite3_bind_text(stmt, 2, phoneNo, -1, nil) != SQLITE_OK{
             print("error binding phoneNo")
         }
         
@@ -64,66 +67,29 @@ class CRUD {
     
     //select all entries from the table
     
-    
-    
-    //display all entries on terminal
-    
-    //    @IBAction func listNominees(_ sender: Any) {
-    //
-    //        var queryStatement: OpaquePointer? = nil
-    //        // 1
-    //        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-    //            // 2
-    //            while (sqlite3_step(queryStatement) == SQLITE_ROW) {
-    //                // 3
-    //                let id = sqlite3_column_int(queryStatement, 0)
-    //                let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
-    //                let name = String(cString: queryResultCol1!)
-    //                let phoneNo = sqlite3_column_int(queryStatement, 2)
-    //
-    //                print("\(id) | \(name) | \(phoneNo)")
-    //
-    //            }
-    //        } else {
-    //            print("SELECT statement could not be prepared")
-    //        }
-    //
-    //        // 6
-    //        sqlite3_finalize(queryStatement)
-    //
-    //    }
-    //
-    
-    
-    
     //read all entry from the table, return type is a list of nominee objects
     
     func readNominees() -> [Nominee]{
-        
-        nomls.removeAll()
-        
+        let queryStatementString = "SELECT * FROM nominee;"
+        nomineeList.removeAll()
+        openDbConnection()
         var queryStatement: OpaquePointer? = nil
-        // 1
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-            // 2
             while (sqlite3_step(queryStatement) == SQLITE_ROW) {
-                // 3
                 let id = sqlite3_column_int(queryStatement, 0)
                 let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
                 let name = String(cString: queryResultCol1!)
-                let tellNo = sqlite3_column_text(queryStatement, 2)
+                let queryResultCol2 = sqlite3_column_text(queryStatement, 2)
+                let tellNo = String(cString: queryResultCol2!)
                 
-               // nomls.append(Nominee(id: Int(id), name: String(describing: name), phoneNo: tellNo))
+                nomineeList.append(Nominee(id: Int(id), name: name, phoneNo: tellNo))
                 
             }
         } else {
-            print("SELECT statement could not be prepared")
+            print("Could not featch objects from db")
         }
-        
         sqlite3_finalize(queryStatement)
-        
-        return nomls
-        //        self.tableViewNominees.reloadData()
+        return nomineeList
     }
     
     //update

@@ -13,4 +13,8 @@ class DbPresenter{
     func addNewNominee(nominee: Nominee){
         crud.addNominee(nom: nominee)
     }
+    
+    func featchAllNominees() -> [Nominee]{
+        return crud.readNominees()
+    }
 }
