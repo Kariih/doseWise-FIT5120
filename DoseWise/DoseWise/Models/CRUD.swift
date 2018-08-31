@@ -42,34 +42,33 @@ class CRUD {
         
     func addNominee(nom:Nominee) {
         
-        let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines)
+        let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines) as NSString
+        let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines) as NSString
         
-        print("NAME: \(name)")
+        print(“NAME: \(name)“)
         
         openDbConnection()
         var stmt:OpaquePointer?
         
-        let insertQuery="INSERT INTO nominee(name,phoneNo) VALUES(?,?)"
+        let insertQuery=“INSERT INTO nominee(name,phoneNo) VALUES(?,?)”
         
         if sqlite3_prepare(db, insertQuery, -1, &stmt, nil) != SQLITE_OK{
-            print("error binding query")
+            print(“error binding query”)
         }
         
-        if sqlite3_bind_text(stmt, 1, name, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_text(stmt, 1, name.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding name: \(errmsg)")
+            print(“failure binding name: \(errmsg)“)
         }
         
-        if sqlite3_bind_text(stmt, 2, phoneNo, -1, nil) != SQLITE_OK{
+        if sqlite3_bind_text(stmt, 2, phoneNo.utf8String, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("failure binding phone: \(errmsg)")
+            print(“failure binding phone: \(errmsg)“)
         }
         
         if sqlite3_step(stmt) == SQLITE_DONE {
-            print("Nominee saved successfully")
+            print(“Nominee saved successfully”)
         }
-        sqlite3_close(stmt)
     }
     
     //select all entries from the table
