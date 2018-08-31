@@ -15,7 +15,9 @@ class DbPresenter{
     }
     
     func featchAllNominees() -> [Nominee]{
-        return crud.readNominees()
+        let list = crud.readNominees()
+        Const.nominees = list
+        return list
     }
     func updateNominee(nominee: Nominee) {
         crud.updateNominee(nom: nominee)

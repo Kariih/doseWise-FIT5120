@@ -2,15 +2,13 @@ import Foundation
 
 class TriggerPresenter{
     
-    var phone : String?
-    init(phone: String) {
-        self.phone = phone
-    }
-
     init(){}
 
-    func executeSMS(){
+    func executeSMS(nominee : [Nominee]){
         let smstrig = SmsTrigger()
-        smstrig.SendSms(To: "+61481080828", Body:"Hi there! Your friend isn't responding quite well. Could you please check if everything is good?")
+        
+        nominee.forEach { (Nominee) in
+            smstrig.SendSms(To: Nominee.phoneNo, Body:"Hi there! Your friend isn't responding quite well. Could you please check if everything is good?")
+        }
     }
 }

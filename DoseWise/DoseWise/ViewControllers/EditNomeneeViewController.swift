@@ -7,7 +7,6 @@ class EditNomeneeViewController : UIViewController{
     @IBOutlet weak var nomPhoneLbl: UITextField!
     
     var passedNominee = Nominee()
-    
     let dbPresenter = DbPresenter();
     
     override func viewDidLoad(){

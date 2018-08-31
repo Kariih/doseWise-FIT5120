@@ -16,13 +16,23 @@ class TriggerViewController: UIViewController {
             print("correct")
             dismiss(animated: true, completion: nil)
         }else{
-            print("SENDING SMS")
-            tPresenter.executeSMS()
-            let alert = UIAlertController(title: "We sent SMS to your nominee", message: nil, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
-            
-            self.present(alert, animated: true)
+            print("nom count: \(Const.nominees.count)")
+            if Const.nominees.count != 0{
+                print("SENDING SMS")
+                tPresenter.executeSMS(nominee: Const.nominees)
+                let alert = UIAlertController(title: "We sent SMS to your nominee", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
+                
+                self.present(alert, animated: true)
+            }else{
+                print("No nominee")
+                let alert = UIAlertController(title: "You are not well, you might need to get assistance", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
+                
+                self.present(alert, animated: true)
+            }
         }
         Const.TIMER_IS_TRIGGERED = false
     }

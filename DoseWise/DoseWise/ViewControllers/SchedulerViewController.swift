@@ -43,7 +43,7 @@ class SchedulerViewController:UIViewController{
         triggerTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: {_ in
             print("init SMS functionality")
             let tPresenter = TriggerPresenter()
-            tPresenter.executeSMS()
+           // tPresenter.executeSMS()
             });
     }
     
