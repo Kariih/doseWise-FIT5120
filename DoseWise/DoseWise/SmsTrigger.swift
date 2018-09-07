@@ -81,7 +81,7 @@ class SmsTrigger {
                     
                     if jsonResponse["messageType"] != nil{
                         print("Sms Success")
-                        print(jsonResponse)
+                        //print(jsonResponse) 
                     }
                     else {
                         

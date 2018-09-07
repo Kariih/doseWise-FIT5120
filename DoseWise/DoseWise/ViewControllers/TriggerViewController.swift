@@ -19,7 +19,8 @@ class TriggerViewController: UIViewController {
             print("nom count: \(Const.nominees.count)")
             if Const.nominees.count != 0{
                 print("SENDING SMS")
-                tPresenter.executeSMS(nominee: Const.nominees)
+              tPresenter.executeSMS(nominee: Const.nominees)
+                
                 let alert = UIAlertController(title: "We sent SMS to your nominee", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))

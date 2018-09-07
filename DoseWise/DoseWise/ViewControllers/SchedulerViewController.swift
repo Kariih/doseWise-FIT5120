@@ -44,6 +44,7 @@ class SchedulerViewController:UIViewController{
             print("init SMS functionality")
             let tPresenter = TriggerPresenter()
            // tPresenter.executeSMS()
+            
             });
     }
     

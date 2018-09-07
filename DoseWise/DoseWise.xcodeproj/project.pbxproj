@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4237981B213EC372004C0056 /* DrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981A213EC372004C0056 /* DrugSchedule.swift */; };
+		4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */; };
 		4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B33E212FE67C00CB6B1D /* AppDelegate.swift */; };
 		4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B340212FE67C00CB6B1D /* ViewController.swift */; };
 		4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		2A2248EE3CFC413CCFD967D3 /* Pods-DoseWise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.release.xcconfig"; sourceTree = "<group>"; };
+		4237981A213EC372004C0056 /* DrugSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSchedule.swift; sourceTree = "<group>"; };
+		4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDDrugSchedule.swift; sourceTree = "<group>"; };
 		4249B33B212FE67C00CB6B1D /* DoseWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4249B33E212FE67C00CB6B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4249B340212FE67C00CB6B1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				6BB31B062136594F00FB3687 /* CRUD.swift */,
+				4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
+				4237981A213EC372004C0056 /* DrugSchedule.swift */,
 			);
 			path = Plain_Objects;
 			sourceTree = "<group>";
@@ -348,15 +354,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DoseWise-checkManifestLockResult.txt",
 			);
@@ -370,15 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
@@ -402,8 +400,10 @@
 				EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */,
 				6BB31B092136680B00FB3687 /* Nominee.swift in Sources */,
 				EC6A1B24213871B60083E1B6 /* TriggerPresenter.swift in Sources */,
+				4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */,
 				6BB31B072136594F00FB3687 /* CRUD.swift in Sources */,
 				4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */,
+				4237981B213EC372004C0056 /* DrugSchedule.swift in Sources */,
 				EC6A1B2221386F990083E1B6 /* SchedulerViewController.swift in Sources */,
 				EC6A1B1521386DDD0083E1B6 /* SmsTrigger.swift in Sources */,
 				EC6A1B28213888460083E1B6 /* Const.swift in Sources */,
