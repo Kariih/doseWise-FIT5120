@@ -14,7 +14,7 @@ class SchedulerViewController:UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("ViewDidAppear")
-         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
     @objc func willEnterForeground() {
@@ -38,14 +38,15 @@ class SchedulerViewController:UIViewController{
             }
         }
     }
+    
     func setTrigger(){
         print("setting trigger")
         triggerTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: {_ in
             print("init SMS functionality")
             let tPresenter = TriggerPresenter()
-           // tPresenter.executeSMS()
+            // tPresenter.executeSMS()
             
-            });
+        });
     }
     
     func launchNotification(){
@@ -71,4 +72,83 @@ class SchedulerViewController:UIViewController{
             }
         }
     }
+    
+    //pushReminder start
+    //following methods must be put into a view controller
+    
+    let intakeCounterObj=intakeCounter()
+
+    //this function prompts an alert menu (reminder) that ask user to confirm their intake to the App
+    //it takes a schedule object as parameter, and use attributes of the object to populate the alert message
+    
+    func pushReminder() {
+        //get a schedule obj
+        var listOfSchedule=CRUDDrugSchedule().getDrugSchdules()
+        var firstScheduleObj:DrugSchedule
+        firstScheduleObj = listOfSchedule[0]
+        
+        var drugName = firstScheduleObj.name
+        var noOfPillPerDose = String(firstScheduleObj.no_of_pills_per_dose)
+        
+        var currentCounting=intakeCounterObj.getCounting()
+
+        var theTiming = firstScheduleObj.timings[currentCounting]
+        
+        var title="Drug intake reminder"
+        var message="How much "+drugName!+" have you consumed at "+theTiming+"?"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title:"Yes, I've taken "+noOfPillPerDose+" pills",style:UIAlertActionStyle.default,handler:{(action:UIAlertAction) in self.chooseSelec(userSelec: "yes")}))
+        
+        alert.addAction(UIAlertAction(title:"More than "+noOfPillPerDose+" pills",style:UIAlertActionStyle.destructive,handler:{(action:UIAlertAction) in self.chooseSelec(userSelec: "more")}))
+        
+        alert.addAction(UIAlertAction(title:"Less than "+noOfPillPerDose+" pills",style:UIAlertActionStyle.default,handler:{(action:UIAlertAction) in self.chooseSelec(userSelec: "less")}))
+        
+        alert.addAction(UIAlertAction(title:"Not going to consume now",style:UIAlertActionStyle.default,handler:{(action:UIAlertAction) in self.chooseSelec(userSelec: "ignore")}))
+        
+        self.present(alert,animated:true,completion:nil)
+    }
+    
+    //switch cases
+    func chooseSelec(userSelec:String){
+        let userSelection=userSelec
+        switch userSelection {
+        case "yes":
+            selectYes()
+        case "more":
+            selectMoreQty()
+        case "less":
+            selectLessQty()
+        case "ignore":
+            selectIgnore()
+            
+        default:
+            print("error at func_deterterminSelec")
+        }
+    }
+    
+    func selectYes() {
+        intakeCounterObj.confirming(isTaken: true)
+        print("yes")
+    }
+    
+    func selectMoreQty() {
+        intakeCounterObj.confirming(isTaken: true)
+        print("more qty")
+    }
+    
+    func selectLessQty() {
+        intakeCounterObj.confirming(isTaken: true)
+        print("less qty")
+    }
+    
+    func selectIgnore() {
+        intakeCounterObj.confirming(isTaken: false)
+        print("Ignore")
+    }
+    
+    //pushReminder ends
+    
 }
+
