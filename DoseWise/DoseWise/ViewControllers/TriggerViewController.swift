@@ -18,8 +18,8 @@ class TriggerViewController: UIViewController {
         }else{
             print("nom count: \(Const.nominees.count)")
             if Const.nominees.count != 0{
-                print("SENDING SMS")
-              tPresenter.executeSMS(nominee: Const.nominees)
+                
+                tPresenter.executeSMSInUrgent(nominee: Const.nominees)
                 
                 let alert = UIAlertController(title: "We sent SMS to your nominee", message: nil, preferredStyle: .alert)
                 
@@ -37,4 +37,5 @@ class TriggerViewController: UIViewController {
         }
         Const.TIMER_IS_TRIGGERED = false
     }
+    
 }
