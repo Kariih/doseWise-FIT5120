@@ -17,7 +17,7 @@ class EditNomeneeViewController : UIViewController{
             nomPhoneLbl.text = passedNominee.phoneNo
         }
     }
-
+    
     private func dismissView(){
         dismiss(animated: true, completion: nil)
     }
@@ -33,7 +33,6 @@ class EditNomeneeViewController : UIViewController{
     @IBAction func addOrUpdateNominee(_ sender: Any) {
         let name = nomNameLbl.text!
         let phone = nomPhoneLbl.text!
-        
         if dbPresenter.validateUserInputNominee(name: name, phone: phone){
             print("TRYING TO ADD NAME \(name) AND PHONE \(phone)")
             if passedNominee.id != nil{
@@ -43,5 +42,17 @@ class EditNomeneeViewController : UIViewController{
             }
             dismiss(animated: true, completion: nil)
         }
+            //Chen's modification
+            //adding alert menu when validation failed
+        else{
+            let alert = UIAlertController(title: "Invalid input", message: "Please type in valid name and phone number, thanks", preferredStyle: .alert)
+            
+            //            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
+            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler:nil))
+            
+            self.present(alert, animated: true)
+        }
+        
     }
+    
 }
