@@ -9,13 +9,20 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var medicineNameTxt: UITextField!
     @IBOutlet weak var setTimesLbl: UILabel!
     
+    @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var timeLbl1: UIButton!
     @IBOutlet weak var timeLbl2: UIButton!
     @IBOutlet weak var timeLbl3: UIButton!
     @IBOutlet weak var timeLbl4: UIButton!
     @IBOutlet weak var timeLbl5: UIButton!
+    let dbSchedule = CRUDDrugSchedule()
+    
+    @IBOutlet weak var stepperOne: UIStepper!
+    @IBOutlet weak var stepperTwo: UIStepper!
+    @IBOutlet weak var stepperThree: UIStepper!
     
     var clickedTimedBtn : UIButton!
+    var numberOfTimesDay : Int!
     
     @IBOutlet weak var timePickerView: UIPickerView!
     var timeLabels : [UIButton] = []
@@ -33,10 +40,34 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         timeLabels.append(timeLbl5)
         
         timePickerView.backgroundColor = UIColor.white
+        
+        if !Const.currentSchedule.timings.isEmpty{
+            deleteBtn.isHidden = false
+            setDataForEdit()
+        }
+    }
+    
+    private func setDataForEdit(){
+        let drug = Const.currentSchedule
+        daysLbl.text = String(drug.no_of_days)
+        stepperOne.value = Double(drug.no_of_days)
+        dosageLbl.text = String(drug.no_of_pills_per_dose)
+        stepperTwo.value = Double(drug.no_of_pills_per_dose)
+        timesLbl.text = String(drug.no_of_times_per_day)
+        stepperThree.value = Double(drug.no_of_times_per_day)
+        numberOfTimesDay = drug.no_of_times_per_day
+        medicineNameTxt.text = drug.name
+        
+        for i in 0...drug.no_of_times_per_day-1{
+            timeLabels[i].setTitle(drug.timings[i], for: .normal)
+            timeLabels[i].isHidden = false
+        }
     }
     
     @IBAction func deleteScheduleAction(_ sender: Any) {
-        
+        dbSchedule.deleteAllDrugSchedule()
+        Const.dosages = []
+        dismissView()
     }
     
     @IBAction func daysStepperAction(_ sender: UIStepper) {
@@ -50,6 +81,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func timeStepperAction(_ sender: UIStepper) {
         let previousValue = Int(timesLbl.text!)
         let currentValue = Int(sender.value)
+        numberOfTimesDay = currentValue
         timesLbl.text = String(currentValue)
         
         if currentValue > 0{
@@ -94,12 +126,6 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         clickedTimedBtn = sender
         timePickerView.isHidden = false
     }
-    
-    private func initTimeLabels(times: Int){
-        for i in 0...times-1{
-           timeLabels[i].isHidden = false
-        }
-    }
 
     @IBAction func cancelBtnClick(_ sender: Any) {
         dismissView()
@@ -114,11 +140,15 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func saveBtnClick(_ sender: Any) {
-        let dbSchedule = CRUDDrugSchedule()
-        
+        var timings: [String] = []
+        for i in 0...numberOfTimesDay-1{
+            timings.append(timeLabels[i].title(for: .normal)!)
+        }
         //Add check for nil values here
-        let schedule = DrugSchedule(id: 0, name: medicineNameTxt.text!, no_of_days: Int(daysLbl.text!)!, no_of_times_per_day: Int(timesLbl.text!)!, no_of_pills_per_dose: Int(dosageLbl.text!)!, timings: ["11", "12"], type_of_pill: "opioid")
+        let schedule = DrugSchedule(id: 0, name: medicineNameTxt.text!, no_of_days: Int(daysLbl.text!)!, no_of_times_per_day: Int(timesLbl.text!)!, no_of_pills_per_dose: Int(dosageLbl.text!)!, timings: timings, type_of_pill: "opioid")
+        dbSchedule.deleteAllDrugSchedule()
         dbSchedule.addDrugSchedule(DrugSchedule: schedule)
+        dismissView()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -20,6 +20,7 @@
 		6BB31B072136594F00FB3687 /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B062136594F00FB3687 /* CRUD.swift */; };
 		6BB31B092136680B00FB3687 /* Nominee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B082136680B00FB3687 /* Nominee.swift */; };
 		700DE64D1E6689B70143F9B9 /* Pods_DoseWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */; };
+		EC19D751214FE70300CBA4BF /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC19D750214FE70300CBA4BF /* Pill.swift */; };
 		EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0421367E3800938622 /* EditNomeneeViewController.swift */; };
 		EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0D2136EC3900938622 /* NomineeViewController.swift */; };
 		EC356F112136F8FA00938622 /* NomineeDbPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F102136F8FA00938622 /* NomineeDbPresenter.swift */; };
@@ -71,6 +72,7 @@
 		6BB31B082136680B00FB3687 /* Nominee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nominee.swift; sourceTree = "<group>"; };
 		91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoseWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C251836F0C60754E2F85395F /* Pods-DoseWise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoseWise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise.debug.xcconfig"; sourceTree = "<group>"; };
+		EC19D750214FE70300CBA4BF /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		EC356F0421367E3800938622 /* EditNomeneeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNomeneeViewController.swift; sourceTree = "<group>"; };
 		EC356F0D2136EC3900938622 /* NomineeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeViewController.swift; sourceTree = "<group>"; };
 		EC356F102136F8FA00938622 /* NomineeDbPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeDbPresenter.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				4237981A213EC372004C0056 /* DrugSchedule.swift */,
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
+				EC19D750214FE70300CBA4BF /* Pill.swift */,
 			);
 			path = Plain_Objects;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
 				EC356F112136F8FA00938622 /* NomineeDbPresenter.swift in Sources */,
 				EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */,
+				EC19D751214FE70300CBA4BF /* Pill.swift in Sources */,
 				EC696BB2214F7D1000BB008F /* EditScheduleViewController.swift in Sources */,
 				6BB31B092136680B00FB3687 /* Nominee.swift in Sources */,
 				EC696BB0214F6FD400BB008F /* DateManager.swift in Sources */,

@@ -1,25 +1,34 @@
 import UIKit
 import UserNotifications
 
-class SchedulerViewController:UIViewController{
+class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var addEditScheduleBtn: UIButton!
     var triggerTimer = Timer()
+    var dbDrugSchedule = CRUDDrugSchedule()
     
     @IBOutlet weak var MonthLbl: UILabel!
     @IBOutlet weak var DayLbl: UILabel!
-    
+    @IBOutlet weak var scheduleTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
+        scheduleTableView.delegate = self
+        scheduleTableView.dataSource = self
         grantNotification()
         addDateToGUI()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("ViewDidAppear")
+        Const.dosages = []
+        getScheduleFromDb()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+        scheduleTableView.reloadData()
+        if Const.dosages.count == 0{
+            addEditScheduleBtn.setTitle("Add new medicine schedule", for: .normal)
+        }
     }
     
     @objc func willEnterForeground() {
@@ -36,10 +45,35 @@ class SchedulerViewController:UIViewController{
         DayLbl.text = dateManager.getCurrentDay()
     }
     
-    @IBAction func testCase(_ sender: Any) {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("count: \(Const.dosages.count)")
+        return Const.dosages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
+        cell.textLabel?.text = "\(Const.dosages[indexPath.item].time) - \(Const.dosages[indexPath.item].dosage) x \(Const.dosages[indexPath.item].name)"
+    print("returning cell")
+        return cell
+    }
+    
+    private func getScheduleFromDb(){
+        var schedule = dbDrugSchedule.getDrugSchdules()
+        if schedule.count > 0{
+            Const.currentSchedule = schedule[0]
+            for i in 0...schedule[0].no_of_times_per_day-1{
+                Const.dosages.append(Pill(name: schedule[0].name, dosage: schedule[0].no_of_pills_per_dose, time: schedule[0].timings[i]))
+                print("adding from db")
+            }
+            scheduleTableView.reloadData()
+            addEditScheduleBtn.setTitle("Edit/delete existing schedule", for: .normal)
+        }
+    }
+    
+/*    @IBAction func testCase(_ sender: Any) {
         print("prepare to launch notification")
         launchNotification()
-    }
+    }*/
     
     private func grantNotification(){
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
