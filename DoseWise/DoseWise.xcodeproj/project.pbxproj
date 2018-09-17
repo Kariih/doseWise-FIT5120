@@ -152,7 +152,6 @@
 				4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */,
 				4249B34D212FE67E00CB6B1D /* Info.plist */,
 				4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */,
-				EC6A1B1421386DDD0083E1B6 /* SmsTrigger.swift */,
 				EC6A1B27213888460083E1B6 /* Const.swift */,
 			);
 			path = DoseWise;
@@ -207,6 +206,9 @@
 		EC356F122137D0FE00938622 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EC6A1B1421386DDD0083E1B6 /* SmsTrigger.swift */,
+				4237981A213EC372004C0056 /* DrugSchedule.swift */,
+				6B6ED645214CEAF600966013 /* IntakeCounter.swift */,
 				6BB31B062136594F00FB3687 /* CRUD.swift */,
 				4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */,
 			);
@@ -217,8 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
-				4237981A213EC372004C0056 /* DrugSchedule.swift */,
-				6B6ED645214CEAF600966013 /* IntakeCounter.swift */,
 			);
 			path = Plain_Objects;
 			sourceTree = "<group>";

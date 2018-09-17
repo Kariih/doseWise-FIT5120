@@ -1,10 +1,3 @@
-//
-//  CRUDDrugSchedule.swift
-//  DoseWise
-//
-//  Created by Hasini Vasudevan on 5/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
 import SQLite3
 import UIKit
 
