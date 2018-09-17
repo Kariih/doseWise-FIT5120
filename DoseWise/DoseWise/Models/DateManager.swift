@@ -15,7 +15,6 @@ class DateManager{
     }
     
     func getCurrentMonth() -> String{
-        let months = ["January", "Februar", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        return months[components.month! - 1]
+        return Const.MONTHS[components.month! - 1]
     }
 }
