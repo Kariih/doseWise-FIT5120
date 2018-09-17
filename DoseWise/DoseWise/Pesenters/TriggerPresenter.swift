@@ -2,6 +2,7 @@ import Foundation
 
 class TriggerPresenter{
     
+  
     init(){
         
     }
@@ -9,14 +10,14 @@ class TriggerPresenter{
     let smstrig = SmsTrigger()
     //initialise smsBody
     var smsBody=""
-    
+   
     //send sms to nominee when the user failed to answer the quiz correctly
-    func executeSMSInUrgent(nominee : [Nominee]){
+    func executeSMSInUrgent(nominee : [Nominee],currentAddress:String){
         //we need to fetch the patient's name and put it below
         let patientName = "John Doe"
         for i in nominee{
             var nomineesName=i.name
-            var Body="Hi "+nomineesName!+"! This is DoseWise (a medicine intake management App), Your friend "+patientName+" isn't responding quite well. Could you please check if everything is good?"
+            var Body="Hi "+nomineesName!+"! This is DoseWise (a medicine intake management App), Your friend "+patientName+" isn't responding quite well. Could you please check if everything is good? \n His current location is \n\(currentAddress)"
             smsBody=Body
             smstrig.SendSms(To: i.phoneNo, Body:smsBody)
         }

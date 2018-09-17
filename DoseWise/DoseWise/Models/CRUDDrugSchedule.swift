@@ -70,7 +70,7 @@ class CRUDDrugSchedule {
                 
             }
         } else {
-            print("Could not featch objects from db")
+            print("Could not fetch objects from db")
         }
         sqlite3_finalize(queryStatement)
         return DrugSchList
