@@ -250,6 +250,10 @@
                     <tabBarItem key="tabBarItem" title="Scheduler" image="pill" selectedImage="pill" id="BWF-lp-XdZ">
                         <color key="badgeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="DayLbl" destination="EHj-eK-fUn" id="u4c-wF-3uY"/>
+                        <outlet property="MonthLbl" destination="ihh-YA-VEj" id="EzU-yt-0fs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdB-Mq-eWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

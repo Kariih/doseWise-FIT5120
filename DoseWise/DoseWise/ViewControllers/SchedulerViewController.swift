@@ -5,10 +5,15 @@ class SchedulerViewController:UIViewController{
     
     var triggerTimer = Timer()
     
+    @IBOutlet weak var MonthLbl: UILabel!
+    @IBOutlet weak var DayLbl: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load")
         grantNotification()
+        addDateToGUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,6 +28,12 @@ class SchedulerViewController:UIViewController{
             let triggerViewController = storyBoard.instantiateViewController(withIdentifier: "TriggerView") as! TriggerViewController
             self.present(triggerViewController, animated: true, completion: nil)
         }
+    }
+    
+    private func addDateToGUI(){
+        let dateManager = DateManager()
+        MonthLbl.text = dateManager.getCurrentMonth()
+        DayLbl.text = dateManager.getCurrentDay()
     }
     
     @IBAction func testCase(_ sender: Any) {

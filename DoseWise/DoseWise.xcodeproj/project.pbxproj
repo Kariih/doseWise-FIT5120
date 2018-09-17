@@ -10,7 +10,6 @@
 		4237981B213EC372004C0056 /* DrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981A213EC372004C0056 /* DrugSchedule.swift */; };
 		4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */; };
 		4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B33E212FE67C00CB6B1D /* AppDelegate.swift */; };
-		4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B340212FE67C00CB6B1D /* ViewController.swift */; };
 		4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
 		4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */; };
 		4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4249B348212FE67E00CB6B1D /* Assets.xcassets */; };
@@ -24,6 +23,7 @@
 		EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0421367E3800938622 /* EditNomeneeViewController.swift */; };
 		EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0D2136EC3900938622 /* NomineeViewController.swift */; };
 		EC356F112136F8FA00938622 /* DbPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F102136F8FA00938622 /* DbPresenter.swift */; };
+		EC696BB0214F6FD400BB008F /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC696BAF214F6FD400BB008F /* DateManager.swift */; };
 		EC6A1B1521386DDD0083E1B6 /* SmsTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B1421386DDD0083E1B6 /* SmsTrigger.swift */; };
 		EC6A1B2221386F990083E1B6 /* SchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B2121386F990083E1B6 /* SchedulerViewController.swift */; };
 		EC6A1B24213871B60083E1B6 /* TriggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B23213871B60083E1B6 /* TriggerPresenter.swift */; };
@@ -54,7 +54,6 @@
 		4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDDrugSchedule.swift; sourceTree = "<group>"; };
 		4249B33B212FE67C00CB6B1D /* DoseWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoseWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4249B33E212FE67C00CB6B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4249B340212FE67C00CB6B1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4249B343212FE67C00CB6B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4249B346212FE67C00CB6B1D /* DoseWise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoseWise.xcdatamodel; sourceTree = "<group>"; };
 		4249B348212FE67E00CB6B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		EC356F0421367E3800938622 /* EditNomeneeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNomeneeViewController.swift; sourceTree = "<group>"; };
 		EC356F0D2136EC3900938622 /* NomineeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeViewController.swift; sourceTree = "<group>"; };
 		EC356F102136F8FA00938622 /* DbPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPresenter.swift; sourceTree = "<group>"; };
+		EC696BAF214F6FD400BB008F /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		EC6A1B1421386DDD0083E1B6 /* SmsTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsTrigger.swift; sourceTree = "<group>"; };
 		EC6A1B2121386F990083E1B6 /* SchedulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerViewController.swift; sourceTree = "<group>"; };
 		EC6A1B23213871B60083E1B6 /* TriggerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerPresenter.swift; sourceTree = "<group>"; };
@@ -146,7 +146,6 @@
 				EC356F0F2136F8DC00938622 /* Pesenters */,
 				EC356F0321367D5200938622 /* ViewControllers */,
 				4249B33E212FE67C00CB6B1D /* AppDelegate.swift */,
-				4249B340212FE67C00CB6B1D /* ViewController.swift */,
 				4249B342212FE67C00CB6B1D /* Main.storyboard */,
 				4249B348212FE67E00CB6B1D /* Assets.xcassets */,
 				4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */,
@@ -211,6 +210,7 @@
 				6B6ED645214CEAF600966013 /* IntakeCounter.swift */,
 				6BB31B062136594F00FB3687 /* CRUD.swift */,
 				4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */,
+				EC696BAF214F6FD400BB008F /* DateManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -400,9 +400,9 @@
 				6B6ED646214CEAF600966013 /* IntakeCounter.swift in Sources */,
 				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
 				EC356F112136F8FA00938622 /* DbPresenter.swift in Sources */,
-				4249B341212FE67C00CB6B1D /* ViewController.swift in Sources */,
 				EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */,
 				6BB31B092136680B00FB3687 /* Nominee.swift in Sources */,
+				EC696BB0214F6FD400BB008F /* DateManager.swift in Sources */,
 				EC6A1B24213871B60083E1B6 /* TriggerPresenter.swift in Sources */,
 				4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */,
 				6BB31B072136594F00FB3687 /* CRUD.swift in Sources */,
