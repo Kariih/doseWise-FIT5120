@@ -212,14 +212,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MKc-MV-31i">
-                                <rect key="frame" x="30" y="253" width="315" height="335"/>
+                                <rect key="frame" x="0.0" y="253" width="375" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="31R-nu-l2s">
-                                        <rect key="frame" x="0.0" y="28" width="315" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="31R-nu-l2s" id="kUc-VO-5PJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -235,15 +235,15 @@
                             <constraint firstItem="EHj-eK-fUn" firstAttribute="top" secondItem="ihh-YA-VEj" secondAttribute="bottom" constant="10" id="Cgm-oe-Hhq"/>
                             <constraint firstItem="ihh-YA-VEj" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="Qoq-3a-zqr"/>
                             <constraint firstItem="Q3j-Zc-ajt" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="Tbk-rt-9k9"/>
-                            <constraint firstItem="AGd-UF-c5X" firstAttribute="bottom" secondItem="MKc-MV-31i" secondAttribute="bottom" constant="30" id="UjG-Es-241"/>
+                            <constraint firstItem="AGd-UF-c5X" firstAttribute="bottom" secondItem="MKc-MV-31i" secondAttribute="bottom" id="UjG-Es-241"/>
                             <constraint firstItem="Q3j-Zc-ajt" firstAttribute="top" secondItem="AGd-UF-c5X" secondAttribute="top" constant="30" id="VgZ-M4-EtM"/>
                             <constraint firstItem="PSa-GY-Tu0" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="ff9-zQ-Zeo"/>
                             <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="Q3j-Zc-ajt" secondAttribute="trailing" constant="30" id="krR-BO-7vq"/>
                             <constraint firstItem="MKc-MV-31i" firstAttribute="top" secondItem="PSa-GY-Tu0" secondAttribute="bottom" constant="30" id="lVJ-QB-JFh"/>
-                            <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="MKc-MV-31i" secondAttribute="trailing" constant="30" id="tbh-hF-kqw"/>
+                            <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="MKc-MV-31i" secondAttribute="trailing" id="tbh-hF-kqw"/>
                             <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="PSa-GY-Tu0" secondAttribute="trailing" constant="30" id="wBn-iX-zA2"/>
                             <constraint firstItem="ihh-YA-VEj" firstAttribute="top" secondItem="Q3j-Zc-ajt" secondAttribute="bottom" constant="30" id="wfv-a8-aok"/>
-                            <constraint firstItem="MKc-MV-31i" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="xyv-7p-8t1"/>
+                            <constraint firstItem="MKc-MV-31i" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" id="xyv-7p-8t1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AGd-UF-c5X"/>
                     </view>
@@ -547,14 +547,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89o-ZX-wEI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89o-ZX-wEI">
                                 <rect key="frame" x="30" y="572" width="315" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDV-x5-vmQ">
-                                <rect key="frame" x="315" y="44.5" width="30" height="44"/>
+                                <rect key="frame" x="315" y="45" width="30" height="44"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -564,7 +564,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-4l-o0C">
-                                <rect key="frame" x="30" y="98.5" width="315" height="280"/>
+                                <rect key="frame" x="30" y="99" width="315" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="AkR-gw-144"/>

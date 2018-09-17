@@ -1,5 +1,6 @@
 import UIKit
 import UserNotifications
+import Foundation
 
 class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -13,11 +14,11 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scheduleTableView.backgroundColor = UIColor.white
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
         grantNotification()
         addDateToGUI()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,8 +54,29 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         cell.textLabel?.text = "\(Const.dosages[indexPath.item].time) - \(Const.dosages[indexPath.item].dosage) x \(Const.dosages[indexPath.item].name)"
-    print("returning cell")
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let hour = Calendar.current.component(.hour, from: Date())
+        print(hour)
+        let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)!])! - hour
+        print("differenece \(differenece)")
+        if differenece.magnitude <= 1 {
+            tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
+            pushReminder()
+        }else{
+            let title="Wrong schedule"
+            let message="The pill isn't consumed according to your schedule, are you sure you will take them now?"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
+                    tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+            
+                self.present(alert,animated:true,completion:nil)
+        }
     }
     
     private func getScheduleFromDb(){
@@ -103,6 +125,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         // 2.Create trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
+        
         // 3.Create request identifier
         let requestIdentifier = "simpleNoti"
         
@@ -132,15 +155,15 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         var firstScheduleObj:DrugSchedule
         firstScheduleObj = listOfSchedule[0]
         
-        var drugName = firstScheduleObj.name
-        var noOfPillPerDose = String(firstScheduleObj.no_of_pills_per_dose)
+        let drugName = firstScheduleObj.name
+        let noOfPillPerDose = String(firstScheduleObj.no_of_pills_per_dose)
         
-        var currentCounting=intakeCounterObj.getCounting()
+        let currentCounting=intakeCounterObj.getCounting()
 
-        var theTiming = firstScheduleObj.timings[currentCounting]
+        let theTiming = firstScheduleObj.timings[currentCounting]
         
-        var title="Drug intake reminder"
-        var message="How much "+drugName!+" have you consumed at "+theTiming+"?"
+        let title="Drug intake reminder"
+        let message="How much "+drugName!+" have you consumed at "+theTiming+"?"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
