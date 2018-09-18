@@ -187,6 +187,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             break
         case "more":
            // selectMoreQty()
+            launchNotification()
             break
         case "less":
            // selectLessQty()
