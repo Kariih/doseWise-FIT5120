@@ -67,6 +67,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func deleteScheduleAction(_ sender: Any) {
         dbSchedule.deleteAllDrugSchedule()
         Const.dosages = []
+        Const.currentSchedule = DrugSchedule()
         dismissView()
     }
     
@@ -141,13 +142,15 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func saveBtnClick(_ sender: Any) {
         var timings: [String] = []
-        for i in 0...numberOfTimesDay-1{
-            timings.append(timeLabels[i].title(for: .normal)!)
+        if numberOfTimesDay != nil{
+            for i in 0...numberOfTimesDay-1{
+                timings.append(timeLabels[i].title(for: .normal)!)
+            }
+            //Add check for nil values here
+            let schedule = DrugSchedule(id: 0, name: medicineNameTxt.text!, no_of_days: Int(daysLbl.text!)!, no_of_times_per_day: Int(timesLbl.text!)!, no_of_pills_per_dose: Int(dosageLbl.text!)!, timings: timings, type_of_pill: "opioid")
+            dbSchedule.deleteAllDrugSchedule()
+            dbSchedule.addDrugSchedule(DrugSchedule: schedule)
         }
-        //Add check for nil values here
-        let schedule = DrugSchedule(id: 0, name: medicineNameTxt.text!, no_of_days: Int(daysLbl.text!)!, no_of_times_per_day: Int(timesLbl.text!)!, no_of_pills_per_dose: Int(dosageLbl.text!)!, timings: timings, type_of_pill: "opioid")
-        dbSchedule.deleteAllDrugSchedule()
-        dbSchedule.addDrugSchedule(DrugSchedule: schedule)
         dismissView()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

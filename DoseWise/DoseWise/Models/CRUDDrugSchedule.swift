@@ -3,7 +3,7 @@ import UIKit
 
 class CRUDDrugSchedule {
     var db:OpaquePointer?
-     let tableName="drugSchedule"
+    let tableName="drugSchedule"
     init(){}
     
     func initTables(){
@@ -36,16 +36,25 @@ class CRUDDrugSchedule {
         sqlite3_close(db)
     }
     
+    
+    let intCounter = intakeCounter()
+    
+    
     func addDrugSchedule(DrugSchedule:DrugSchedule) {
-       
+        
         openDbConnection()
-      let insertQuery=DrugSchedule.getInsertQuery(TableName: tableName)
+        let insertQuery=DrugSchedule.getInsertQuery(TableName: tableName)
         if sqlite3_exec(db,insertQuery , nil, nil, nil) != SQLITE_OK{
             print("Error Inserting into \(tableName)")
             return
         }
         print("Insert Successfull")
         sqlite3_close(db)
+        
+        
+        intCounter.resetRegister(noOfIntake: DrugSchedule.no_of_times_per_day)
+        
+        
     }
     
     func getDrugSchdules()->[DrugSchedule]{
@@ -79,6 +88,10 @@ class CRUDDrugSchedule {
         }
         print("update Successful")
         sqlite3_close(db)
+        
+        
+        intCounter.resetRegister(noOfIntake: DrugSchedule.no_of_times_per_day)
+        
     }
     
     func deleteDrugSchedule(DrugSchedule:DrugSchedule) {
