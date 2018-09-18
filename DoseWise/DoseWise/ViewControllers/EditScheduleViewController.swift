@@ -143,6 +143,8 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func saveBtnClick(_ sender: Any) {
         var timings: [String] = []
         if numberOfTimesDay != nil{
+            let notificationManager = NotificationReminderManager()
+            notificationManager.addReminder(time: "1pm")
             for i in 0...numberOfTimesDay-1{
                 timings.append(timeLabels[i].title(for: .normal)!)
             }
