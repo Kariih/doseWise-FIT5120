@@ -1,11 +1,3 @@
-//
-//  intakeTracker.swift
-//  composingFunc
-//
-//  Created by 郭成俊 on 8/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
-
 import Foundation
 
 //this class
@@ -14,10 +6,8 @@ class intakeCounter{
     let defaults = UserDefaults.standard
     var curDate = "01.01.1970"
     
-    
     //dateType is the format of the date, dateType2 will only be used for presenting current date to user
     let dateType1="dd.MM.yyyy"
-    let dateType2="E, MMM d, yyyy"
     
     func getNoOfPillsPerDay()->Int{
         var listOfSchedule=CRUDDrugSchedule().getDrugSchdules()

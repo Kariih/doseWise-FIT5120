@@ -26,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         let dbClass = CRUD()
+        let dbScheduleClass = CRUDDrugSchedule()
         dbClass.initTables()
+        dbScheduleClass.initTables()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
