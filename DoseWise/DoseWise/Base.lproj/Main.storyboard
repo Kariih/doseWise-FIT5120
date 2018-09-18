@@ -225,16 +225,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kh-uo-D8c">
-                                <rect key="frame" x="30" y="50" width="73" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="TRIGGER">
-                                    <color key="titleColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="testCase:" destination="cRm-cF-HpL" eventType="touchUpInside" id="Yp8-KV-aXw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -243,7 +233,6 @@
                             <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="ihh-YA-VEj" secondAttribute="trailing" constant="30" id="AOX-nJ-xVy"/>
                             <constraint firstItem="EHj-eK-fUn" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="CBx-uY-DOz"/>
                             <constraint firstItem="EHj-eK-fUn" firstAttribute="top" secondItem="ihh-YA-VEj" secondAttribute="bottom" constant="10" id="Cgm-oe-Hhq"/>
-                            <constraint firstItem="1Kh-uo-D8c" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="Pt5-U2-zhq"/>
                             <constraint firstItem="ihh-YA-VEj" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="Qoq-3a-zqr"/>
                             <constraint firstItem="Q3j-Zc-ajt" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="Tbk-rt-9k9"/>
                             <constraint firstItem="AGd-UF-c5X" firstAttribute="bottom" secondItem="MKc-MV-31i" secondAttribute="bottom" constant="30" id="UjG-Es-241"/>
@@ -255,7 +244,6 @@
                             <constraint firstItem="AGd-UF-c5X" firstAttribute="trailing" secondItem="PSa-GY-Tu0" secondAttribute="trailing" constant="30" id="wBn-iX-zA2"/>
                             <constraint firstItem="ihh-YA-VEj" firstAttribute="top" secondItem="Q3j-Zc-ajt" secondAttribute="bottom" constant="30" id="wfv-a8-aok"/>
                             <constraint firstItem="MKc-MV-31i" firstAttribute="leading" secondItem="AGd-UF-c5X" secondAttribute="leading" constant="30" id="xyv-7p-8t1"/>
-                            <constraint firstItem="1Kh-uo-D8c" firstAttribute="top" secondItem="AGd-UF-c5X" secondAttribute="top" constant="30" id="ysY-IP-Ozw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AGd-UF-c5X"/>
                     </view>
