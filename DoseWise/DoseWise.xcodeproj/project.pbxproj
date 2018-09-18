@@ -32,6 +32,7 @@
 		EC6A1B26213881F30083E1B6 /* TriggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B25213881F30083E1B6 /* TriggerViewController.swift */; };
 		EC6A1B28213888460083E1B6 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B27213888460083E1B6 /* Const.swift */; };
 		ECC00BFA2150B65500E483B1 /* NotificationReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */; };
+		ECC00BFC2150C52700E483B1 /* IntakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BFB2150C52700E483B1 /* IntakeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		EC6A1B25213881F30083E1B6 /* TriggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerViewController.swift; sourceTree = "<group>"; };
 		EC6A1B27213888460083E1B6 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReminderManager.swift; sourceTree = "<group>"; };
+		ECC00BFB2150C52700E483B1 /* IntakeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntakeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 				4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */,
 				EC696BAF214F6FD400BB008F /* DateManager.swift */,
 				ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */,
+				ECC00BFB2150C52700E483B1 /* IntakeManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				6B6ED646214CEAF600966013 /* IntakeCounter.swift in Sources */,
 				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
 				EC356F112136F8FA00938622 /* NomineeDbPresenter.swift in Sources */,
+				ECC00BFC2150C52700E483B1 /* IntakeManager.swift in Sources */,
 				EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */,
 				EC19D751214FE70300CBA4BF /* Pill.swift in Sources */,
 				EC696BB2214F7D1000BB008F /* EditScheduleViewController.swift in Sources */,

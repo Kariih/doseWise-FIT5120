@@ -60,14 +60,16 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hour = Calendar.current.component(.hour, from: Date())
         print(hour)
-        let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)!])! - hour
+        let indexOf12hClock = Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)! + 1
+        print("Index of clock: \(indexOf12hClock)")
+        let differenece = indexOf12hClock - hour
         print("differenece \(differenece)")
         if differenece.magnitude <= 1 {
             //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
             pushReminder()
         }else{
             let title="Wrong schedule"
-            let message="The pill isn't consumed according to your schedule, are you sure you will take them now?"
+            let message="The pill isn't being consumed according to your schedule, are you sure you will take them now?"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
