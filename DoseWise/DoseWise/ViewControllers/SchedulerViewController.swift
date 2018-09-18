@@ -63,7 +63,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)!])! - hour
         print("differenece \(differenece)")
         if differenece.magnitude <= 1 {
-            tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
+            //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
             pushReminder()
         }else{
             let title="Wrong schedule"
@@ -71,7 +71,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
-                    tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange
+                   /* tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange*/
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
             
@@ -183,13 +183,17 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         let userSelection=userSelec
         switch userSelection {
         case "yes":
-            selectYes()
+            //selectYes()
+            break
         case "more":
-            selectMoreQty()
+          //  selectMoreQty()
+            break
         case "less":
-            selectLessQty()
+           // selectLessQty()
+            break
         case "ignore":
-            selectIgnore()
+          //  selectIgnore()
+            break
             
         default:
             print("error at func_deterterminSelec")
