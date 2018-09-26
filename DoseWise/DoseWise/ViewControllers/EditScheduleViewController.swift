@@ -153,47 +153,18 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         dismissView()
     }
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return Const.TIMES_A_DAY.count
-//    }
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        clickedTimedBtn.setTitle(Const.TIMES_A_DAY[row], for: .normal)
-//        timePickerView.isHidden = true
-//    }
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return Const.TIMES_A_DAY[row]
-//    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return Const.TIMES_A_DAY.count
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Const.TIMES_A_DAY[component].count
+        return Const.TIMES_A_DAY.count
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        let hour = Const.TIMES_A_DAY[0][pickerView.selectedRow(inComponent: 0)]
-//        let minute = Const.TIMES_A_DAY[1][pickerView.selectedRow(inComponent: 1)]
-//        let amOrPm = Const.TIMES_A_DAY[2][pickerView.selectedRow(inComponent: 2)]
-//        let theTiming:String = hour + ":" + minute + " " + amOrPm
-//        clickedTimedBtn.setTitle(theTiming, for: .normal)
-//        timePickerView.isHidden = true
-//    }
-
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let hour = Const.TIMES_A_DAY[0][pickerView.selectedRow(inComponent: 0)]
-        let minute = Const.TIMES_A_DAY[1][pickerView.selectedRow(inComponent: 1)]
-        let theTiming:String = hour + ":" + minute
-        clickedTimedBtn.setTitle(theTiming, for: .normal)
+        clickedTimedBtn.setTitle(Const.TIMES_A_DAY[row], for: .normal)
         timePickerView.isHidden = true
     }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Const.TIMES_A_DAY[component][row]
+        return Const.TIMES_A_DAY[row]
     }
 }

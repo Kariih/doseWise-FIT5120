@@ -57,54 +57,25 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let hour = Calendar.current.component(.hour, from: Date())
-    //        print(hour)
-    //        //        let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)!])! - hour
-    //
-    //        let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: [Const.dosages[indexPath.row].time])!])! - hour
-    //
-    //
-    //        print("differenece \(differenece)")
-    //        if differenece.magnitude <= 1 {
-    //            //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
-    //            pushReminder()
-    //        }else{
-    //            let title="Wrong schedule"
-    //            let message="The pill isn't consumed according to your schedule, are you sure you will take them now?"
-    //            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    //
-    //            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
-    //                /* tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange*/
-    //            }))
-    //            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-    //
-    //            self.present(alert,animated:true,completion:nil)
-    //        }
-    //    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hour = Calendar.current.component(.hour, from: Date())
         print(hour)
-        
-        //parse current timing into hour
-        let currentTiming:String = Const.dosages[indexPath.row].time
-        let currentHour:String = currentTiming.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let differenece = Int(currentHour)! - hour
-        
+        let differenece = Int(Const.TIMES_24_CLOCK[Const.TIMES_A_DAY.index(of: Const.dosages[indexPath.row].time)!])! - hour
         print("differenece \(differenece)")
         if differenece.magnitude <= 1 {
-//            tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
+            //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.green
             pushReminder()
         }else{
             let title="Wrong schedule"
-            let message="The pill isn't consumed according to your schedule, it is highly recommended that not to consume your drug outside of scheduled time"
+            let message="The pill isn't consumed according to your schedule, are you sure you will take them now?"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in
+                   /* tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange*/
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
             
-            self.present(alert,animated:true,completion:nil)
+                self.present(alert,animated:true,completion:nil)
         }
     }
     
@@ -121,10 +92,10 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    /*    @IBAction func testCase(_ sender: Any) {
-     print("prepare to launch notification")
-     launchNotification()
-     }*/
+/*    @IBAction func testCase(_ sender: Any) {
+        print("prepare to launch notification")
+        launchNotification()
+    }*/
     
     private func grantNotification(){
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -174,7 +145,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     //following methods must be put into a view controller
     
     let intakeCounterObj=intakeCounter()
-    
+
     //this function prompts an alert menu (reminder) that ask user to confirm their intake to the App
     //it takes a schedule object as parameter, and use attributes of the object to populate the alert message
     
@@ -188,7 +159,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         let noOfPillPerDose = String(firstScheduleObj.no_of_pills_per_dose)
         
         let currentCounting=intakeCounterObj.getCounting()
-        
+
         let theTiming = firstScheduleObj.timings[currentCounting]
         
         let title="Drug intake reminder"
@@ -215,14 +186,14 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             //selectYes()
             break
         case "more":
-            // selectMoreQty()
+           // selectMoreQty()
             launchNotification()
             break
         case "less":
-            // selectLessQty()
+           // selectLessQty()
             break
         case "ignore":
-            //  selectIgnore()
+          //  selectIgnore()
             break
             
         default:
