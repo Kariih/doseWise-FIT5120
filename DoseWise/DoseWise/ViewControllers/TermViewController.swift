@@ -42,7 +42,7 @@ class TermViewController: UIViewController {
         }
     }
     
-    //by clicking agree, userInput will be validated
+    //by clicking agree, userInput will be validated and saved
     @IBAction func agreeTheTermAndCondition(_ sender: Any) {
         nameValidationMessage.isHidden=true
         phoneNoValidationMessage.isHidden=true
