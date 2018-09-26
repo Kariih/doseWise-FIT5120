@@ -7,8 +7,8 @@ class EditNomeneeViewController : UIViewController{
     @IBOutlet weak var nomPhoneLbl: UITextField!
     
     var passedNominee = Nominee()
-    let dbPresenter = DbPresenter();
-    
+    let dbPresenter = DbPresenter()
+    let inputVali = inputValidator()
     override func viewDidLoad(){
         super.viewDidLoad();
         
@@ -33,7 +33,7 @@ class EditNomeneeViewController : UIViewController{
     @IBAction func addOrUpdateNominee(_ sender: Any) {
         let name = nomNameLbl.text!
         let phone = nomPhoneLbl.text!
-        if dbPresenter.validateUserInputNominee(name: name, phone: phone){
+        if inputVali.validateUserInputNominee(name: name, phone: phone){
             print("TRYING TO ADD NAME \(name) AND PHONE \(phone)")
             if passedNominee.id != nil{
                 dbPresenter.updateNominee(nominee: Nominee(id: passedNominee.id!, name: name, phoneNo: phone))
