@@ -29,7 +29,7 @@ class TriggerPresenter{
         let patientPhoneNo = defaults.string(forKey: "userPhoneNo")
         let nomineesName=nominee.name
         print("add nominee SMS sent")
-        let Body="Hi "+nomineesName!+"! This is DoseWise (a medicine intake management App), Your friend "+patientName!+" (phone No."+patientPhoneNo!+") has nominate you as emergency contact, if you don't know this person please ignore, thanks"
+        let Body="Hi "+nomineesName!+"! This is DoseWise (a medicine intake management App), Your friend "+patientName!+" (phone No."+patientPhoneNo!+") has opted to use DoseWise and nominated you as an emergency contact. Thank you for your help. In case you don’t know this person, please ignore this message. Thank you."
         smsBody=Body
         smstrig.SendSms(To: nominee.phoneNo, Body:smsBody)
     }
