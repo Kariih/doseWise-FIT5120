@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-//this class is for disclaimer
+//this class is for disclaimer, 28/09
 class TermViewController: UIViewController {
     let defaults = UserDefaults.standard
     let inputVali = inputValidator()
