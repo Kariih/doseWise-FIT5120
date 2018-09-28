@@ -16,6 +16,8 @@
 		4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */; };
 		4249B357212FE67E00CB6B1D /* DoseWiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B356212FE67E00CB6B1D /* DoseWiseTests.swift */; };
 		4249B362212FE67E00CB6B1D /* DoseWiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */; };
+		426F3859215BAF6400B045ED /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426F3858215BAF6400B045ED /* iOSDropDown.framework */; };
+		42B50D4C215A77140085987B /* GetMeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B50D4B215A77140085987B /* GetMeds.swift */; };
 		6B6ED646214CEAF600966013 /* IntakeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6ED645214CEAF600966013 /* IntakeCounter.swift */; };
 		6BB31B072136594F00FB3687 /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B062136594F00FB3687 /* CRUD.swift */; };
 		6BB31B092136680B00FB3687 /* Nominee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B082136680B00FB3687 /* Nominee.swift */; };
@@ -67,6 +69,8 @@
 		4249B35D212FE67E00CB6B1D /* DoseWiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoseWiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4249B361212FE67E00CB6B1D /* DoseWiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseWiseUITests.swift; sourceTree = "<group>"; };
 		4249B363212FE67E00CB6B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426F3858215BAF6400B045ED /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B50D4B215A77140085987B /* GetMeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeds.swift; sourceTree = "<group>"; };
 		6B6ED645214CEAF600966013 /* IntakeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntakeCounter.swift; sourceTree = "<group>"; };
 		6BB31B062136594F00FB3687 /* CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD.swift; sourceTree = "<group>"; };
 		6BB31B082136680B00FB3687 /* Nominee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nominee.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426F3859215BAF6400B045ED /* iOSDropDown.framework in Frameworks */,
 				700DE64D1E6689B70143F9B9 /* Pods_DoseWise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +186,7 @@
 		D08C43202691E2F51A2D77F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				426F3858215BAF6400B045ED /* iOSDropDown.framework */,
 				91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */,
 			);
 			name = Frameworks;
@@ -225,6 +231,7 @@
 				4237981A213EC372004C0056 /* DrugSchedule.swift */,
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
 				EC19D750214FE70300CBA4BF /* Pill.swift */,
+				42B50D4B215A77140085987B /* GetMeds.swift */,
 			);
 			path = Plain_Objects;
 			sourceTree = "<group>";
@@ -384,10 +391,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DoseWise/Pods-DoseWise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -417,6 +426,7 @@
 				4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */,
 				4237981B213EC372004C0056 /* DrugSchedule.swift in Sources */,
 				EC6A1B2221386F990083E1B6 /* SchedulerViewController.swift in Sources */,
+				42B50D4C215A77140085987B /* GetMeds.swift in Sources */,
 				EC6A1B1521386DDD0083E1B6 /* SmsTrigger.swift in Sources */,
 				EC6A1B28213888460083E1B6 /* Const.swift in Sources */,
 			);
@@ -593,7 +603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6W6234ALK3;
+				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = DoseWise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,7 +622,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6W6234ALK3;
+				DEVELOPMENT_TEAM = D4E88Q87ES;
 				INFOPLIST_FILE = DoseWise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

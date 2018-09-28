@@ -1,12 +1,13 @@
 import Foundation
 import UIKit
+import iOSDropDown
 
 class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var daysLbl: UILabel!
     @IBOutlet weak var dosageLbl: UILabel!
     @IBOutlet weak var timesLbl: UILabel!
-    @IBOutlet weak var medicineNameTxt: UITextField!
+    @IBOutlet weak var medicineNameTxt: DropDown!
     @IBOutlet weak var setTimesLbl: UILabel!
     
     @IBOutlet weak var deleteBtn: UIButton!
@@ -38,13 +39,28 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         timeLabels.append(timeLbl3)
         timeLabels.append(timeLbl4)
         timeLabels.append(timeLbl5)
-        
+      
+        GetMeds.Shared.MED_DATA.sort()
+        medicineNameTxt.optionArray = GetMeds.Shared.MED_DATA // load searchbar
+       
+      
         timePickerView.backgroundColor = UIColor.white
         
         if !Const.currentSchedule.timings.isEmpty{
             deleteBtn.isHidden = false
             setDataForEdit()
         }
+    }
+    
+    override
+    func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if medicineNameTxt.optionArray[0] == ""{
+        
+            EmptyMedlistpopup()
+         
+        }
+      
     }
     
     private func setDataForEdit(){
@@ -166,5 +182,17 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Const.TIMES_A_DAY[row]
+    }
+    
+    func EmptyMedlistpopup() {
+
+        
+        let alert = UIAlertController(title: "No Internet connection",message: "Unable to retrieve data from server. Please type in the medicine name manually",preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+       
+        
+        self.present(alert, animated: true)
+       
     }
 }

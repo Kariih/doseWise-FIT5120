@@ -1,12 +1,15 @@
 import UIKit
 import UserNotifications
 import Foundation
+import CoreLocation
 
-class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource{
+var meds=GetMeds.Shared  // please commit
+class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     @IBOutlet weak var addEditScheduleBtn: UIButton!
     var triggerTimer = Timer()
     var dbDrugSchedule = CRUDDrugSchedule()
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var MonthLbl: UILabel!
     @IBOutlet weak var DayLbl: UILabel!
@@ -19,6 +22,9 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         scheduleTableView.dataSource = self
         grantNotification()
         addDateToGUI()
+        meds.GlobalInstantiate() // please commit
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +108,14 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             granted, error in
             if granted {
                 // User allow notifications
+                
+                //get location access
+                self.locationManager.requestWhenInUseAuthorization()
+                if CLLocationManager.locationServicesEnabled() {
+                    self.locationManager.delegate = self
+                    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                    self.locationManager.startUpdatingLocation()
+                }
             }
         }
     }
@@ -128,7 +142,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         
         // 3.Create request identifier
         let requestIdentifier = "simpleNoti"
-        
+         
         // 4.Create request
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         
