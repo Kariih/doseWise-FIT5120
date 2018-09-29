@@ -36,9 +36,7 @@ class CRUDDrugSchedule {
         sqlite3_close(db)
     }
     
-    
     let intCounter = intakeCounter()
-    
     
     func addDrugSchedule(DrugSchedule:DrugSchedule) {
         
@@ -51,9 +49,7 @@ class CRUDDrugSchedule {
         print("Insert Successfull")
         sqlite3_close(db)
         
-        
-        intCounter.resetRegister(noOfIntake: DrugSchedule.no_of_times_per_day)
-        
+        intCounter.resetRegister()
         
     }
     
@@ -89,8 +85,7 @@ class CRUDDrugSchedule {
         print("update Successful")
         sqlite3_close(db)
         
-        
-        intCounter.resetRegister(noOfIntake: DrugSchedule.no_of_times_per_day)
+        intCounter.resetRegister()
         
     }
     
