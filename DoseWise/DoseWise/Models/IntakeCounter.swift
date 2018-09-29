@@ -1,144 +1,102 @@
 import Foundation
+import UserNotifications
+import UIKit
 
-//this class
+//this class check whether user forgot his past intakes of the day
 
 class intakeCounter{
     let defaults = UserDefaults.standard
-    var curDate = "01.01.1970"
+    let dateMana = DateManager()
     
-    //dateType is the format of the date, dateType2 will only be used for presenting current date to user
-    let dateType1="dd.MM.yyyy"
-    
-    func getNoOfPillsPerDay()->Int{
-        var listOfSchedule=CRUDDrugSchedule().getDrugSchdules()
-        var firstSchedule:DrugSchedule
-        firstSchedule = listOfSchedule[0]
-        var noOfIntake = firstSchedule.no_of_times_per_day
-        return noOfIntake!
-    }
-    
-    //add current counting
-    func increaseCounting(){
-        let theRegister = defaults.array(forKey: "register")
-        let max:Int = (theRegister?.count)!-1
-        var currentCounting = defaults.integer(forKey: "counting")
-        if currentCounting < max {
-            currentCounting += 1
-            defaults.set(currentCounting, forKey: "counting")
-            print("func_increaseCounting currentCounting = "+String(currentCounting))
-            
-        } else {
-            print("func_increaseCounting exceed max")
-            print("max = "+String(max))
-            print("func_increaseCounting currentCounting = "+String(currentCounting))
-            refresh()
-        }
-    }
-    
-    //reset counting value in NSUserDefault
-    func resetCounting(){
-        defaults.set(0, forKey: "counting")
-    }
-    
-    func getCounting()->Int{
-        let currentCounting = defaults.integer(forKey: "counting")
-        return currentCounting
-    }
-    
-    //change the coorespondent value in register, indicate that have user took their drug for the time or not
-    func confirming(isTaken:Bool){
-        increaseCounting()
-        let currentCounting = defaults.integer(forKey: "counting")
+    func confirming(isTaken:Bool,rowIndex:Int){
         var theRegister = defaults.array(forKey: "register")
-        print("func_yesIHave currentCounting = "+String(currentCounting))
-        
         if isTaken {
-            theRegister![currentCounting]=1
+            theRegister![rowIndex]=1
         } else {
-            theRegister![currentCounting]=0
+            theRegister![rowIndex]=0
         }
-        
         defaults.set(theRegister, forKey: "register")
-        let theRegister2 = defaults.array(forKey: "register")
         
+        let theRegister2 = defaults.array(forKey: "register")
         print(theRegister2)
         
-        //        will not check for the 1st time
-        //        if last index cooresponding val is 0
-        //        invoke logAquiz()
-        
-        if currentCounting != 0 {
-            var lastIntakeIdex=currentCounting-1
-            let lastIntakeRegoVal:Int=theRegister2![lastIntakeIdex] as! Int
-            if  lastIntakeRegoVal == 0 {
-                logAQuiz()
+        //will not check for the 1st time, if last index cooresponding value is 0, invoke logAquiz()
+        if rowIndex != 0 {
+            var isCallingQuiz:Bool = false
+            let lastIntakeIdex=rowIndex-1
+            let array:Array<Int> = theRegister2 as! Array<Int>
+            let subarray = array[0...lastIntakeIdex]
+            for i in subarray{
+                if  i == 0 {
+                    isCallingQuiz = true
+                }
             }
-            
+            logAQuiz(areYouSure: isCallingQuiz)
         }
-        
     }
-    
-    //this is where to log a quiz
-    func logAQuiz(){
-        //call quiz notification here, such as set a quiz 30 min later
-        print("user missed last intake, logging a quiz for 5 mins later")
-    }
-    
     
     //    1, get @curDate from USUserDefault
     //    2, get todays date
     //    3, compare them, if not equal, reset @curDate and intakeRegister
-    func refreshByDate(){
-        let storedDate = defaults.string(forKey: "curDate")
-        
-        let todaysDate = getCurrentDateStr(dateType: dateType1)
-        let isEqual = (storedDate == todaysDate)
-        
+    func resetByDate(){
+        let storedDate = defaults.string(forKey: "currentDate")
+        let today:String = dateMana.getCurrentDay()
+        let isEqual = (storedDate == today)
         if !isEqual{
-            print("func_refresh called")
-            refresh()
+            reset()
         }
-        print("func_refresh: storedDate = "+storedDate!)
-        //        print("func_refresh: storedDate = "+storedDate)
-        print("func_refresh: todaysDate = "+todaysDate)
     }
     
-    //reset date/register/counting in NSUserDefaults
-    func refresh(){
-        
-        storeDate()
-        resetRegister(noOfIntake: getNoOfPillsPerDay())
-        resetCounting()
+    //reset date/register in NSUserDefaults
+    func reset(){
+        saveDate()
+        resetRegister()
     }
     
-    //take number of intake per day in schedule, and create a register
-    //a register is a list of number that indicate whether user took their drug or not
-    //e.g. [1,1,0,1] this means user missed his 3rd intake for the day
-    //in here it only create a list full of 0s
-    func resetRegister(noOfIntake:Int){
-        print("func_resetRegister called")
-        var intakeRegister:Array<Int> = []
-        for i in 0..<noOfIntake{
-            intakeRegister.append(0)
-        }
+    //a register is a list of number that indicate whether user took their drug or not, 1 for Y, 0 for N
+    func resetRegister(){
+        let intakeRegister:Array<Int> = [0,0,0,0,0]
         defaults.set(intakeRegister, forKey: "register")
     }
     
-    //store the current to NSUserDefault
-    func storeDate(){
-        
-        let strDate = getCurrentDateStr(dateType: dateType1)
-        defaults.set(strDate, forKey: "curDate")
+    //save the current to NSUserDefault
+    func saveDate(){
+        let date = dateMana.getCurrentDay()
+        defaults.set(date, forKey: "currentDate")
     }
     
-    //get the String of current date in designated format
+    //this is where to log a quiz
+    func logAQuiz(areYouSure:Bool){
+        if areYouSure{
+            //call quiz notification here, such as set a quiz 30 min later
+            print("user missed last intake, logging a quiz for 5 mins later")
+            launchNotification()
+        }
+    }
     
-    func getCurrentDateStr(dateType:String)->String{
-        let date=Date()
-        let formatter=DateFormatter()
-        formatter.dateFormat=dateType
-        let currentDateStr=formatter.string(from: date)
-        return currentDateStr
+    func launchNotification(){
+        // 1.Create notification content
+        let content = UNMutableNotificationContent()
+        content.title = "DoseWise: are you feeling well?"
+        content.body = "Please answer the quiz to indicate your soberty"
+        
+        // 2.Create trigger
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        
+        // 3.Create request identifier
+        let requestIdentifier = "simpleNoti"
+        
+        // 4.Create request
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        
+        // 5.Add request to notification center
+        UNUserNotificationCenter.current().add(request) { error in
+            if error == nil {
+                print("Time Interval Notification scheduled: \(requestIdentifier)")
+                Const.TIMER_IS_TRIGGERED = true
+            }
+        }
     }
     
 }
