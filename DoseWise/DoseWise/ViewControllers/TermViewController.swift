@@ -1,15 +1,7 @@
-//
-//  TermViewController.swift
-//  DoseWise
-//
-//  Created by 郭成俊 on 25/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-//this class is for disclaimer, 28/09
+//this class is for disclaimer
 class TermViewController: UIViewController {
     let defaults = UserDefaults.standard
     let inputVali = inputValidator()
@@ -67,6 +59,8 @@ class TermViewController: UIViewController {
     @IBAction func agreeTheTermAndCondition(_ sender: Any) {
         nameValidationMessage.isHidden=true
         phoneNoValidationMessage.isHidden=true
+        var havePhoneNumber = false
+        var haveName = false
         
         guard let aUserName = userName.text, userName.text?.characters.count != 0 else {
             nameValidationMessage.isHidden=false
@@ -79,9 +73,10 @@ class TermViewController: UIViewController {
             nameValidationMessage.text="Please enter a valid name"
         }else{
             storeUserName(name: userName.text!)
+            haveName = true
         }
         
-        guard let aUserPhone = userPhoneNo.text, userPhoneNo.text?.characters.count != 0 else {
+        guard let _ = userPhoneNo.text, userPhoneNo.text?.count != 0 else {
             phoneNoValidationMessage.isHidden=false
             phoneNoValidationMessage.text="Please enter your phone number"
             return
@@ -92,8 +87,11 @@ class TermViewController: UIViewController {
             phoneNoValidationMessage.text="Please enter a valid phone number"
         }else{
             storeUserPhoneNo(phoneNo: userPhoneNo.text!)
+            havePhoneNumber = true
         }
-        
+        if haveName && havePhoneNumber{
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     //store userName to NSUserDefaults

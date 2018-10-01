@@ -1,11 +1,3 @@
-//
-//  visualisationViewController.swift
-//  DoseWise
-//
-//  Created by 郭成俊 on 30/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import WebKit

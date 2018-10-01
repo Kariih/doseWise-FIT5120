@@ -84,7 +84,7 @@
                                     <action selector="dismissNomineeView:" destination="mnh-OW-NhS" eventType="touchUpInside" id="gyn-MV-N10"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-dP-vbG">
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-dP-vbG">
                                 <rect key="frame" x="315" y="50" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="KYh-xj-Rwv"/>
@@ -121,6 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="2Dr-pR-bfT"/>
                     </view>
                     <connections>
+                        <outlet property="deleteBtn" destination="TQc-dP-vbG" id="dSf-Ce-ZrR"/>
                         <outlet property="nomNameLbl" destination="Ctl-Ro-7O6" id="em4-mQ-otQ"/>
                         <outlet property="nomPhoneLbl" destination="V6m-DC-z7g" id="TS3-ab-Iku"/>
                     </connections>
@@ -283,6 +284,7 @@
                         <outlet property="MonthLbl" destination="ihh-YA-VEj" id="EzU-yt-0fs"/>
                         <outlet property="addEditScheduleBtn" destination="PSa-GY-Tu0" id="FH3-A2-pT5"/>
                         <outlet property="scheduleTableView" destination="MKc-MV-31i" id="yZ0-De-rsI"/>
+                        <segue destination="crg-v2-djR" kind="show" identifier="tcSegue" id="o1Y-9i-Bx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdB-Mq-eWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cet-1i-r3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1007.2" y="-170.46476761619192"/>
+            <point key="canvasLocation" x="-178" y="-935"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IHU-D4-acR">

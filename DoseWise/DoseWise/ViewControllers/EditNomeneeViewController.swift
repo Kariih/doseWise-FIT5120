@@ -5,6 +5,7 @@ class EditNomeneeViewController : UIViewController{
     
     @IBOutlet weak var nomNameLbl: UITextField!
     @IBOutlet weak var nomPhoneLbl: UITextField!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     var passedNominee = Nominee()
     let dbPresenter = DbPresenter()
@@ -15,6 +16,7 @@ class EditNomeneeViewController : UIViewController{
         if passedNominee.id != nil {
             nomNameLbl.text = passedNominee.name
             nomPhoneLbl.text = passedNominee.phoneNo
+            deleteBtn.isHidden = false
         }
     }
     

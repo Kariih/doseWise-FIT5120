@@ -1,10 +1,3 @@
-//
-//  GetMeds.swift
-//  DoseWise
-//
-//  Created by Hasini Vasudevan on 18/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
 import Foundation
 import Alamofire
 class GetMeds{
@@ -19,7 +12,6 @@ class GetMeds{
             self.MED_DATA=response
         }
     }
-    
     
     public func GlobalInstantiate()->GetMeds{
         return self
@@ -42,7 +34,7 @@ class GetMeds{
                     print("Server Failure")
                 }
         }
-    }//func end
+    }
     
     func searchmeds(searchstring: String,searchcompletion: @escaping ([String])-> Void){
         var searchResult=[""]

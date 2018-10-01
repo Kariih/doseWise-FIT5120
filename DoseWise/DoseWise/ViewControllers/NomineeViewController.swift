@@ -22,17 +22,6 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
         print("view update")
     }
     
-    // This is the call for medicine search. this needs to be called in this fashion in the relevant controller. i've added it here just for testing purpose
-    //    @IBAction func Mytext_Edit(_ sender: UITextField) {
-    //
-    //        if (Mytext.text != "")
-    //        {
-    //          meds.searchmeds(searchstring: Mytext.text!){(Searchresponse) in
-    //            if Searchresponse.count>0 { self.Mytext.text = Searchresponse.joined(separator: ":")} //Assigne Search Res
-    //            } //Medsearch call
-    //        }
-    //    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nomineeList.count
     }
