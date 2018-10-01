@@ -5,7 +5,6 @@ import iOSDropDown
 class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var timesLbl: UILabel!
-    @IBOutlet weak var setTimesLbl: UILabel!
     
     @IBOutlet weak var medicineNameTxt1: DropDown!
     @IBOutlet weak var medicineNameTxt2: DropDown!
@@ -19,12 +18,12 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     
     @IBOutlet weak var deleteBtn: UIButton!
-    @IBOutlet weak var timeLbl1: UIButton!
+    @IBOutlet weak var setTimeForScheduleLbl: UIButton!
     let dbSchedule = CRUDDrugSchedule()
     @IBOutlet weak var stepperThree: UIStepper!
     
     var clickedTimedBtn : UIButton!
-    var numberOfPillsOnSchedule : Int!
+    var numberOfMedicineOnSchedule : Int!
     
     @IBOutlet weak var timePickerView: UIPickerView!
     var pillLabels : [(DropDown, UITextField)] = []
@@ -39,15 +38,17 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         pillLabels.append((medicineNameTxt2, amountLbl2))
         pillLabels.append((medicineNameTxt3, amountLbl3))
         pillLabels.append((medicineNameTxt4, amountLbl4))
-      
+        
         GetMeds.Shared.MED_DATA.sort()
-        medicineNameTxt1.optionArray = GetMeds.Shared.MED_DATA
-        medicineNameTxt2.optionArray = GetMeds.Shared.MED_DATA
-        medicineNameTxt3.optionArray = GetMeds.Shared.MED_DATA
-        medicineNameTxt4.optionArray = GetMeds.Shared.MED_DATA// load searchbar
+        
+        let length = pillLabels.count-1
+        for i in 0...length{
+            pillLabels[i].0.optionArray = GetMeds.Shared.MED_DATA
+            self.view.bringSubview(toFront: pillLabels[length-i].0)
+        }
         timePickerView.backgroundColor = UIColor.white
         
-        if !Const.currentSchedule.timings.isEmpty{
+        if Const.clickedSchedule != -1{
             deleteBtn.isHidden = false
             setDataForEdit()
         }
@@ -56,44 +57,33 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     override
     func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if medicineNameTxt1.optionArray[0] == ""{
-            EmptyMedlistpopup()
+        for i in 0...pillLabels.count-1{
+            if pillLabels[i].0.optionArray[0] == ""{
+                EmptyMedlistpopup()
+            }
         }
     }
     
     private func setDataForEdit(){
-        let drug = Const.currentSchedule
-        timesLbl.text = String(drug.no_of_times_per_day)
-        stepperThree.value = Double(drug.no_of_times_per_day)
-        numberOfPillsOnSchedule = drug.no_of_times_per_day
-        medicineNameTxt1.text = drug.name
-        
-        for i in 0...drug.no_of_times_per_day-1{
-         //   pillLabels[i].setTitle(drug.timings[i], for: .normal)
+      /*  for i in 0...drug.no_of_times_per_day-1{
+            pillLabels[i].setTitle(drug.timings[i], for: .normal)
             pillLabels[i].1.isHidden = false
             pillLabels[i].0.isHidden = false
-        }
+        }*/
     }
     
     @IBAction func deleteScheduleAction(_ sender: Any) {
         dbSchedule.deleteAllDrugSchedule()
         Const.dosages = []
-        Const.currentSchedule = DrugSchedule()
+      //  Const.currentSchedule = DrugSchedule()
         dismissView()
     }
 
-    @IBAction func pillAmountStepperAction(_ sender: UIStepper) {
+    @IBAction func addMedicineStepperAction(_ sender: UIStepper) {
         let previousValue = Int(timesLbl.text!)
         let currentValue = Int(sender.value)
-        numberOfPillsOnSchedule = currentValue
+        numberOfMedicineOnSchedule = currentValue
         timesLbl.text = String(currentValue)
-        
-        if currentValue > 0{
-            setTimesLbl.isHidden = false
-        }
-        else{
-            setTimesLbl.isHidden = true
-        }
         
         if previousValue! > currentValue{
             for i in currentValue...previousValue!-1{
@@ -108,7 +98,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    @IBAction func timeBtnOneClick(_ sender: UIButton) {
+    @IBAction func timeBtnOnClick(_ sender: UIButton) {
         clickedTimedBtn = sender
         timePickerView.isHidden = false
     }
@@ -126,11 +116,20 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func saveBtnClick(_ sender: Any) {
-        var timings: [String] = []
-        if numberOfPillsOnSchedule != nil{
+        var medicines: [String] = []
+        var dosage: [String] = []
+        
+        for i in 0...numberOfMedicineOnSchedule-1{
+            medicines.append(pillLabels[i].0.text!)
+            dosage.append(pillLabels[i].1.text!)
+        }
+        Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+        
+        
+        if numberOfMedicineOnSchedule != nil{
             let notificationManager = NotificationReminderManager()
             notificationManager.addReminder(time: "1pm")
-            for i in 0...numberOfPillsOnSchedule-1{
+            for i in 0...numberOfMedicineOnSchedule-1{
              //   timings.append(pillLabels[i].title(for: .normal)!)
             }
             //Add check for nil values here
@@ -162,14 +161,8 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func EmptyMedlistpopup() {
-
-        
         let alert = UIAlertController(title: "No Internet connection",message: "Unable to retrieve data from server. Please type in the medicine name manually",preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-       
-        
         self.present(alert, animated: true)
-       
     }
 }

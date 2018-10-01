@@ -104,7 +104,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     private func getScheduleFromDb(){
         var schedule = dbDrugSchedule.getDrugSchdules()
         if schedule.count > 0{
-            Const.currentSchedule = schedule[0]
+  
             for i in 0...schedule[0].no_of_times_per_day-1{
                 Const.dosages.append(Pill(name: schedule[0].name, dosage: schedule[0].no_of_pills_per_dose, time: schedule[0].timings[i]))
                 print("adding from db")

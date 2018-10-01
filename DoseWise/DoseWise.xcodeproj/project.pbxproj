@@ -36,6 +36,8 @@
 		EC6A1B26213881F30083E1B6 /* TriggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B25213881F30083E1B6 /* TriggerViewController.swift */; };
 		EC6A1B28213888460083E1B6 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B27213888460083E1B6 /* Const.swift */; };
 		ECA692AD21620DFB00DE56F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
+		ECA692AF21621CA700DE56F8 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA692AE21621CA700DE56F8 /* Schedule.swift */; };
+		ECA692B12162498600DE56F8 /* ScheduleCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA692B02162498600DE56F8 /* ScheduleCRUD.swift */; };
 		ECC00BFA2150B65500E483B1 /* NotificationReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */; };
 		ECC00BFC2150C52700E483B1 /* IntakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BFB2150C52700E483B1 /* IntakeManager.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,8 @@
 		EC6A1B23213871B60083E1B6 /* TriggerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerPresenter.swift; sourceTree = "<group>"; };
 		EC6A1B25213881F30083E1B6 /* TriggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerViewController.swift; sourceTree = "<group>"; };
 		EC6A1B27213888460083E1B6 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		ECA692AE21621CA700DE56F8 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		ECA692B02162498600DE56F8 /* ScheduleCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCRUD.swift; sourceTree = "<group>"; };
 		ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReminderManager.swift; sourceTree = "<group>"; };
 		ECC00BFB2150C52700E483B1 /* IntakeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntakeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,6 +239,7 @@
 				ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */,
 				42D19FC5215FCA4B0086679A /* inputValidator.swift */,
 				ECC00BFB2150C52700E483B1 /* IntakeManager.swift */,
+				ECA692B02162498600DE56F8 /* ScheduleCRUD.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				6BB31B082136680B00FB3687 /* Nominee.swift */,
 				42D19FC7215FCA680086679A /* GetMeds.swift */,
 				EC19D750214FE70300CBA4BF /* Pill.swift */,
+				ECA692AE21621CA700DE56F8 /* Schedule.swift */,
 			);
 			path = Plain_Objects;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			files = (
 				EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */,
 				EC6A1B26213881F30083E1B6 /* TriggerViewController.swift in Sources */,
+				ECA692B12162498600DE56F8 /* ScheduleCRUD.swift in Sources */,
 				6BE408192160B76D00B80A0E /* visualisationViewController.swift in Sources */,
 				6B6ED646214CEAF600966013 /* IntakeCounter.swift in Sources */,
 				4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */,
@@ -436,6 +443,7 @@
 				EC696BB2214F7D1000BB008F /* EditScheduleViewController.swift in Sources */,
 				6BB31B092136680B00FB3687 /* Nominee.swift in Sources */,
 				EC696BB0214F6FD400BB008F /* DateManager.swift in Sources */,
+				ECA692AF21621CA700DE56F8 /* Schedule.swift in Sources */,
 				EC6A1B24213871B60083E1B6 /* TriggerPresenter.swift in Sources */,
 				42D19FC6215FCA4B0086679A /* inputValidator.swift in Sources */,
 				4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */,
