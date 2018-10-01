@@ -10,7 +10,6 @@
 		4237981B213EC372004C0056 /* DrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981A213EC372004C0056 /* DrugSchedule.swift */; };
 		4237981D213ECB23004C0056 /* CRUDDrugSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237981C213ECB23004C0056 /* CRUDDrugSchedule.swift */; };
 		4249B33F212FE67C00CB6B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4249B33E212FE67C00CB6B1D /* AppDelegate.swift */; };
-		4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
 		4249B347212FE67C00CB6B1D /* DoseWise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4249B345212FE67C00CB6B1D /* DoseWise.xcdatamodeld */; };
 		4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4249B348212FE67E00CB6B1D /* Assets.xcassets */; };
 		4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B34A212FE67E00CB6B1D /* LaunchScreen.storyboard */; };
@@ -36,6 +35,7 @@
 		EC6A1B24213871B60083E1B6 /* TriggerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B23213871B60083E1B6 /* TriggerPresenter.swift */; };
 		EC6A1B26213881F30083E1B6 /* TriggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B25213881F30083E1B6 /* TriggerViewController.swift */; };
 		EC6A1B28213888460083E1B6 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A1B27213888460083E1B6 /* Const.swift */; };
+		ECA692AD21620DFB00DE56F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4249B342212FE67C00CB6B1D /* Main.storyboard */; };
 		ECC00BFA2150B65500E483B1 /* NotificationReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BF92150B65500E483B1 /* NotificationReminderManager.swift */; };
 		ECC00BFC2150C52700E483B1 /* IntakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC00BFB2150C52700E483B1 /* IntakeManager.swift */; };
 /* End PBXBuildFile section */
@@ -359,7 +359,7 @@
 				6BD2CE0E2161AC7300DCEDFA /* Copyofterms_conditions_v2.html in Resources */,
 				4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */,
 				4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */,
-				4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */,
+				ECA692AD21620DFB00DE56F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
