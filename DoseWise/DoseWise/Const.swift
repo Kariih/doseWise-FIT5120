@@ -2,7 +2,7 @@ class Const{
     static var TIMER_IS_TRIGGERED = false
     static var clickedSchedule = -1
     static var nominees = [Nominee]()
-    static var dosages = [Pill]()
+    static var dosages = [Schedule]()
     
     static let MONTHS = ["January", "Februar", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 

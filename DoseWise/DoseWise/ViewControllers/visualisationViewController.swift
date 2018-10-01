@@ -6,15 +6,6 @@ import SafariServices
 
 class visualisationViewController: UIViewController, SFSafariViewControllerDelegate {
     
-    //    @IBOutlet weak var webView: WKWebView!
-    
-    //    override func viewDidLoad() {
-    //        super.viewDidLoad()
-    //        let url:URL = URL(string: "http://13.211.168.172/")!
-    //        let urlRequest:URLRequest = URLRequest(url: url)
-    //        webView.load(urlRequest)
-    //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -282,7 +282,6 @@
                     <connections>
                         <outlet property="DayLbl" destination="EHj-eK-fUn" id="u4c-wF-3uY"/>
                         <outlet property="MonthLbl" destination="ihh-YA-VEj" id="EzU-yt-0fs"/>
-                        <outlet property="addEditScheduleBtn" destination="PSa-GY-Tu0" id="FH3-A2-pT5"/>
                         <outlet property="scheduleTableView" destination="MKc-MV-31i" id="yZ0-De-rsI"/>
                         <segue destination="crg-v2-djR" kind="show" identifier="tcSegue" id="o1Y-9i-Bx8"/>
                     </connections>
@@ -323,14 +322,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt3-St-PVL">
-                                <rect key="frame" x="234" y="192" width="7" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set name and amount for schedule below" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1O-SF-A5c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set name and amount for schedule below" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1O-SF-A5c">
                                 <rect key="frame" x="30" y="240" width="315" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -390,7 +382,7 @@
                                     <action selector="timeBtnOnClick:" destination="wvU-Di-V44" eventType="touchUpInside" id="FjI-wC-ggS"/>
                                 </connections>
                             </button>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="kQt-aX-vV5" customClass="DropDown" customModule="iOSDropDown">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="kQt-aX-vV5" customClass="DropDown" customModule="iOSDropDown">
                                 <rect key="frame" x="30" y="308" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -408,7 +400,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHX-b6-AmB" customClass="DropDown" customModule="iOSDropDown">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHX-b6-AmB" customClass="DropDown" customModule="iOSDropDown">
                                 <rect key="frame" x="30" y="348" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -426,7 +418,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hL9-fW-lN7" customClass="DropDown" customModule="iOSDropDown">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hL9-fW-lN7" customClass="DropDown" customModule="iOSDropDown">
                                 <rect key="frame" x="30" y="388" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -444,7 +436,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-C2-SWg" customClass="DropDown" customModule="iOSDropDown">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-C2-SWg" customClass="DropDown" customModule="iOSDropDown">
                                 <rect key="frame" x="30" y="268" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -462,7 +454,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-6h-gO8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-6h-gO8">
                                 <rect key="frame" x="295" y="268" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
@@ -472,7 +464,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8r-3C-Yn9">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8r-3C-Yn9">
                                 <rect key="frame" x="295" y="308" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
@@ -482,7 +474,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YAg-i3-haL">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YAg-i3-haL">
                                 <rect key="frame" x="295" y="348" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
@@ -492,7 +484,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiV-Ts-VsI">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiV-Ts-VsI">
                                 <rect key="frame" x="295" y="388" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
@@ -502,6 +494,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="SwK-Z8-BUX">
+                                <rect key="frame" x="251" y="181" width="94" height="29"/>
+                                <connections>
+                                    <action selector="addMedicineStepperAction:" destination="wvU-Di-V44" eventType="valueChanged" id="u0e-Ty-uFC"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt3-St-PVL">
+                                <rect key="frame" x="234" y="192" width="7" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -515,12 +519,17 @@
                             <constraint firstItem="l8r-3C-Yn9" firstAttribute="top" secondItem="jRp-6h-gO8" secondAttribute="bottom" constant="10" id="6sw-Ne-WZr"/>
                             <constraint firstItem="bUi-C2-SWg" firstAttribute="leading" secondItem="dP8-NX-DDb" secondAttribute="leading" constant="30" id="7Ey-a8-2HD"/>
                             <constraint firstItem="HDL-X9-Yyj" firstAttribute="leading" secondItem="WXd-et-m9p" secondAttribute="trailing" constant="43" id="813-hf-aHF"/>
+                            <constraint firstItem="SwK-Z8-BUX" firstAttribute="leading" secondItem="Pt3-St-PVL" secondAttribute="trailing" constant="10" id="9ec-1z-mIA"/>
                             <constraint firstItem="l8r-3C-Yn9" firstAttribute="leading" secondItem="kQt-aX-vV5" secondAttribute="trailing" constant="10" id="DDy-7g-iDa"/>
                             <constraint firstItem="vlE-Sp-N2r" firstAttribute="leading" secondItem="dP8-NX-DDb" secondAttribute="leading" constant="30" id="Gac-pO-bfE"/>
                             <constraint firstItem="dP8-NX-DDb" firstAttribute="trailing" secondItem="xJf-Nx-p7Q" secondAttribute="trailing" constant="30" id="HKt-42-gDj"/>
                             <constraint firstItem="dP8-NX-DDb" firstAttribute="bottom" secondItem="WXd-et-m9p" secondAttribute="bottom" constant="30" id="HTM-7b-srR"/>
+                            <constraint firstItem="dP8-NX-DDb" firstAttribute="trailing" secondItem="SwK-Z8-BUX" secondAttribute="trailing" constant="30" id="KPG-UE-H09"/>
+                            <constraint firstItem="Pt3-St-PVL" firstAttribute="bottom" secondItem="SwK-Z8-BUX" secondAttribute="bottom" id="LDT-RP-QJH"/>
                             <constraint firstItem="dP8-NX-DDb" firstAttribute="trailing" secondItem="l8r-3C-Yn9" secondAttribute="trailing" constant="30" id="Lzg-UW-xNa"/>
                             <constraint firstItem="kQt-aX-vV5" firstAttribute="top" secondItem="bUi-C2-SWg" secondAttribute="bottom" constant="10" id="NT0-3f-sPB"/>
+                            <constraint firstItem="d1O-SF-A5c" firstAttribute="leading" secondItem="dP8-NX-DDb" secondAttribute="leading" constant="30" id="Nz6-uJ-35e"/>
+                            <constraint firstItem="SwK-Z8-BUX" firstAttribute="bottom" secondItem="Awz-W6-wx7" secondAttribute="bottom" id="SdX-j6-0Me"/>
                             <constraint firstItem="vlE-Sp-N2r" firstAttribute="top" secondItem="dP8-NX-DDb" secondAttribute="top" constant="30" id="Tgp-bv-nFW"/>
                             <constraint firstItem="fiV-Ts-VsI" firstAttribute="top" secondItem="YAg-i3-haL" secondAttribute="bottom" constant="10" id="VmT-qc-bBL"/>
                             <constraint firstItem="Awz-W6-wx7" firstAttribute="leading" secondItem="dP8-NX-DDb" secondAttribute="leading" constant="30" id="XQV-GN-1LC"/>
@@ -531,10 +540,10 @@
                             <constraint firstItem="Awz-W6-wx7" firstAttribute="top" secondItem="xJf-Nx-p7Q" secondAttribute="bottom" constant="30" id="fQ9-q4-7c4"/>
                             <constraint firstItem="WXd-et-m9p" firstAttribute="leading" secondItem="BIU-Uv-GlK" secondAttribute="leadingMargin" id="j8p-PJ-35R"/>
                             <constraint firstItem="tHX-b6-AmB" firstAttribute="top" secondItem="kQt-aX-vV5" secondAttribute="bottom" constant="10" id="jyk-Nx-dFn"/>
+                            <constraint firstItem="d1O-SF-A5c" firstAttribute="top" secondItem="Awz-W6-wx7" secondAttribute="bottom" constant="30" id="ko7-To-9hD"/>
                             <constraint firstItem="dP8-NX-DDb" firstAttribute="trailing" secondItem="YAg-i3-haL" secondAttribute="trailing" constant="30" id="lh8-G3-h6v"/>
                             <constraint firstAttribute="trailing" secondItem="QrF-sX-p1p" secondAttribute="trailing" id="nos-ho-Qck"/>
                             <constraint firstItem="hL9-fW-lN7" firstAttribute="leading" secondItem="dP8-NX-DDb" secondAttribute="leading" constant="30" id="nuW-8v-WD6"/>
-                            <constraint firstItem="Awz-W6-wx7" firstAttribute="leading" secondItem="d1O-SF-A5c" secondAttribute="leading" id="pUC-ff-gxg"/>
                             <constraint firstItem="hL9-fW-lN7" firstAttribute="top" secondItem="tHX-b6-AmB" secondAttribute="bottom" constant="10" id="pbH-DA-HS8"/>
                             <constraint firstItem="dP8-NX-DDb" firstAttribute="trailing" secondItem="tqs-mB-KEa" secondAttribute="trailing" constant="30" id="qXC-Ir-yGe"/>
                             <constraint firstItem="QrF-sX-p1p" firstAttribute="leading" secondItem="BIU-Uv-GlK" secondAttribute="leading" id="qnJ-hq-rp0"/>
@@ -561,7 +570,6 @@
                         <outlet property="medicineNameTxt3" destination="tHX-b6-AmB" id="5oU-i0-kGe"/>
                         <outlet property="medicineNameTxt4" destination="hL9-fW-lN7" id="NYY-VY-oP2"/>
                         <outlet property="setTimeForScheduleLbl" destination="xJf-Nx-p7Q" id="XLu-tF-4pq"/>
-                        <outlet property="setTimesLbl" destination="d1O-SF-A5c" id="TT7-nw-9pj"/>
                         <outlet property="timePickerView" destination="QrF-sX-p1p" id="9eN-X1-jRp"/>
                         <outlet property="timesLbl" destination="Pt3-St-PVL" id="toB-s1-wL8"/>
                     </connections>

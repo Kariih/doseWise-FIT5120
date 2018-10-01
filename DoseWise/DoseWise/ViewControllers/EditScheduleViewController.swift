@@ -19,7 +19,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var setTimeForScheduleLbl: UIButton!
-    let dbSchedule = CRUDDrugSchedule()
+    let dbSchedule = ScheduleCRUD()
     @IBOutlet weak var stepperThree: UIStepper!
     
     var clickedTimedBtn : UIButton!
@@ -73,7 +73,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func deleteScheduleAction(_ sender: Any) {
-        dbSchedule.deleteAllDrugSchedule()
+      //  dbSchedule.deleteAllDrugSchedule()
         Const.dosages = []
       //  Const.currentSchedule = DrugSchedule()
         dismissView()
@@ -119,23 +119,25 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         var medicines: [String] = []
         var dosage: [String] = []
         
-        for i in 0...numberOfMedicineOnSchedule-1{
-            medicines.append(pillLabels[i].0.text!)
-            dosage.append(pillLabels[i].1.text!)
-        }
-        Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-        
-        
-        if numberOfMedicineOnSchedule != nil{
-            let notificationManager = NotificationReminderManager()
-            notificationManager.addReminder(time: "1pm")
-            for i in 0...numberOfMedicineOnSchedule-1{
-             //   timings.append(pillLabels[i].title(for: .normal)!)
+        if let medicinesOnSchedule = Int(timesLbl.text!){
+            for i in 0...medicinesOnSchedule-1{
+                print("ADDING TO LIST")
+                medicines.append(pillLabels[i].0.text!)
+                dosage.append(pillLabels[i].1.text!)
             }
-            //Add check for nil values here
-       //     let schedule = DrugSchedule(id: 0, name: medicineNameTxt1.text!, no_of_days: Int(daysLbl.text!)!, no_of_times_per_day: Int(timesLbl.text!)!, no_of_pills_per_dose: Int(dosageLbl.text!)!, timings: timings, type_of_pill: "opioid")
-            dbSchedule.deleteAllDrugSchedule()
-         //   dbSchedule.addDrugSchedule(DrugSchedule: schedule)
+        }
+        let time = setTimeForScheduleLbl.title(for: .normal)!
+        if time != "Select time for the schedule"{
+        let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+            
+            dbSchedule.addSchedule(schedule: schedule)
+            
+            if numberOfMedicineOnSchedule != nil{
+                let notificationManager = NotificationReminderManager()
+                notificationManager.addReminder(time: "1pm")
+            }
+        }else{
+            notSetTimeAlert()
         }
         dismissView()
     }
@@ -163,6 +165,12 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     func EmptyMedlistpopup() {
         let alert = UIAlertController(title: "No Internet connection",message: "Unable to retrieve data from server. Please type in the medicine name manually",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    func notSetTimeAlert(){
+        let alert = UIAlertController(title: "Set time", message:"No time is set for schedule" ,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Set time", style: .default, handler: nil))
+       
         self.present(alert, animated: true)
     }
 }

@@ -6,9 +6,8 @@ import CoreLocation
 var meds=GetMeds.Shared  // please commit
 class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
-    @IBOutlet weak var addEditScheduleBtn: UIButton!
     var triggerTimer = Timer()
-    var dbDrugSchedule = CRUDDrugSchedule()
+    var dbDrugSchedule = ScheduleCRUD()
     let locationManager = CLLocationManager()
     let intakeCounterObj=intakeCounter()
     
@@ -25,7 +24,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         grantNotification()
         addDateToGUI()
 
-        meds.GlobalInstantiate() // please commit
+        //meds.GlobalInstantiate() // please commit //WHAT IS THIS???
 
         intakeCounterObj.resetByDate()
     }
@@ -37,9 +36,6 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         getScheduleFromDb()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         scheduleTableView.reloadData()
-        if Const.dosages.count == 0{
-            addEditScheduleBtn.setTitle("Add new medicine schedule", for: .normal)
-        }
     }
     
     @objc func willEnterForeground() {
@@ -72,7 +68,15 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
-        cell.textLabel?.text = "\(Const.dosages[indexPath.item].time) - \(Const.dosages[indexPath.item].dosage) x \(Const.dosages[indexPath.item].name)"
+        var dosageOutput = ""
+        var numOfMedicines = Const.dosages[indexPath.item].medicineName.count-1;
+        for i in 0...numOfMedicines{
+            dosageOutput.append("\(Const.dosages[indexPath.item].medicineName[i]) x\(Const.dosages[indexPath.item].dosage[i])")
+            if i != numOfMedicines{
+                dosageOutput.append(", ")
+            }
+        }
+        cell.textLabel?.text = "\(Const.dosages[indexPath.item].timing) - \(dosageOutput)"
         return cell
     }
     
@@ -81,7 +85,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         print(hour)
         
         //parse current timing into hour
-        let currentTiming:String = Const.dosages[indexPath.row].time
+        let currentTiming:String = Const.dosages[indexPath.row].timing
         let currentHour:String = currentTiming.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespacesAndNewlines)
         
         let differenece = Int(currentHour)! - hour
@@ -102,15 +106,14 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     }
     
     private func getScheduleFromDb(){
-        var schedule = dbDrugSchedule.getDrugSchdules()
-        if schedule.count > 0{
-  
-            for i in 0...schedule[0].no_of_times_per_day-1{
-                Const.dosages.append(Pill(name: schedule[0].name, dosage: schedule[0].no_of_pills_per_dose, time: schedule[0].timings[i]))
-                print("adding from db")
+        var schedule = dbDrugSchedule.getSchedules()
+        let scheduleCount = schedule.count
+        if scheduleCount > 0{
+            for s in schedule{
+                Const.dosages.append(s)
             }
+            print("adding from db")
             scheduleTableView.reloadData()
-            addEditScheduleBtn.setTitle("Edit/delete existing schedule", for: .normal)
         }
     }
     
@@ -168,17 +171,16 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     
     func pushReminder(rowIndex:Int) {
         //get a schedule obj
-        var listOfSchedule=CRUDDrugSchedule().getDrugSchdules()
-        var firstScheduleObj:DrugSchedule
-        firstScheduleObj = listOfSchedule[0]
+
+        let drugName = Const.dosages[rowIndex].medicineName.joined(separator: ", ")
+        var pills = 0
+        Const.dosages[rowIndex].dosage.forEach{dose in pills += Int(dose)!}
+        let noOfPillPerDose = String(pills)
         
-        let drugName = firstScheduleObj.name
-        let noOfPillPerDose = String(firstScheduleObj.no_of_pills_per_dose)
-        
-        let theTiming = firstScheduleObj.timings[rowIndex]
+        let theTiming = Const.dosages[rowIndex].timing
         
         let title="Drug intake reminder"
-        let message="How much "+drugName!+" have you consumed at "+theTiming+"?"
+        let message="How much "+drugName+" have you consumed at "+theTiming+"?"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
