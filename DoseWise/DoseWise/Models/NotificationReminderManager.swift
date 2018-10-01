@@ -4,9 +4,11 @@ import UserNotifications
 class NotificationReminderManager{
     
     let dateManager : DateManager!
+    let center : UNUserNotificationCenter!
     
     init(){
         dateManager = DateManager()
+        center = UNUserNotificationCenter.current()
     }
     
     func addReminder(time:String){
@@ -16,15 +18,19 @@ class NotificationReminderManager{
         content.body = "Take your scheduled pill in DoseWise"
         content.sound = UNNotificationSound.default()
         
-        var triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-        triggerDate.second = triggerDate.second! + 5
+      //  var triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        //triggerDate.second = triggerDate.second! + 5
+        //let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let dateString = "\(dateManager.getCurrentMonthNumber())-\(dateManager.getCurrentDay()) \(time)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd HH:mm"
+        let dateObj = dateFormatter.date(from: dateString)
+        print("Dateobj: \(dateFormatter.string(from: dateObj!))")
         
-       // let triggerDaily = Calendar.current.dateComponents([hour, .minute, .second], from: date)
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        let triggerDaily = Calendar.current.dateComponents([.hour, .minute], from: dateObj!)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        
-        print("seconds: \(triggerDate.second!)")
         
         let identifier = "pillNotification\(time)"
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
@@ -34,10 +40,10 @@ class NotificationReminderManager{
                 print("cant launch notification")
             }
         })
-        func removeReminder(time:String){
-            //remove
-        }
-        
+    }
+    func removeReminder(time:String){
+        let identifier = "pillNotification\(time)"
+        center.removePendingNotificationRequests(withIdentifiers: [identifier])
     }
     
 }

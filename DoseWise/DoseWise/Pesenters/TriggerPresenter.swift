@@ -2,10 +2,7 @@ import Foundation
 
 class TriggerPresenter{
     
-    init(){
-        
-    }
-    
+    init(){ }
     let smstrig = SmsTrigger()
     //initialise smsBody
     var smsBody=""

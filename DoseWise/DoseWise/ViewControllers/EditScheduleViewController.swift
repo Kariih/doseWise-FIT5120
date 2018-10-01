@@ -20,7 +20,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var setTimeForScheduleLbl: UIButton!
     let dbSchedule = ScheduleCRUD()
-    @IBOutlet weak var stepperThree: UIStepper!
+    var notificationManager:NotificationReminderManager!
     
     var clickedTimedBtn : UIButton!
     var numberOfMedicineOnSchedule : Int!
@@ -33,6 +33,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewDidLoad()
         timePickerView.dataSource = self
         timePickerView.delegate = self
+        notificationManager = NotificationReminderManager()
         
         pillLabels.append((medicineNameTxt1, amountLbl1))
         pillLabels.append((medicineNameTxt2, amountLbl2))
@@ -80,8 +81,10 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func deleteScheduleAction(_ sender: Any) {
+        notificationManager.removeReminder(time:Const.dosages[Const.clickedSchedule].timing)
         dbSchedule.deleteDrugSchedule(id: Const.clickedSchedule+1)
         Const.dosages.remove(at: Const.clickedSchedule)
+        Const.clickedSchedule = -1
         dismissView()
     }
 
@@ -136,18 +139,19 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
                 dosage.append(pillLabels[i].1.text!)
             }
         }
+        
         let time = setTimeForScheduleLbl.title(for: .normal)!
         if time != "Select time for the schedule"{
-        let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-            
-            dbSchedule.addSchedule(schedule: schedule, id: id)
-            
-            if numberOfMedicineOnSchedule != nil{
-                let notificationManager = NotificationReminderManager()
-                notificationManager.addReminder(time: "1pm")
+            if id > 5{
+                cantAddScheduleAlert(message: "You are trying to add too many schedules")
+                return
             }
+            let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+            dbSchedule.addSchedule(schedule: schedule, id: id)
+            Const.clickedSchedule = -1
+            notificationManager.addReminder(time: schedule.timing)
         }else{
-            notSetTimeAlert()
+            cantAddScheduleAlert(message: "No time is set for schedule")
         }
         dismissView()
     }
@@ -178,9 +182,9 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.present(alert, animated: true)
     }
     
-    func notSetTimeAlert(){
-        let alert = UIAlertController(title: "Set time", message:"No time is set for schedule" ,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Set time", style: .default, handler: nil))
+    func cantAddScheduleAlert(message: String){
+        let alert = UIAlertController(title: "Can't add Schedule", message:message ,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
        
         self.present(alert, animated: true)
     }

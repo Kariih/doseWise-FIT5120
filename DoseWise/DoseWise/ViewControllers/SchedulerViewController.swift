@@ -57,7 +57,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     
     private func addDateToGUI(){
         let dateManager = DateManager()
-        MonthLbl.text = dateManager.getCurrentMonth()
+        MonthLbl.text = dateManager.getCurrentMonthTxt()
         DayLbl.text = dateManager.getCurrentDay()
     }
     
@@ -146,7 +146,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         print("setting trigger")
         triggerTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: {_ in
             print("init SMS functionality")
-            let tPresenter = TriggerPresenter()
+            _ = TriggerPresenter()
             // tPresenter.executeSMS()
             
         });

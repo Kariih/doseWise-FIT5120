@@ -21,9 +21,11 @@ class DateManager{
     func getCurrentDay() -> String{
         return String(components.day!)
     }
-    
-    func getCurrentMonth() -> String{
+    func getCurrentMonthTxt() -> String{
         return Const.MONTHS[components.month! - 1]
+    }
+    func getCurrentMonthNumber() -> Int{
+        return components.month!
     }
     func getCurrentHour() -> Int{
         return components.hour!
@@ -33,5 +35,8 @@ class DateManager{
     }
     func getCurrentSec() -> Int{
         return components.second!
+    }
+    func getCurrentYear() -> Int{
+        return components.year!
     }
 }

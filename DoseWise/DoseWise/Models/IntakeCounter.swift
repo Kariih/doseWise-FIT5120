@@ -18,7 +18,7 @@ class intakeCounter{
         defaults.set(theRegister, forKey: "register")
         
         let theRegister2 = defaults.array(forKey: "register")
-        print(theRegister2)
+        print(theRegister2!)
         
         //will not check for the 1st time, if last index cooresponding value is 0, invoke logAquiz()
         if rowIndex != 0 {

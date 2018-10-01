@@ -4,9 +4,11 @@ import CoreLocation
 class TriggerViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var answerTxtLbl: UITextField!
+    @IBOutlet weak var questionLbl: UILabel!
     var tPresenter = TriggerPresenter()
     let locationManager = CLLocationManager()
     var addressLocation="";
+    var quiz = Quiz()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,8 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        quiz.createQuizzes()
+        questionLbl.text = quiz.ranSeleQue()
     }
    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -99,7 +103,7 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func answerTriggerQuestion(_ sender: Any) {
         print("click answer btn")
         print(answerTxtLbl.text!)
-        if answerTxtLbl.text! == "6"{
+        if quiz.verifyAnswer(ans: answerTxtLbl.text!){
             print("correct")
             dismiss(animated: true, completion: nil)
         }else{
