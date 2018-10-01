@@ -63,19 +63,25 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
     }
-    
+    override
+    func viewWillDisappear(_ animated: Bool) {
+        Const.clickedSchedule = -1
+    }
     private func setDataForEdit(){
-      /*  for i in 0...drug.no_of_times_per_day-1{
-            pillLabels[i].setTitle(drug.timings[i], for: .normal)
-            pillLabels[i].1.isHidden = false
-            pillLabels[i].0.isHidden = false
-        }*/
+        let dose = Const.dosages[Const.clickedSchedule]
+        setTimeForScheduleLbl.setTitle(dose.timing, for: .normal)
+        for i in 0...dose.dosage.count-1{
+            let label = pillLabels[i]
+            label.0.text = dose.medicineName[i]
+            label.1.text = dose.dosage[i]
+            label.1.isHidden = false
+            label.0.isHidden = false
+        }
     }
     
     @IBAction func deleteScheduleAction(_ sender: Any) {
-      //  dbSchedule.deleteAllDrugSchedule()
-        Const.dosages = []
-      //  Const.currentSchedule = DrugSchedule()
+        dbSchedule.deleteDrugSchedule(id: Const.clickedSchedule+1)
+        Const.dosages.remove(at: Const.clickedSchedule)
         dismissView()
     }
 
@@ -118,10 +124,14 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func saveBtnClick(_ sender: Any) {
         var medicines: [String] = []
         var dosage: [String] = []
+        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
+        
+        if Const.clickedSchedule != -1 {
+            dbSchedule.deleteDrugSchedule(id: id)
+        }
         
         if let medicinesOnSchedule = Int(timesLbl.text!){
             for i in 0...medicinesOnSchedule-1{
-                print("ADDING TO LIST")
                 medicines.append(pillLabels[i].0.text!)
                 dosage.append(pillLabels[i].1.text!)
             }
@@ -130,7 +140,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         if time != "Select time for the schedule"{
         let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
             
-            dbSchedule.addSchedule(schedule: schedule)
+            dbSchedule.addSchedule(schedule: schedule, id: id)
             
             if numberOfMedicineOnSchedule != nil{
                 let notificationManager = NotificationReminderManager()
@@ -167,6 +177,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
+    
     func notSetTimeAlert(){
         let alert = UIAlertController(title: "Set time", message:"No time is set for schedule" ,preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Set time", style: .default, handler: nil))

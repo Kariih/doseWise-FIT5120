@@ -21,7 +21,7 @@ class ScheduleCRUD{
     
     private func createdrugScheduleTable(){
         openDbConnection()
-        let createTableQuery="CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY AUTOINCREMENT, time Text, dosage Text, name Text)"
+        let createTableQuery="CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY, time Text, dosage Text, name Text)"
         if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK{
             print("Error creating table")
             return
@@ -30,17 +30,15 @@ class ScheduleCRUD{
         sqlite3_close(db)
     }
     
-    //let files = text.split(separator: ",")
-    
-    func addSchedule(schedule: Schedule){
+    func addSchedule(schedule: Schedule, id: Int){
         openDbConnection()
         let dosage = schedule.dosage.joined(separator: ":")
         let medicine = schedule.medicineName.joined(separator: ":")
         let time = schedule.timing
         
-        let values = "VALUES(\'\(time)\',\'\(dosage)\',\'\(medicine)\');"
+        let values = "VALUES(\(id),\'\(time)\',\'\(dosage)\',\'\(medicine)\');"
         print(values)
-        let insertStatement = "INSERT INTO schedule (time, dosage, name)" + values
+        let insertStatement = "INSERT INTO schedule (id, time, dosage, name)" + values
         if sqlite3_exec(db, insertStatement , nil, nil, nil) != SQLITE_OK{
             print("Error Inserting into \(tableName)")
             return
@@ -62,6 +60,28 @@ class ScheduleCRUD{
                 rows.append(Schedule(timing: time, dosage: dosage, medicineName: names))
             }
         }
+        sqlite3_close(db)
         return rows
+    }
+    func getRows() -> Int {
+        openDbConnection()
+        var queryStatement: OpaquePointer? = nil
+        var entries = 0
+        if sqlite3_prepare_v2(db, "SELECT COUNT(*) from schedule", -1, &queryStatement, nil) == SQLITE_OK {
+            while (sqlite3_step(queryStatement) == SQLITE_ROW) {
+                entries = Int(sqlite3_column_int(queryStatement, 0))
+            }
+        }
+        sqlite3_close(db)
+        return entries
+    }
+    func deleteDrugSchedule(id: Int) {
+        openDbConnection()
+        if sqlite3_exec(db,"DELETE FROM schedule WHERE id=\(id)" , nil, nil, nil) != SQLITE_OK{
+            print("Error deleting from \(tableName)")
+            return
+        }
+        print("delete Successful")
+        sqlite3_close(db)
     }
 }

@@ -69,7 +69,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         var dosageOutput = ""
-        var numOfMedicines = Const.dosages[indexPath.item].medicineName.count-1;
+        let numOfMedicines = Const.dosages[indexPath.item].medicineName.count-1;
         for i in 0...numOfMedicines{
             dosageOutput.append("\(Const.dosages[indexPath.item].medicineName[i]) x\(Const.dosages[indexPath.item].dosage[i])")
             if i != numOfMedicines{
@@ -104,9 +104,17 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             self.present(alert,animated:true,completion:nil)
         }
     }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+            Const.clickedSchedule = indexPath[1]
+            self.performSegue(withIdentifier: "scheduleEditSegue", sender: self)
+        }
+        edit.backgroundColor = .orange
+        return [edit]
+    }
     
     private func getScheduleFromDb(){
-        var schedule = dbDrugSchedule.getSchedules()
+        let schedule = dbDrugSchedule.getSchedules()
         let scheduleCount = schedule.count
         if scheduleCount > 0{
             for s in schedule{
