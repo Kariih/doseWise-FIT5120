@@ -676,30 +676,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNT-gS-Sha">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Facts about prescription drug use" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM8-Sh-d1t">
+                                <rect key="frame" x="46" y="63" width="282" height="88"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click &quot;More&quot; for detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4e-UT-rZI">
+                                <rect key="frame" x="104" y="159" width="167" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zzC-br-xZl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qz-Ks-i40">
+                                <rect key="frame" x="45" y="224" width="283" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="X0u-0Y-AmW"/>
+                                </constraints>
+                                <state key="normal" title="More">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.makesToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moreBtn:" destination="DY3-2g-Yua" eventType="touchUpInside" id="98r-jm-t1t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mNT-gS-Sha" firstAttribute="top" secondItem="H7A-kf-l4l" secondAttribute="top" id="I4z-Pl-bvC"/>
-                            <constraint firstAttribute="trailing" secondItem="mNT-gS-Sha" secondAttribute="trailing" id="NRM-Au-J0G"/>
-                            <constraint firstItem="mNT-gS-Sha" firstAttribute="bottom" secondItem="H7A-kf-l4l" secondAttribute="bottom" id="Tw6-K2-lpj"/>
-                            <constraint firstItem="mNT-gS-Sha" firstAttribute="leading" secondItem="ghs-Wo-cAL" secondAttribute="leading" id="aMu-5U-gJk"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="centerX" secondItem="h4e-UT-rZI" secondAttribute="centerX" id="0Ne-bx-HA0"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="centerX" secondItem="0qz-Ks-i40" secondAttribute="centerX" id="Dgg-qB-Fvt"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="leading" secondItem="H7A-kf-l4l" secondAttribute="leading" constant="46" id="QAr-hG-TE5"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="trailing" secondItem="0qz-Ks-i40" secondAttribute="trailing" id="WIA-AN-p5s"/>
+                            <constraint firstItem="H7A-kf-l4l" firstAttribute="bottom" secondItem="0qz-Ks-i40" secondAttribute="bottom" constant="364" id="dBI-2t-NI1"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="top" secondItem="H7A-kf-l4l" secondAttribute="top" constant="43" id="nub-Kk-lav"/>
+                            <constraint firstItem="uM8-Sh-d1t" firstAttribute="centerX" secondItem="ghs-Wo-cAL" secondAttribute="centerX" id="qQx-39-v7L"/>
+                            <constraint firstItem="h4e-UT-rZI" firstAttribute="top" secondItem="uM8-Sh-d1t" secondAttribute="bottom" constant="8" symbolic="YES" id="yMn-7p-3nx"/>
+                            <constraint firstItem="0qz-Ks-i40" firstAttribute="top" secondItem="h4e-UT-rZI" secondAttribute="bottom" constant="44" id="zQl-Jo-g5l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H7A-kf-l4l"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Visualisation" image="graph" selectedImage="graph" id="WUG-jO-20L">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
-                    <connections>
-                        <outlet property="webView" destination="mNT-gS-Sha" id="B6J-Ab-5FT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxN-KZ-stb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

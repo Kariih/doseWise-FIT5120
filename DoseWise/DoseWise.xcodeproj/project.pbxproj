@@ -21,6 +21,7 @@
 		6B6ED646214CEAF600966013 /* IntakeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6ED645214CEAF600966013 /* IntakeCounter.swift */; };
 		6BB31B072136594F00FB3687 /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B062136594F00FB3687 /* CRUD.swift */; };
 		6BB31B092136680B00FB3687 /* Nominee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB31B082136680B00FB3687 /* Nominee.swift */; };
+		6BD2CE0E2161AC7300DCEDFA /* Copyofterms_conditions_v2.html in Resources */ = {isa = PBXBuildFile; fileRef = 6BD2CE0D2161AC7200DCEDFA /* Copyofterms_conditions_v2.html */; };
 		6BE4081721608F4B00B80A0E /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4081621608F4B00B80A0E /* TermViewController.swift */; };
 		6BE408192160B76D00B80A0E /* visualisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE408182160B76D00B80A0E /* visualisationViewController.swift */; };
 		700DE64D1E6689B70143F9B9 /* Pods_DoseWise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */; };
@@ -78,6 +79,7 @@
 		6B6ED645214CEAF600966013 /* IntakeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntakeCounter.swift; sourceTree = "<group>"; };
 		6BB31B062136594F00FB3687 /* CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD.swift; sourceTree = "<group>"; };
 		6BB31B082136680B00FB3687 /* Nominee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nominee.swift; sourceTree = "<group>"; };
+		6BD2CE0D2161AC7200DCEDFA /* Copyofterms_conditions_v2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Copyofterms_conditions_v2.html; sourceTree = "<group>"; };
 		6BE4081621608F4B00B80A0E /* TermViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		6BE408182160B76D00B80A0E /* visualisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visualisationViewController.swift; sourceTree = "<group>"; };
 		91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoseWise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 		4249B33D212FE67C00CB6B1D /* DoseWise */ = {
 			isa = PBXGroup;
 			children = (
+				6BD2CE0D2161AC7200DCEDFA /* Copyofterms_conditions_v2.html */,
 				EC356F132137D11F00938622 /* Plain_Objects */,
 				EC356F122137D0FE00938622 /* Models */,
 				EC356F0F2136F8DC00938622 /* Pesenters */,
@@ -353,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BD2CE0E2161AC7300DCEDFA /* Copyofterms_conditions_v2.html in Resources */,
 				4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */,
 				4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */,
 				4249B344212FE67C00CB6B1D /* Main.storyboard in Resources */,
@@ -617,7 +621,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6W6234ALK3;
+				DEVELOPMENT_TEAM = 53C3HRTXJ7;
 				INFOPLIST_FILE = DoseWise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,7 +640,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6W6234ALK3;
+				DEVELOPMENT_TEAM = 53C3HRTXJ7;
 				INFOPLIST_FILE = DoseWise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
