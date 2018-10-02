@@ -16,7 +16,7 @@ class Quiz{
         let queLs  = [1:"8 * 2 =",
                       2:"4 + 3 =",
                       3:"100 - 4 =",
-                      4:"What is abbreviation of Australia (2 charactors only)?",
+                      4:"The abbreviation of Australia (2 letters)?",
                       5:"9 + 3 =",
                       6:"12 / 2 =",
                       7:"10 - 7 =",

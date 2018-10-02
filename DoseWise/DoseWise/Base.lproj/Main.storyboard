@@ -318,13 +318,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many different pills?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awz-W6-wx7">
-                                <rect key="frame" x="30" y="192" width="173" height="18"/>
+                                <rect key="frame" x="30" y="200" width="173" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set name and amount for schedule below" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1O-SF-A5c">
-                                <rect key="frame" x="30" y="240" width="315" height="18"/>
+                                <rect key="frame" x="30" y="248" width="315" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -372,19 +372,19 @@
                                     <action selector="deleteScheduleAction:" destination="wvU-Di-V44" eventType="touchUpInside" id="g0U-By-BPe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJf-Nx-p7Q">
-                                <rect key="frame" x="30" y="132" width="315" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJf-Nx-p7Q">
+                                <rect key="frame" x="30" y="132" width="315" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Select time for the schedule">
-                                    <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="Click here to set time">
+                                    <color key="titleColor" red="0.87720250929847721" green="0.5204495381265003" blue="0.21320847819349686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="timeBtnOnClick:" destination="wvU-Di-V44" eventType="touchUpInside" id="FjI-wC-ggS"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="kQt-aX-vV5" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="30" y="308" width="255" height="30"/>
+                                <rect key="frame" x="30" y="316" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -402,7 +402,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHX-b6-AmB" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="30" y="348" width="255" height="30"/>
+                                <rect key="frame" x="30" y="356" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -420,7 +420,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hL9-fW-lN7" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="30" y="388" width="255" height="30"/>
+                                <rect key="frame" x="30" y="396" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -438,7 +438,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medicine name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-C2-SWg" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="30" y="268" width="255" height="30"/>
+                                <rect key="frame" x="30" y="276" width="255" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="Nominee name" label="Nominee name"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -456,7 +456,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-6h-gO8">
-                                <rect key="frame" x="295" y="268" width="50" height="30"/>
+                                <rect key="frame" x="295" y="276" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="otw-gb-C7w"/>
@@ -466,7 +466,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l8r-3C-Yn9">
-                                <rect key="frame" x="295" y="308" width="50" height="30"/>
+                                <rect key="frame" x="295" y="316" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Hqn-wQ-3NF"/>
@@ -476,7 +476,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YAg-i3-haL">
-                                <rect key="frame" x="295" y="348" width="50" height="30"/>
+                                <rect key="frame" x="295" y="356" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Jz7-Ux-U9N"/>
@@ -486,7 +486,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="#" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiV-Ts-VsI">
-                                <rect key="frame" x="295" y="388" width="50" height="30"/>
+                                <rect key="frame" x="295" y="396" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" hint="#" label="#"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="jNG-Er-mdy"/>
@@ -496,13 +496,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="SwK-Z8-BUX">
-                                <rect key="frame" x="251" y="181" width="94" height="29"/>
+                                <rect key="frame" x="251" y="189" width="94" height="29"/>
                                 <connections>
                                     <action selector="addMedicineStepperAction:" destination="wvU-Di-V44" eventType="valueChanged" id="u0e-Ty-uFC"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt3-St-PVL">
-                                <rect key="frame" x="234" y="192" width="7" height="18"/>
+                                <rect key="frame" x="234" y="200" width="7" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -570,6 +570,7 @@
                         <outlet property="medicineNameTxt2" destination="kQt-aX-vV5" id="OPt-Dz-GG5"/>
                         <outlet property="medicineNameTxt3" destination="tHX-b6-AmB" id="5oU-i0-kGe"/>
                         <outlet property="medicineNameTxt4" destination="hL9-fW-lN7" id="NYY-VY-oP2"/>
+                        <outlet property="medicineNumberStepper" destination="SwK-Z8-BUX" id="kMg-D5-dih"/>
                         <outlet property="setTimeForScheduleLbl" destination="xJf-Nx-p7Q" id="XLu-tF-4pq"/>
                         <outlet property="timePickerView" destination="QrF-sX-p1p" id="9eN-X1-jRp"/>
                         <outlet property="timesLbl" destination="Pt3-St-PVL" id="toB-s1-wL8"/>

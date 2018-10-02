@@ -16,6 +16,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var amountLbl3: UITextField!
     @IBOutlet weak var amountLbl4: UITextField!
     
+    @IBOutlet weak var medicineNumberStepper: UIStepper!
     
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var setTimeForScheduleLbl: UIButton!
@@ -71,6 +72,8 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     private func setDataForEdit(){
         let dose = Const.dosages[Const.clickedSchedule]
         setTimeForScheduleLbl.setTitle(dose.timing, for: .normal)
+        timesLbl.text = String(dose.dosage.count)
+        medicineNumberStepper.value = Double(dose.dosage.count)
         for i in 0...dose.dosage.count-1{
             let label = pillLabels[i]
             label.0.text = dose.medicineName[i]
@@ -93,6 +96,8 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         let currentValue = Int(sender.value)
         numberOfMedicineOnSchedule = currentValue
         timesLbl.text = String(currentValue)
+        print("STEPPER VALUE \(sender.value)")
+        
         
         if previousValue! > currentValue{
             for i in currentValue...previousValue!-1{
@@ -141,7 +146,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         
         let time = setTimeForScheduleLbl.title(for: .normal)!
-        if time != "Select time for the schedule"{
+        if time != "Click here to set time"{
             if id > 5{
                 cantAddScheduleAlert(message: "You are trying to add too many schedules")
                 return

@@ -28,6 +28,8 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = nomineeTableView.dequeueReusableCell(withIdentifier: "nomineeCell", for: indexPath)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.text = "\(nomineeList[indexPath.item].name!) - \(nomineeList[indexPath.item].phoneNo!)"
         return cell
     }

@@ -76,6 +76,8 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
                 dosageOutput.append(", ")
             }
         }
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.text = "\(Const.dosages[indexPath.item].timing) - \(dosageOutput)"
         return cell
     }
