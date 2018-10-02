@@ -24,7 +24,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         grantNotification()
         addDateToGUI()
 
-        //meds.GlobalInstantiate() // please commit //WHAT IS THIS???
+        meds.GlobalInstantiate() 
 
         intakeCounterObj.resetByDate()
     }
