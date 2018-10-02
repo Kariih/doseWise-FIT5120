@@ -54,7 +54,27 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             deleteBtn.isHidden = false
             setDataForEdit()
         }
+        
+//        //keyboard call listening
+//        NotificationCenter.default.addObserver(self, selector: #selector(EditScheduleViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(EditScheduleViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.hideKeyboardWhenTappedAround()
     }
+    
+    // Put this piece of code anywhere you like
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditScheduleViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
     
     override
     func viewDidAppear(_ animated: Bool) {
@@ -69,6 +89,24 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     func viewWillDisappear(_ animated: Bool) {
         Const.clickedSchedule = -1
     }
+    
+//    //push or pull the view when keyboard is called
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
+    
     private func setDataForEdit(){
         let dose = Const.dosages[Const.clickedSchedule]
         setTimeForScheduleLbl.setTitle(dose.timing, for: .normal)
@@ -90,7 +128,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         Const.clickedSchedule = -1
         dismissView()
     }
-
+    
     @IBAction func addMedicineStepperAction(_ sender: UIStepper) {
         let previousValue = Int(timesLbl.text!)
         let currentValue = Int(sender.value)
@@ -116,7 +154,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         clickedTimedBtn = sender
         timePickerView.isHidden = false
     }
-
+    
     @IBAction func cancelBtnClick(_ sender: Any) {
         dismissView()
     }
@@ -133,18 +171,15 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         var medicines: [String] = []
         var dosage: [String] = []
         let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
-        
         if Const.clickedSchedule != -1 {
             dbSchedule.deleteDrugSchedule(id: id)
         }
-        
         if let medicinesOnSchedule = Int(timesLbl.text!){
             for i in 0...medicinesOnSchedule-1{
                 medicines.append(pillLabels[i].0.text!)
                 dosage.append(pillLabels[i].1.text!)
             }
         }
-        
         let time = setTimeForScheduleLbl.title(for: .normal)!
         if time != "Click here to set time"{
             if id > 5{
@@ -155,11 +190,41 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             dbSchedule.addSchedule(schedule: schedule, id: id)
             Const.clickedSchedule = -1
             notificationManager.addReminder(time: schedule.timing)
+            dismissView()
         }else{
             cantAddScheduleAlert(message: "No time is set for schedule")
         }
-        dismissView()
     }
+    
+    //    @IBAction func saveBtnClick(_ sender: Any) {
+    //        var medicines: [String] = []
+    //        var dosage: [String] = []
+    //        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
+    //        if Const.clickedSchedule != -1 {
+    //            dbSchedule.deleteDrugSchedule(id: id)
+    //        }
+    //        if let medicinesOnSchedule = Int(timesLbl.text!){
+    //            for i in 0...medicinesOnSchedule-1{
+    //                medicines.append(pillLabels[i].0.text!)
+    //                dosage.append(pillLabels[i].1.text!)
+    //            }
+    //        }
+    //        let time = setTimeForScheduleLbl.title(for: .normal)!
+    //        if time != "Click here to set time"{
+    //            if id > 5{
+    //                cantAddScheduleAlert(message: "You are trying to add too many schedules")
+    //                return
+    //            }else if medicines != nil {
+    //                let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+    //                dbSchedule.addSchedule(schedule: schedule, id: id)
+    //                Const.clickedSchedule = -1
+    //                notificationManager.addReminder(time: schedule.timing)
+    //                dismissView()
+    //            }
+    //        }else{
+    //            cantAddScheduleAlert(message: "No time is set for schedule")
+    //        }
+    //    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return Const.TIMES_A_DAY.count
@@ -188,9 +253,8 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func cantAddScheduleAlert(message: String){
-        let alert = UIAlertController(title: "Can't add Schedule", message:message ,preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
-       
-        self.present(alert, animated: true)
+        let alert = UIAlertController(title: "Can't add Schedule", message:message ,preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true,completion: nil)
     }
 }

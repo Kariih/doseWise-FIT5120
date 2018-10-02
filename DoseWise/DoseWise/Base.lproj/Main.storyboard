@@ -377,8 +377,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <state key="normal" title="Click here to set time">
-                                    <color key="titleColor" red="0.87720250929847721" green="0.5204495381265003" blue="0.21320847819349686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.makesToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="timeBtnOnClick:" destination="wvU-Di-V44" eventType="touchUpInside" id="FjI-wC-ggS"/>
                                 </connections>
@@ -777,22 +783,25 @@
                                 <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDV-x5-vmQ">
-                                <rect key="frame" x="315" y="44.5" width="30" height="44"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6u-7p-Sq0">
+                                <rect key="frame" x="42" y="135" width="290" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add nominee">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.makesToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addNomineeBtnClick:" destination="Bkx-ut-uwi" eventType="touchUpInside" id="ahJ-Zl-ZjK"/>
+                                    <action selector="addNomineeBtnClick:" destination="Bkx-ut-uwi" eventType="touchUpInside" id="vgL-n5-V2H"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-4l-o0C">
-                                <rect key="frame" x="30" y="98.5" width="315" height="280"/>
+                                <rect key="frame" x="30" y="203" width="315" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="AkR-gw-144"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nomineeCell" id="ViQ-MT-CFt">
                                         <rect key="frame" x="0.0" y="28" width="315" height="44"/>
@@ -807,18 +816,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="1pP-ED-JYJ"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="top" secondItem="pDV-x5-vmQ" secondAttribute="bottom" constant="10" id="4UM-YH-Ub8"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="leading" secondItem="89o-ZX-wEI" secondAttribute="leading" id="C4Q-a0-tvd"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="trailing" secondItem="89o-ZX-wEI" secondAttribute="trailing" id="JsM-4p-RUX"/>
-                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="RYe-lf-GPe"/>
-                            <constraint firstItem="81L-MD-8Dq" firstAttribute="trailing" secondItem="pDV-x5-vmQ" secondAttribute="trailing" constant="30" id="XdL-lE-VTT"/>
-                            <constraint firstItem="81L-MD-8Dq" firstAttribute="trailing" secondItem="Qnr-4l-o0C" secondAttribute="trailing" constant="30" id="dCv-43-jTA"/>
-                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="top" secondItem="81L-MD-8Dq" secondAttribute="top" constant="30" id="jYt-Vw-LLc"/>
-                            <constraint firstItem="89o-ZX-wEI" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="m8z-Hg-NIe"/>
-                            <constraint firstItem="pDV-x5-vmQ" firstAttribute="baseline" secondItem="fgp-Cp-CVs" secondAttribute="baseline" id="qAw-bt-HPI"/>
-                            <constraint firstItem="81L-MD-8Dq" firstAttribute="trailing" secondItem="89o-ZX-wEI" secondAttribute="trailing" constant="30" id="r79-x1-ntC"/>
-                            <constraint firstItem="81L-MD-8Dq" firstAttribute="bottom" secondItem="89o-ZX-wEI" secondAttribute="bottom" constant="30" id="rwb-aq-Cyf"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="centerX" secondItem="IhO-8W-mr5" secondAttribute="centerX" id="Hl4-hd-bse"/>
+                            <constraint firstItem="81L-MD-8Dq" firstAttribute="bottom" secondItem="89o-ZX-wEI" secondAttribute="bottom" constant="30" id="NC5-G5-4vu"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="42" id="Ro7-nJ-kzl"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="Qnr-4l-o0C" secondAttribute="leading" id="S0T-wK-d8T"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="centerX" secondItem="Qnr-4l-o0C" secondAttribute="centerX" id="SX6-KY-Ptt"/>
+                            <constraint firstItem="89o-ZX-wEI" firstAttribute="top" secondItem="Qnr-4l-o0C" secondAttribute="bottom" constant="89" id="VoO-59-gQG"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="top" secondItem="fgp-Cp-CVs" secondAttribute="bottom" constant="53" id="b1P-2K-je9"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="top" secondItem="81L-MD-8Dq" secondAttribute="top" constant="30" id="eV9-I6-RZY"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="top" secondItem="a6u-7p-Sq0" secondAttribute="bottom" constant="38" id="gd8-lc-TjQ"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="leading" secondItem="89o-ZX-wEI" secondAttribute="leading" id="hhe-yC-XBI"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="trailing" secondItem="89o-ZX-wEI" secondAttribute="trailing" id="uNQ-ha-UYR"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="xjI-0N-ELn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="81L-MD-8Dq"/>
                     </view>

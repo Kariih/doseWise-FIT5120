@@ -158,7 +158,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         // 1.Create notification content
         let content = UNMutableNotificationContent()
         content.title = "DoseWise: are you feeling well?"
-        content.body = "Please answer the quiz to indicate your soberty"
+        content.body = "Please answer the quiz to indicate your sobriety"
         
         // 2.Create trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)

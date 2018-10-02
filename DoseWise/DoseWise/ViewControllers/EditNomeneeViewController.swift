@@ -50,7 +50,7 @@ class EditNomeneeViewController : UIViewController{
             let alert = UIAlertController(title: "Invalid input", message: "Please type in valid name and phone number, thanks", preferredStyle: .alert)
             
             //            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
-            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler:nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler:nil))
             
             self.present(alert, animated: true)
         }
