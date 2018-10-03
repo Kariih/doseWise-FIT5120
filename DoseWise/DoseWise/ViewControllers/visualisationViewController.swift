@@ -19,7 +19,5 @@ class visualisationViewController: UIViewController, SFSafariViewControllerDeleg
         present(visitSafari, animated: true, completion: nil)
         visitSafari.delegate = self
     }
-    
-    
 }
 

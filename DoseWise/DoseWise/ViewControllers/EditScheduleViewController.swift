@@ -54,28 +54,21 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             deleteBtn.isHidden = false
             setDataForEdit()
         }
-        
-//        //keyboard call listening
-//        NotificationCenter.default.addObserver(self, selector: #selector(EditScheduleViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(EditScheduleViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        self.hideKeyboardWhenTappedAround()
+
+        self.hideKeyboardOrPickerWhenTappedAround()
     }
     
-    // Put this piece of code anywhere you like
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditScheduleViewController.dismissKeyboard))
+    func hideKeyboardOrPickerWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditScheduleViewController.dismissKeyboardOrPicker))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
-    @objc func dismissKeyboard() {
+
+    @objc func dismissKeyboardOrPicker() {
         view.endEditing(true)
+        timePickerView.isHidden = true
     }
-    
-    
-    
+
     override
     func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -85,27 +78,11 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
     }
+    
     override
     func viewWillDisappear(_ animated: Bool) {
         Const.clickedSchedule = -1
     }
-    
-//    //push or pull the view when keyboard is called
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
     
     private func setDataForEdit(){
         let dose = Const.dosages[Const.clickedSchedule]
@@ -196,36 +173,6 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    //    @IBAction func saveBtnClick(_ sender: Any) {
-    //        var medicines: [String] = []
-    //        var dosage: [String] = []
-    //        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
-    //        if Const.clickedSchedule != -1 {
-    //            dbSchedule.deleteDrugSchedule(id: id)
-    //        }
-    //        if let medicinesOnSchedule = Int(timesLbl.text!){
-    //            for i in 0...medicinesOnSchedule-1{
-    //                medicines.append(pillLabels[i].0.text!)
-    //                dosage.append(pillLabels[i].1.text!)
-    //            }
-    //        }
-    //        let time = setTimeForScheduleLbl.title(for: .normal)!
-    //        if time != "Click here to set time"{
-    //            if id > 5{
-    //                cantAddScheduleAlert(message: "You are trying to add too many schedules")
-    //                return
-    //            }else if medicines != nil {
-    //                let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-    //                dbSchedule.addSchedule(schedule: schedule, id: id)
-    //                Const.clickedSchedule = -1
-    //                notificationManager.addReminder(time: schedule.timing)
-    //                dismissView()
-    //            }
-    //        }else{
-    //            cantAddScheduleAlert(message: "No time is set for schedule")
-    //        }
-    //    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return Const.TIMES_A_DAY.count
     }
@@ -233,13 +180,12 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Const.TIMES_A_DAY[component].count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let hour = Const.TIMES_A_DAY[0][pickerView.selectedRow(inComponent: 0)]
         let minute = Const.TIMES_A_DAY[1][pickerView.selectedRow(inComponent: 1)]
         let theTiming:String = hour + ":" + minute
         clickedTimedBtn.setTitle(theTiming, for: .normal)
-        timePickerView.isHidden = true
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
