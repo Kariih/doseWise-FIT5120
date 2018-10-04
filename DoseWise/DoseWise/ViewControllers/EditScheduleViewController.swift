@@ -144,6 +144,35 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         dismiss(animated: true, completion: nil)
     }
     
+//    @IBAction func saveBtnClick(_ sender: Any) {
+//        var medicines: [String] = []
+//        var dosage: [String] = []
+//        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
+//        if Const.clickedSchedule != -1 {
+//            dbSchedule.deleteDrugSchedule(id: id)
+//        }
+//        if let medicinesOnSchedule = Int(timesLbl.text!){
+//            for i in 0...medicinesOnSchedule-1{
+//                medicines.append(pillLabels[i].0.text!)
+//                dosage.append(pillLabels[i].1.text!)
+//            }
+//        }
+//        let time = setTimeForScheduleLbl.title(for: .normal)!
+//        if time != "Click here to set time"{
+//            if id > 5{
+//                cantAddScheduleAlert(message: "You are trying to add too many schedules")
+//                return
+//            }
+//            let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+//            dbSchedule.addSchedule(schedule: schedule, id: id)
+//            Const.clickedSchedule = -1
+//            notificationManager.addReminder(time: schedule.timing)
+//            dismissView()
+//        }else{
+//            cantAddScheduleAlert(message: "No time is set for schedule")
+//        }
+//    }
+    
     @IBAction func saveBtnClick(_ sender: Any) {
         var medicines: [String] = []
         var dosage: [String] = []
@@ -163,11 +192,24 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
                 cantAddScheduleAlert(message: "You are trying to add too many schedules")
                 return
             }
-            let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-            dbSchedule.addSchedule(schedule: schedule, id: id)
-            Const.clickedSchedule = -1
-            notificationManager.addReminder(time: schedule.timing)
-            dismissView()
+            var allDrugNameValid:Bool = true
+            for i in medicines{
+                
+                if !i.isEmpty && i.count>=2 {
+                    //everything good, do nothing
+                }else{
+                    allDrugNameValid = false
+                }
+            }
+            if allDrugNameValid {
+                let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+                dbSchedule.addSchedule(schedule: schedule, id: id)
+                Const.clickedSchedule = -1
+                notificationManager.addReminder(time: schedule.timing)
+                dismissView()
+            }else{
+                cantAddScheduleAlert(message: "Please enter the drug name")
+            }
         }else{
             cantAddScheduleAlert(message: "No time is set for schedule")
         }

@@ -800,14 +800,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-4l-o0C">
-                                <rect key="frame" x="30" y="203" width="315" height="280"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="345"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nomineeCell" id="ViQ-MT-CFt">
-                                        <rect key="frame" x="0.0" y="28" width="315" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ViQ-MT-CFt" id="slo-84-gHt">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -816,18 +816,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="centerX" secondItem="IhO-8W-mr5" secondAttribute="centerX" id="Hl4-hd-bse"/>
-                            <constraint firstItem="81L-MD-8Dq" firstAttribute="bottom" secondItem="89o-ZX-wEI" secondAttribute="bottom" constant="30" id="NC5-G5-4vu"/>
-                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="42" id="Ro7-nJ-kzl"/>
-                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="Qnr-4l-o0C" secondAttribute="leading" id="S0T-wK-d8T"/>
-                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="centerX" secondItem="Qnr-4l-o0C" secondAttribute="centerX" id="SX6-KY-Ptt"/>
-                            <constraint firstItem="89o-ZX-wEI" firstAttribute="top" secondItem="Qnr-4l-o0C" secondAttribute="bottom" constant="89" id="VoO-59-gQG"/>
-                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="top" secondItem="fgp-Cp-CVs" secondAttribute="bottom" constant="53" id="b1P-2K-je9"/>
-                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="top" secondItem="81L-MD-8Dq" secondAttribute="top" constant="30" id="eV9-I6-RZY"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="top" secondItem="a6u-7p-Sq0" secondAttribute="bottom" constant="38" id="gd8-lc-TjQ"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="leading" secondItem="89o-ZX-wEI" secondAttribute="leading" id="hhe-yC-XBI"/>
-                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="trailing" secondItem="89o-ZX-wEI" secondAttribute="trailing" id="uNQ-ha-UYR"/>
-                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="xjI-0N-ELn"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="centerX" secondItem="Qnr-4l-o0C" secondAttribute="centerX" id="06R-ED-JGd"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="leading" secondItem="IhO-8W-mr5" secondAttribute="leading" id="NtU-61-gln"/>
+                            <constraint firstItem="89o-ZX-wEI" firstAttribute="top" secondItem="Qnr-4l-o0C" secondAttribute="bottom" constant="24" id="Rlg-xc-zV1"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="89o-ZX-wEI" secondAttribute="leading" id="VvA-k8-fvT"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="top" secondItem="fgp-Cp-CVs" secondAttribute="bottom" constant="53" id="W1V-q6-sGC"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="centerX" secondItem="89o-ZX-wEI" secondAttribute="centerX" id="WE8-TT-aK8"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="top" secondItem="81L-MD-8Dq" secondAttribute="top" constant="30" id="frH-uC-T15"/>
+                            <constraint firstAttribute="trailing" secondItem="Qnr-4l-o0C" secondAttribute="trailing" id="iFX-B0-wLM"/>
+                            <constraint firstItem="81L-MD-8Dq" firstAttribute="bottom" secondItem="89o-ZX-wEI" secondAttribute="bottom" constant="30" id="ldo-aY-Hi7"/>
+                            <constraint firstItem="fgp-Cp-CVs" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="30" id="nwq-Pn-KTH"/>
+                            <constraint firstItem="a6u-7p-Sq0" firstAttribute="leading" secondItem="81L-MD-8Dq" secondAttribute="leading" constant="42" id="sA9-ix-rr7"/>
+                            <constraint firstItem="Qnr-4l-o0C" firstAttribute="top" secondItem="a6u-7p-Sq0" secondAttribute="bottom" constant="38" id="vfW-fe-tFy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="81L-MD-8Dq"/>
                     </view>
