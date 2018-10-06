@@ -1,4 +1,3 @@
-
 class Nominee {
     
     var id: Int?

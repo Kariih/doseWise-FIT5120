@@ -3,7 +3,9 @@ import SQLite3
 
 class ScheduleCRUD{
     var db:OpaquePointer?
-    let tableName="schedule"
+//    let tableName="schedule"
+    var scheduleList=[Schedule]()
+    
     init(){}
     
     func initTables(){
@@ -13,15 +15,19 @@ class ScheduleCRUD{
     private func openDbConnection(){
         let fileUrl=try!
             FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("schedule.sqlite")
+        
         if sqlite3_open(fileUrl.path, &db) != SQLITE_OK{
             print("Error opening database")
             return
         }
     }
-    
+
     private func createdrugScheduleTable(){
+        
         openDbConnection()
-        let createTableQuery="CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY, time Text, dosage Text, name Text)"
+        
+        let createTableQuery="CREATE TABLE IF NOT EXISTS schedule (id INTEGER PRIMARY KEY AUTOINCREMENT, time Text, dosage Text, medicine Text)"
+        
         if sqlite3_exec(db, createTableQuery, nil, nil, nil) != SQLITE_OK{
             print("Error creating table")
             return
@@ -30,58 +36,139 @@ class ScheduleCRUD{
         sqlite3_close(db)
     }
     
-    func addSchedule(schedule: Schedule, id: Int){
-        openDbConnection()
-        let dosage = schedule.dosage.joined(separator: ":")
-        let medicine = schedule.medicineName.joined(separator: ":")
-        let time = schedule.timing
+    func addSchedule(schedule: Schedule){
         
-        let values = "VALUES(\(id),\'\(time)\',\'\(dosage)\',\'\(medicine)\');"
-        print(values)
-        let insertStatement = "INSERT INTO schedule (id, time, dosage, name)" + values
-        if sqlite3_exec(db, insertStatement , nil, nil, nil) != SQLITE_OK{
-            print("Error Inserting into \(tableName)")
-            return
+        let time = schedule.timing.trimmingCharacters(in: .whitespacesAndNewlines) as NSString
+        let dosage = schedule.dosage.joined(separator: ":").trimmingCharacters(in: .whitespacesAndNewlines) as NSString
+        let medicine = schedule.medicineName.joined(separator: ":").trimmingCharacters(in: .whitespacesAndNewlines) as NSString
+        
+        openDbConnection()
+        var stmt:OpaquePointer?
+        
+        let insertQuery="INSERT INTO schedule(time,dosage,medicine) VALUES(?,?,?)"
+        
+        if sqlite3_prepare(db, insertQuery, -1, &stmt, nil) != SQLITE_OK{
+            print("error binding query")
         }
-        print("Insert Successfull")
-        sqlite3_close(db)
+        
+        if sqlite3_bind_text(stmt, 1, time.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding time: \(errmsg)")
+        }
+        
+        if sqlite3_bind_text(stmt, 2, dosage.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding dosage: \(errmsg)")
+        }
+        
+        if sqlite3_bind_text(stmt, 3, medicine.utf8String, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding medicine: \(errmsg)")
+        }
+        
+        if sqlite3_step(stmt) == SQLITE_DONE {
+            print("Nominee saved successfully")
+        }
+    }
+
+    func getSchedules() -> [Schedule]{
+        let queryStatementString = "SELECT * FROM schedule;"
+        scheduleList.removeAll()
+        openDbConnection()
+        var queryStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while (sqlite3_step(queryStatement) == SQLITE_ROW) {
+                let id = sqlite3_column_int(queryStatement, 0)
+                
+                let queryResultCol1 = sqlite3_column_text(queryStatement, 1)
+                let time = String(cString: queryResultCol1!)
+                
+                let queryResultCol2 = sqlite3_column_text(queryStatement, 2)
+                let dosage = String(cString: queryResultCol2!).components(separatedBy: ":")
+                
+                let queryResultCol3 = sqlite3_column_text(queryStatement, 3)
+                let medicine = String(cString: queryResultCol3!).components(separatedBy: ":")
+                
+                scheduleList.append(Schedule(id: Int(id), timing:time, dosage: dosage, medicineName: medicine))
+            }
+        } else {
+            print("Could not featch objects from db")
+        }
+        sqlite3_finalize(queryStatement)
+        return scheduleList
     }
     
-    func getSchedules() -> [Schedule] {
+    func updateSchedule(sche: Schedule) {
         openDbConnection()
-        var rows: [Schedule] = []
-        var queryStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, "SELECT * FROM schedule;", -1, &queryStatement, nil) == SQLITE_OK {
-            while (sqlite3_step(queryStatement) == SQLITE_ROW) {
-                let time = String(cString:sqlite3_column_text(queryStatement, 1))
-                let dosage = String(cString:sqlite3_column_text(queryStatement, 2)).components(separatedBy: ":")
-                let names = String(cString:sqlite3_column_text(queryStatement, 3)).components(separatedBy: ":")
-                
-                rows.append(Schedule(timing: time, dosage: dosage, medicineName: names))
+        let scheId = String(sche.id!)
+
+        var time = sche.timing.trimmingCharacters(in: .whitespacesAndNewlines)
+        time = "'"+time+"'"
+        
+        var dosage = sche.dosage.joined(separator: ":").trimmingCharacters(in: .whitespacesAndNewlines)
+        dosage = "'"+dosage+"'"
+        
+        var medicine = sche.medicineName.joined(separator: ":").trimmingCharacters(in: .whitespacesAndNewlines)
+        medicine = "'"+medicine+"'"
+        
+        let updateStmtForTime="UPDATE schedule SET time = \(time) WHERE id = \(scheId);"
+        let updateStmtForDosage="UPDATE schedule SET dosage = \(dosage) WHERE id = \(scheId);"
+        let updateStmtForMedicine="UPDATE schedule SET medicine = \(medicine) WHERE id = \(scheId);"
+        
+        print("update time stmt\(updateStmtForTime)")
+        print("update Dosage stmt\(updateStmtForDosage)")
+        print("update Medicine stmt\(updateStmtForMedicine)")
+        
+        var updateStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, updateStmtForTime, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated time.")
+            } else {
+                print("Could not update time.")
             }
+        } else {
+            print("UPDATE time statement could not be prepared")
         }
-        sqlite3_close(db)
-        return rows
-    }
-    func getRows() -> Int {
-        openDbConnection()
-        var queryStatement: OpaquePointer? = nil
-        var entries = 0
-        if sqlite3_prepare_v2(db, "SELECT COUNT(*) from schedule", -1, &queryStatement, nil) == SQLITE_OK {
-            while (sqlite3_step(queryStatement) == SQLITE_ROW) {
-                entries = Int(sqlite3_column_int(queryStatement, 0))
+        
+        if sqlite3_prepare_v2(db, updateStmtForDosage, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated dosage.")
+            } else {
+                print("Could not update dosage.")
             }
+        } else {
+            print("UPDATE dosage statement could not be prepared")
         }
-        sqlite3_close(db)
-        return entries
+        
+        if sqlite3_prepare_v2(db, updateStmtForMedicine, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated medicine.")
+            } else {
+                print("Could not update medicine.")
+            }
+        } else {
+            print("UPDATE medicine statement could not be prepared")
+        }
+        
+        sqlite3_finalize(updateStatement)
     }
-    func deleteDrugSchedule(id: Int) {
+
+    func deleteDrugSchedule(sche: Schedule) {
+        let scheId = sche.id
+        print("DELETE ID \(scheId!)")
         openDbConnection()
-        if sqlite3_exec(db,"DELETE FROM schedule WHERE id=\(id)" , nil, nil, nil) != SQLITE_OK{
-            print("Error deleting from \(tableName)")
-            return
+        let deleteStatementStirng="DELETE FROM schedule WHERE id = \(scheId!);"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted Schedule.")
+            } else {
+                print("Could not delete Schedule.")
+            }
+        } else {
+            print("DELETE Schedule statement could not be prepared")
         }
-        print("delete Successful")
-        sqlite3_close(db)
+        sqlite3_finalize(deleteStatement)
     }
 }

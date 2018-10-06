@@ -238,6 +238,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="addScheBtn:" destination="cRm-cF-HpL" eventType="touchUpInside" id="UxF-Ss-lwR"/>
                                     <segue destination="wvU-Di-V44" kind="show" identifier="scheduleEditSegue" id="AKl-07-Cpu"/>
                                 </connections>
                             </button>

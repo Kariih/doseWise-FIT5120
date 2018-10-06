@@ -47,6 +47,7 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
         passingNominee = nomineeList[indexPath.row]
         performSegue(withIdentifier: "editNomineeSegueue", sender: self)
     }
+    
     @IBAction func addNomineeBtnClick(_ sender: Any) {
         passingNominee = Nominee()
         performSegue(withIdentifier: "editNomineeSegueue", sender: self)

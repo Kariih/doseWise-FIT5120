@@ -1,12 +1,16 @@
 class Schedule{
     
-    let timing: String
-    let dosage: [String]
-    let medicineName: [String]
+    var id:Int?
+    var timing: String!
+    var dosage: [String]!
+    var medicineName: [String]!
     
-    init(timing: String, dosage: [String], medicineName: [String]){
+    init(id:Int, timing: String, dosage: [String], medicineName: [String]){
+        self.id = id
         self.timing = timing
         self.dosage = dosage
         self.medicineName = medicineName
     }
+    
+    init() {}
 }

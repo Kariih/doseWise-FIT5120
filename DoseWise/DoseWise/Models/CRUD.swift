@@ -12,7 +12,6 @@ class CRUD {
     
     func initTables(){
         createNomineeTable()
-        
     }
     
     private func openDbConnection(){
@@ -44,7 +43,6 @@ class CRUD {
         
         let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines) as NSString
         let phoneNo=String(nom.phoneNo).trimmingCharacters(in: .whitespacesAndNewlines) as NSString
-        
         
         openDbConnection()
         var stmt:OpaquePointer?
