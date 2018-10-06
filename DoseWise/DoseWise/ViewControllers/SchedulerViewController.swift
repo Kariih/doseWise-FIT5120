@@ -86,17 +86,15 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     //the structure of the obj need to be changed.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
-        var dosageOutput = ""
+        var detail = ""
         let numOfMedicines = Const.dosages[indexPath.item].medicineName.count-1;
         for i in 0...numOfMedicines{
-            dosageOutput.append("\(Const.dosages[indexPath.item].medicineName[i]) x\(Const.dosages[indexPath.item].dosage[i])")
-            if i != numOfMedicines{
-                dosageOutput.append(", ")
-            }
+            detail.append("\(Const.dosages[indexPath.item].medicineName[i]) -\(Const.dosages[indexPath.item].dosage[i]) pills \n")
         }
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
-        cell.textLabel?.text = "\(Const.dosages[indexPath.item].timing) - \(dosageOutput)"
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.text = "\(Const.dosages[indexPath.item].timing)"
+        cell.detailTextLabel?.text = "\(detail)"
         return cell
     }
     
