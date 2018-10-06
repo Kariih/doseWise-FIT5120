@@ -43,4 +43,10 @@ class inputValidator{
         return result
     }
     
+    func validatePillNumber(pillNo:String) -> Bool{
+        let PILL_REGEX = "\\b\\d\\b"
+        let pillTest = NSPredicate(format: "SELF MATCHES %@", PILL_REGEX)
+        let result = pillTest.evaluate(with:pillNo)
+        return result
+    }
 }

@@ -66,6 +66,24 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         return Const.dosages.count
     }
     
+//    //the structure of the obj need to be changed.
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
+//        var dosageOutput = ""
+//        let numOfMedicines = Const.dosages[indexPath.item].medicineName.count-1;
+//        for i in 0...numOfMedicines{
+//            dosageOutput.append("\(Const.dosages[indexPath.item].medicineName[i]) x\(Const.dosages[indexPath.item].dosage[i])")
+//            if i != numOfMedicines{
+//                dosageOutput.append(", ")
+//            }
+//        }
+//        cell.textLabel?.numberOfLines = 0
+//        cell.textLabel?.lineBreakMode = .byWordWrapping
+//        cell.textLabel?.text = "\(Const.dosages[indexPath.item].timing) - \(dosageOutput)"
+//        return cell
+//    }
+
+    //the structure of the obj need to be changed.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         var dosageOutput = ""
@@ -85,11 +103,9 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hour = Calendar.current.component(.hour, from: Date())
         print(hour)
-        
         //parse current timing into hour
         let currentTiming:String = Const.dosages[indexPath.row].timing
         let currentHour:String = currentTiming.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespacesAndNewlines)
-        
         let differenece = Int(currentHour)! - hour
         print("differenece \(differenece)")
         if differenece.magnitude <= 1 {
@@ -97,15 +113,13 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             pushReminder(rowIndex: indexPath.row)
         }else{
             let title="Wrong schedule"
-            
             let message="The pill isn't consumed according to your schedule, it is highly recommended that not to consume your drug outside of scheduled time"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
             self.present(alert,animated:true,completion:nil)
         }
     }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
             Const.clickedSchedule = indexPath[1]

@@ -22,7 +22,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var setTimeForScheduleLbl: UIButton!
     let dbSchedule = ScheduleCRUD()
     var notificationManager:NotificationReminderManager!
-    
+    let inputVali = inputValidator()
     var clickedTimedBtn : UIButton!
     var numberOfMedicineOnSchedule : Int!
     
@@ -54,7 +54,6 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             deleteBtn.isHidden = false
             setDataForEdit()
         }
-
         self.hideKeyboardOrPickerWhenTappedAround()
     }
     
@@ -63,12 +62,12 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc func dismissKeyboardOrPicker() {
         view.endEditing(true)
         timePickerView.isHidden = true
     }
-
+    
     override
     func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -144,34 +143,76 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         dismiss(animated: true, completion: nil)
     }
     
-//    @IBAction func saveBtnClick(_ sender: Any) {
-//        var medicines: [String] = []
-//        var dosage: [String] = []
-//        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
-//        if Const.clickedSchedule != -1 {
-//            dbSchedule.deleteDrugSchedule(id: id)
-//        }
-//        if let medicinesOnSchedule = Int(timesLbl.text!){
-//            for i in 0...medicinesOnSchedule-1{
-//                medicines.append(pillLabels[i].0.text!)
-//                dosage.append(pillLabels[i].1.text!)
-//            }
-//        }
-//        let time = setTimeForScheduleLbl.title(for: .normal)!
-//        if time != "Click here to set time"{
-//            if id > 5{
-//                cantAddScheduleAlert(message: "You are trying to add too many schedules")
-//                return
-//            }
-//            let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-//            dbSchedule.addSchedule(schedule: schedule, id: id)
-//            Const.clickedSchedule = -1
-//            notificationManager.addReminder(time: schedule.timing)
-//            dismissView()
-//        }else{
-//            cantAddScheduleAlert(message: "No time is set for schedule")
-//        }
-//    }
+    //    @IBAction func saveBtnClick(_ sender: Any) {
+    //        var medicines: [String] = []
+    //        var dosage: [String] = []
+    //        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
+    //        if Const.clickedSchedule != -1 {
+    //            dbSchedule.deleteDrugSchedule(id: id)
+    //        }
+    //        if let medicinesOnSchedule = Int(timesLbl.text!){
+    //            for i in 0...medicinesOnSchedule-1{
+    //                medicines.append(pillLabels[i].0.text!)
+    //                dosage.append(pillLabels[i].1.text!)
+    //            }
+    //        }
+    //        let time = setTimeForScheduleLbl.title(for: .normal)!
+    //        if time != "Click here to set time"{
+    //            if id > 5{
+    //                cantAddScheduleAlert(message: "You are trying to add too many schedules")
+    //                return
+    //            }
+    //            let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+    //            dbSchedule.addSchedule(schedule: schedule, id: id)
+    //            Const.clickedSchedule = -1
+    //            notificationManager.addReminder(time: schedule.timing)
+    //            dismissView()
+    //        }else{
+    //            cantAddScheduleAlert(message: "No time is set for schedule")
+    //        }
+    //    }
+    
+    //    @IBAction func saveBtnClick(_ sender: Any) {
+    //        var medicines: [String] = []
+    //        var dosage: [String] = []
+    //        let id = Const.clickedSchedule != -1 ? Const.clickedSchedule+1 : dbSchedule.getRows()+1
+    //        if Const.clickedSchedule != -1 {
+    //            dbSchedule.deleteDrugSchedule(id: id)
+    //        }
+    //        if let medicinesOnSchedule = Int(timesLbl.text!){
+    //            for i in 0...medicinesOnSchedule-1{
+    //                medicines.append(pillLabels[i].0.text!)
+    //                dosage.append(pillLabels[i].1.text!)
+    //            }
+    //        }
+    //        let time = setTimeForScheduleLbl.title(for: .normal)!
+    //        if time != "Click here to set time"{
+    //            if id > 5{
+    //                cantAddScheduleAlert(message: "You are trying to add too many schedules")
+    //                return
+    //            }
+    //            var allDrugNameValid:Bool = true
+    //            for i in medicines{
+    //
+    //                if !i.isEmpty && i.count>=2 {
+    //                    //everything good, do nothing
+    //                }else{
+    //                    allDrugNameValid = false
+    //                }
+    //            }
+    //            if allDrugNameValid {
+    //                let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+    //                dbSchedule.addSchedule(schedule: schedule, id: id)
+    //                Const.clickedSchedule = -1
+    //                notificationManager.addReminder(time: schedule.timing)
+    //                dismissView()
+    //            }else{
+    //                cantAddScheduleAlert(message: "Please enter the drug name")
+    //            }
+    //        }else{
+    //            cantAddScheduleAlert(message: "No time is set for schedule")
+    //        }
+    //    }
     
     @IBAction func saveBtnClick(_ sender: Any) {
         var medicines: [String] = []
@@ -202,13 +243,25 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
                 }
             }
             if allDrugNameValid {
-                let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
-                dbSchedule.addSchedule(schedule: schedule, id: id)
-                Const.clickedSchedule = -1
-                notificationManager.addReminder(time: schedule.timing)
-                dismissView()
+                var allDosageValid:Bool = true
+                for i in dosage{
+                    if inputVali.validatePillNumber(pillNo: i) && i != "0"{
+                        //everything good, do nothing
+                    }else{
+                        allDosageValid = false
+                    }
+                }
+                if allDosageValid{
+                    let schedule = Schedule(timing: setTimeForScheduleLbl.title(for: .normal)!, dosage: dosage, medicineName: medicines)
+                    dbSchedule.addSchedule(schedule: schedule, id: id)
+                    Const.clickedSchedule = -1
+                    notificationManager.addReminder(time: schedule.timing)
+                    dismissView()
+                }else{
+                    cantAddScheduleAlert(message: "Please enter the valid number of pills")
+                }
             }else{
-                cantAddScheduleAlert(message: "Please enter the drug name")
+                cantAddScheduleAlert(message: "Please enter valid drug names")
             }
         }else{
             cantAddScheduleAlert(message: "No time is set for schedule")
@@ -222,7 +275,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Const.TIMES_A_DAY[component].count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let hour = Const.TIMES_A_DAY[0][pickerView.selectedRow(inComponent: 0)]
         let minute = Const.TIMES_A_DAY[1][pickerView.selectedRow(inComponent: 1)]

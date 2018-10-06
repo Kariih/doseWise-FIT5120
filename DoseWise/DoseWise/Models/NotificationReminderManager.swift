@@ -18,10 +18,10 @@ class NotificationReminderManager{
         content.body = "Take your scheduled pill in DoseWise"
         content.sound = UNNotificationSound.default()
         
-      //  var triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        //var triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
         //triggerDate.second = triggerDate.second! + 5
         //let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-
+        
         let dateString = "\(dateManager.getCurrentMonthNumber())-\(dateManager.getCurrentDay()) \(time)"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd HH:mm"

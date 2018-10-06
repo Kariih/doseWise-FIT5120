@@ -26,13 +26,22 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
         return nomineeList.count
     }
     
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = nomineeTableView.dequeueReusableCell(withIdentifier: "nomineeCell", for: indexPath)
+//        cell.textLabel?.numberOfLines = 0
+//        cell.textLabel?.lineBreakMode = .byWordWrapping
+//        cell.textLabel?.text = "\(nomineeList[indexPath.item].name!) - \(nomineeList[indexPath.item].phoneNo!)"
+//        return cell
+//    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = nomineeTableView.dequeueReusableCell(withIdentifier: "nomineeCell", for: indexPath)
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
-        cell.textLabel?.text = "\(nomineeList[indexPath.item].name!) - \(nomineeList[indexPath.item].phoneNo!)"
+        let nominee = nomineeList[indexPath.row]
+        cell.textLabel?.text = nominee.name
+        cell.detailTextLabel?.text = nominee.phoneNo
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         passingNominee = nomineeList[indexPath.row]
