@@ -40,6 +40,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     
     private func getScheduleFromDb(){
         scheduleList = dbDrugSchedule.getSchedules()
+      //  scheduleList = scheduleList.sorted(by: {$0.timing > $1.timing})
         scheduleTableView.reloadData()
     }
     
