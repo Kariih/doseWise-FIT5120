@@ -81,7 +81,7 @@ class intakeCounter{
         content.body = "Please answer the quiz to indicate your sobriety"
         
         // 2.Create trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
         
         // 3.Create request identifier

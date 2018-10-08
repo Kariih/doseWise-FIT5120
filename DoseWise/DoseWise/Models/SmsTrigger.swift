@@ -1,8 +1,8 @@
 import Alamofire
 
 class SmsTrigger {
-    var SECRET_KEY:String = "9AE56OHAqAQufEzfzfl76OcSlG3TO2GI"
-    var SECRET_CODE:String = "fgOCrAWS26ZmC4fp"
+    var SECRET_KEY:String = "rd3bZdhjP2po0rkiVLhIYv4NFLWyrATh"
+    var SECRET_CODE:String = "LvUZzIEAFvadNyuA"
     var ACCESS_TOKEN:String=""
     var TOKEN_TYPE:String=""
     

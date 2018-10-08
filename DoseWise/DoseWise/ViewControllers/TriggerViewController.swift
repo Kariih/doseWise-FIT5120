@@ -112,14 +112,14 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
                
                 tPresenter.executeSMSInUrgent(nominee: Const.nominees,currentAddress:addressLocation)
                 
-                let alert = UIAlertController(title: "We sent SMS to your nominee", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "You seem unwell. We have sent an SMS to your nominee(s) to assist you", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
                 
                 self.present(alert, animated: true)
             }else{
                 print("No nominee")
-                let alert = UIAlertController(title: "You are not well, you might need to get assistance", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "You seem unwell, you might need to get assistance", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
                 
