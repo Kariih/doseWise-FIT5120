@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dbScheduleClass = ScheduleCRUD()
         dbClass.initTables()
         dbScheduleClass.initTables()
+        var meds=GetMeds.Shared
+        meds.GlobalInstantiate()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

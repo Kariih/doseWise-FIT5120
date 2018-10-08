@@ -25,6 +25,7 @@
 		EC356F0521367E3800938622 /* EditNomeneeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0421367E3800938622 /* EditNomeneeViewController.swift */; };
 		EC356F0E2136EC3900938622 /* NomineeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F0D2136EC3900938622 /* NomineeViewController.swift */; };
 		EC356F112136F8FA00938622 /* NomineeDbPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC356F102136F8FA00938622 /* NomineeDbPresenter.swift */; };
+		EC3F2EA4216B0942003ABC2A /* iOSDropDown in Resources */ = {isa = PBXBuildFile; fileRef = EC3F2EA3216B0941003ABC2A /* iOSDropDown */; };
 		EC5AE6BE21629FAF00FA4EDE /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5AE6BD21629FAF00FA4EDE /* Quiz.swift */; };
 		EC696BB0214F6FD400BB008F /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC696BAF214F6FD400BB008F /* DateManager.swift */; };
 		EC696BB2214F7D1000BB008F /* EditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC696BB1214F7D1000BB008F /* EditScheduleViewController.swift */; };
@@ -85,6 +86,7 @@
 		EC356F0421367E3800938622 /* EditNomeneeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNomeneeViewController.swift; sourceTree = "<group>"; };
 		EC356F0D2136EC3900938622 /* NomineeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeViewController.swift; sourceTree = "<group>"; };
 		EC356F102136F8FA00938622 /* NomineeDbPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomineeDbPresenter.swift; sourceTree = "<group>"; };
+		EC3F2EA3216B0941003ABC2A /* iOSDropDown */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iOSDropDown; path = Pods/iOSDropDown; sourceTree = "<group>"; };
 		EC5AE6BD21629FAF00FA4EDE /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		EC696BAF214F6FD400BB008F /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		EC696BB1214F7D1000BB008F /* EditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		D08C43202691E2F51A2D77F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC3F2EA3216B0941003ABC2A /* iOSDropDown */,
 				91F63D4215EB0403B31793A2 /* Pods_DoseWise.framework */,
 			);
 			name = Frameworks;
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BD2CE0E2161AC7300DCEDFA /* Copyofterms_conditions_v2.html in Resources */,
+				EC3F2EA4216B0942003ABC2A /* iOSDropDown in Resources */,
 				4249B34C212FE67E00CB6B1D /* LaunchScreen.storyboard in Resources */,
 				4249B349212FE67E00CB6B1D /* Assets.xcassets in Resources */,
 				ECA692AD21620DFB00DE56F8 /* Main.storyboard in Resources */,
@@ -621,8 +625,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 53C3HRTXJ7;
+				DEVELOPMENT_TEAM = 6W6234ALK3;
 				INFOPLIST_FILE = DoseWise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -640,8 +645,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 53C3HRTXJ7;
+				DEVELOPMENT_TEAM = 6W6234ALK3;
 				INFOPLIST_FILE = DoseWise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

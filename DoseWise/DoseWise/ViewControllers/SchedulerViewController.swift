@@ -3,7 +3,6 @@ import UserNotifications
 import Foundation
 import CoreLocation
 
-var meds=GetMeds.Shared  // please commit
 class SchedulerViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate{
     
     var triggerTimer = Timer()
@@ -28,7 +27,6 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         scheduleTableView.dataSource = self
         grantNotification()
         addDateToGUI()
-        meds.GlobalInstantiate()
         intakeCounterObj.resetByDate()
     }
     
@@ -78,7 +76,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         var detail = ""
         let numOfMedicines = scheduleList[indexPath.item].medicineName.count-1;
         for i in 0...numOfMedicines{
-            detail.append("\(scheduleList[indexPath.item].medicineName[i]) -\(scheduleList[indexPath.item].dosage[i]) pills \n")
+            detail.append("\(scheduleList[indexPath.item].medicineName[i]) -\(scheduleList[indexPath.item].dosage[i]) pill(s) \n")
         }
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.lineBreakMode = .byWordWrapping
@@ -86,10 +84,10 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         cell.detailTextLabel?.text = "\(detail)"
         
         if clickedIndexes[indexPath.row] == 1{
-            cell.backgroundColor = UIColor(red:0.80, green:1.00, blue:0.95, alpha:1.0)
+            cell.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
             cell.isUserInteractionEnabled = false;
         }else if clickedIndexes[indexPath.row] == 2{
-            cell.backgroundColor = UIColor(red:1.00, green:0.60, blue:0.60, alpha:1.0)
+            cell.backgroundColor = UIColor(red:1.00, green:0.90, blue:0.90, alpha:1.0)
             cell.isUserInteractionEnabled = false
         }
         return cell
