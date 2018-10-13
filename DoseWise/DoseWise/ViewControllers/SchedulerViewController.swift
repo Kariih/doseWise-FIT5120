@@ -17,6 +17,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var MonthLbl: UILabel!
     @IBOutlet weak var DayLbl: UILabel!
     @IBOutlet weak var scheduleTableView: UITableView!
+    @IBOutlet weak var addScheduleButton: UIButton!
     
     private var clickedIndexes = [0,0,0,0,0]
     
@@ -36,11 +37,12 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         getScheduleFromDb()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         scheduleTableView.reloadData()
+        disableAddScheBtn()
     }
     
     private func getScheduleFromDb(){
         scheduleList = dbDrugSchedule.getSchedules()
-      //  scheduleList = scheduleList.sorted(by: {$0.timing > $1.timing})
+        //  scheduleList = scheduleList.sorted(by: {$0.timing > $1.timing})
         scheduleTableView.reloadData()
     }
     
@@ -66,12 +68,12 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         MonthLbl.text = dateManager.getCurrentMonthTxt()
         DayLbl.text = dateManager.getCurrentDay()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("count: \(scheduleList.count)")
         return scheduleList.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         var detail = ""
@@ -93,7 +95,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hour = Calendar.current.component(.hour, from: Date())
         print(hour)
@@ -162,7 +164,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         
         // 3.Create request identifier
         let requestIdentifier = "simpleNoti"
-         
+        
         // 4.Create request
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         
@@ -255,6 +257,15 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         print("Ignore")
     }
     
+    func disableAddScheBtn(){
+        if scheduleList.count<=4{
+            addScheduleButton.isEnabled=true;
+            addScheduleButton.alpha = 1.0;
+        }else{
+            addScheduleButton.isEnabled=false;
+            addScheduleButton.alpha = 0.5;
+        }
+    }
     
     @IBAction func addScheBtn(_ sender: Any) {
         addSchedule()

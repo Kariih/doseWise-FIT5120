@@ -326,6 +326,7 @@
                     <connections>
                         <outlet property="DayLbl" destination="EHj-eK-fUn" id="u4c-wF-3uY"/>
                         <outlet property="MonthLbl" destination="ihh-YA-VEj" id="EzU-yt-0fs"/>
+                        <outlet property="addScheduleButton" destination="PSa-GY-Tu0" id="vNd-bu-WBm"/>
                         <outlet property="scheduleTableView" destination="MKc-MV-31i" id="yZ0-De-rsI"/>
                         <segue destination="crg-v2-djR" kind="show" identifier="tcSegue" id="o1Y-9i-Bx8"/>
                     </connections>
