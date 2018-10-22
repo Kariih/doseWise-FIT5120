@@ -15,6 +15,7 @@ class inputValidator{
         
     }
     
+    //validate nominee entry
     func validateUserInputNominee(name: String, phone: String) -> Bool{
         var isValid = false
         if validateName(name: name) && validatePhoneNo(phoneNo: phone) {
@@ -43,6 +44,7 @@ class inputValidator{
         return result
     }
     
+    //validate pill number, only acccept 1-9
     func validatePillNumber(pillNo:String) -> Bool{
         let PILL_REGEX = "\\b\\d\\b"
         let pillTest = NSPredicate(format: "SELF MATCHES %@", PILL_REGEX)

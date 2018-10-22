@@ -125,6 +125,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         return [edit]
     }
     
+    //ask for notification access permission.
     private func grantNotification(){
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             granted, error in
@@ -152,6 +153,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         });
     }
     
+    //push notification outside the application.
     func launchNotification(){
         // 1.Create notification content
         let content = UNMutableNotificationContent()
@@ -177,6 +179,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    //push alert menu for user to select their intake status.
     func pushReminder(rowIndex:Int) {
         //get a schedule obj
         
@@ -237,6 +240,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    //the following selectXXXX methods are using to registration of counter.
     func selectYes(rowIndex:Int) {
         intakeCounterObj.confirming(isTaken: true, rowIndex: rowIndex)
         print("yes")
@@ -257,6 +261,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         print("Ignore")
     }
     
+    //disabled the add schedule button after there are 5 schedules in the view
     func disableAddScheBtn(){
         if scheduleList.count<=4{
             addScheduleButton.isEnabled=true;

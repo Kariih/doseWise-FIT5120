@@ -3,11 +3,12 @@ import UserNotifications
 import UIKit
 
 //this class check whether user forgot his past intakes of the day
-
+//if user ignored his past intakes of that day, whenever user confirm his new intake, the counter will log a quiz to monitor user's soberity.
 class intakeCounter{
     let defaults = UserDefaults.standard
     let dateMana = DateManager()
     
+    //mapped with alert menu in scheduleViewController, if true, do nothing, if false, log a quiz
     func confirming(isTaken:Bool,rowIndex:Int){
         var theRegister = defaults.array(forKey: "register")
         if isTaken {

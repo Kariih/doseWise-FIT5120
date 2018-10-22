@@ -173,6 +173,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         addOrUpdateSchedule()
     }
     
+    //validate every inputs of the view
     func validateScheduleInput(time:String,medicines:[String],dosage:[String])->Bool{
         var isValid = true
         if time != "Click here to set time"{

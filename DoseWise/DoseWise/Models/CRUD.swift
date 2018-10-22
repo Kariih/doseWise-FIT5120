@@ -1,8 +1,7 @@
 import SQLite3
 import UIKit
 
-//class for nominee, same attributes with the table,
-// (Not absolute correct, please use it as general guidance) this class should not be passed to DB, for SQLite will manage Id by auto-increment, there will be conflict when u try to assign Id value to an object & pass it to DB.
+//class for nominee CRUD operation to DB, the choice of DB is SQLite
 
 class CRUD {
     var db:OpaquePointer?
@@ -14,6 +13,7 @@ class CRUD {
         createNomineeTable()
     }
     
+    //open DB connection
     private func openDbConnection(){
         let fileUrl=try!
             FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("nominee.sqlite")
@@ -38,7 +38,8 @@ class CRUD {
         print("DB created")
         sqlite3_close(db)
     }
-        
+    
+    //create operation
     func addNominee(nom:Nominee) {
         
         let name=nom.name.trimmingCharacters(in: .whitespacesAndNewlines) as NSString
@@ -68,10 +69,7 @@ class CRUD {
         }
     }
     
-    //select all entries from the table
-    
     //read all entry from the table, return type is a list of nominee objects
-    
     func readNominees() -> [Nominee]{
         let queryStatementString = "SELECT * FROM nominee;"
         nomineeList.removeAll()
@@ -95,6 +93,7 @@ class CRUD {
         return nomineeList
     }
     
+    //update operation
     func updateNominee(nom: Nominee) {
         
         openDbConnection()
@@ -132,8 +131,7 @@ class CRUD {
         sqlite3_finalize(updateStatement)
     }
     
-    //delete entry
-    
+    //delete operation
     func deleteNominee(nom: Nominee) {
         
         let nomId = nom.id
