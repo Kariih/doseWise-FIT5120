@@ -1,5 +1,6 @@
 class Schedule{
     
+    //Class for making a Schedule object
     var id:Int?
     var timing: String!
     var dosage: [String]!

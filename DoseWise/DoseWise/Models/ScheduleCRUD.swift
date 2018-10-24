@@ -1,17 +1,19 @@
 import Foundation
 import SQLite3
 
+//Create, read, update, delete the database storing schedules
 class ScheduleCRUD{
     var db:OpaquePointer?
-//    let tableName="schedule"
     var scheduleList=[Schedule]()
     
     init(){}
     
+    //Init the schedule CRUD class
     func initTables(){
         createdrugScheduleTable()
     }
     
+    //Opens a database connection to the SQLite database, so operations can be perform on it.
     private func openDbConnection(){
         let fileUrl=try!
             FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("schedule.sqlite")
@@ -22,6 +24,7 @@ class ScheduleCRUD{
         }
     }
 
+    //Create the table for schedules of not exist
     private func createdrugScheduleTable(){
         
         openDbConnection()
@@ -36,6 +39,7 @@ class ScheduleCRUD{
         sqlite3_close(db)
     }
     
+    //Addind a schedule to the database unless an error occur
     func addSchedule(schedule: Schedule){
         
         let time = schedule.timing.trimmingCharacters(in: .whitespacesAndNewlines) as NSString
@@ -71,6 +75,7 @@ class ScheduleCRUD{
         }
     }
 
+    //Fetch all available schedules in database unless error occur
     func getSchedules() -> [Schedule]{
         let queryStatementString = "SELECT * FROM schedule;"
         scheduleList.removeAll()
@@ -98,6 +103,7 @@ class ScheduleCRUD{
         return scheduleList
     }
     
+    //Update a schedule in the databse
     func updateSchedule(sche: Schedule) {
         openDbConnection()
         let scheId = String(sche.id!)
@@ -154,6 +160,7 @@ class ScheduleCRUD{
         sqlite3_finalize(updateStatement)
     }
 
+    //delete a schedule from the database 
     func deleteDrugSchedule(sche: Schedule) {
         let scheId = sche.id
         print("DELETE ID \(scheId!)")

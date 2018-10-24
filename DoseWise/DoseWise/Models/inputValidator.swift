@@ -1,11 +1,3 @@
-//
-//  inputValidator.swift
-//  DoseWise
-//
-//  Created by 郭成俊 on 26/9/18.
-//  Copyright © 2018 Monash. All rights reserved.
-//
-
 import Foundation
 
 //call this class when validating name & phone number

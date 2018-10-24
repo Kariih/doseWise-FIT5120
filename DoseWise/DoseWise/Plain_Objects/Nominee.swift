@@ -1,5 +1,6 @@
 class Nominee {
     
+    //Class for making a nominee object
     var id: Int?
     var name: String!
     var phoneNo: String!

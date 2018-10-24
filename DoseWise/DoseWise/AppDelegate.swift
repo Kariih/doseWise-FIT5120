@@ -25,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        //Create the nominee and the schedule sqlite database table
         let dbClass = CRUD()
         let dbScheduleClass = ScheduleCRUD()
         dbClass.initTables()
         dbScheduleClass.initTables()
+        
+        //start the download of medicines
         var meds=GetMeds.Shared
         meds.GlobalInstantiate()
     }
