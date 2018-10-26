@@ -10,11 +10,12 @@ class SmsTrigger {
     
     init(){}
     
-    func SendSms(To:String,Body:String)-> String {
+    func SendSms(To:String,Body:String)-> String { //function which sends sms using api
         
         SmsTrigger.SharedInstance.Authenticate(To:To,Body:Body)
         return "completed"    }
     
+    //Authenticate call to API
     func Authenticate(To:String, Body: String) -> String {
         
         let Auth_Headers: HTTPHeaders=["CLIENT_KEY":SECRET_KEY,"CLIENT_SECRET":SECRET_CODE]
@@ -37,8 +38,9 @@ class SmsTrigger {
         }
         return self.TOKEN_TYPE+" "+self.ACCESS_TOKEN
     }
+    
+    // Subscribe call to API
     func Subscribe(Auth: String, To:String, Body: String) -> String {
-        
         
         let Subscribe_headers: HTTPHeaders=["authorization":Auth,"cache-control":"no-cache","content-type":"application/json"]
         let Subscribe_params: Parameters=["activeDays":30]
@@ -68,8 +70,8 @@ class SmsTrigger {
         return "Subscribe Complete"
     }
     
+    // Sending SMS 
     func SMS(Auth: String, To:String, From: String, msg:String) -> String {
-        
         
         let Subscribe_headers: HTTPHeaders=["authorization":Auth,"cache-control":"no-cache","content-type":"application/json"]
         let Subscribe_params: Parameters=["to":To,"body":msg]

@@ -19,6 +19,7 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
         //to be used only when the app is open
        locationManager.requestWhenInUseAuthorization()
         
+        //enable location services on device if user gives permission
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -28,6 +29,7 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
         questionLbl.text = quiz.ranSeleQue()
     }
    
+    //Converting device latitude and longitude to text address
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print(location.coordinate)
@@ -49,6 +51,8 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
             }
     }
     }
+    
+    //Formatting the address to print in the SMS for nominee
     func displayLocationInfo(placemark: CLPlacemark?) -> String
     {
         if let containsPlacemark = placemark

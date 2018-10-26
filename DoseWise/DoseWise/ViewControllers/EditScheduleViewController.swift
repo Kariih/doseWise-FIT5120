@@ -220,6 +220,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         return Const.TIMES_A_DAY[component][row]
     }
     
+    //Return error message if server call failed. 
     func EmptyMedlistpopup() {
         let alert = UIAlertController(title: "No Internet connection",message: "Unable to retrieve data from server. Please type in the medicine name manually",preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

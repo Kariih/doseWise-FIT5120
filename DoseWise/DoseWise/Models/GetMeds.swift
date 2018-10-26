@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+// Class to get Medicine details from server
 class GetMeds{
     
     var MEDSEARCH_COMPLETE:Bool = false
@@ -13,9 +14,12 @@ class GetMeds{
         }
     }
     
+    //function to make the class a single instance
     public func GlobalInstantiate()->GetMeds{
         return self
     }
+    
+    // retrieves medicine names from server to prefil dropdown
     func GetServerData(completion: @escaping ([String])-> Void){
         let todoEndpoint: String = "https://dosewise-server.herokuapp.com/res/api/dataRequest"
         var meds:[String]=[""]
@@ -36,7 +40,7 @@ class GetMeds{
         }
     }
     
-    func searchmeds(searchstring: String,searchcompletion: @escaping ([String])-> Void){
+    func searchmeds(searchstring: String,searchcompletion: @escaping ([String])-> Void){ // function to search for medicines
         var searchResult=[""]
         
         searchResult = MED_DATA.filter{$0.contains(searchstring)}
