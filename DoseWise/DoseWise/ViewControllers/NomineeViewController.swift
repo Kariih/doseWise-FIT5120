@@ -1,5 +1,6 @@
 import UIKit
 
+//class for presenting the nominee
 class NomineeViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let dbPresenter = DbPresenter()
@@ -16,10 +17,9 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("featching possible nominees")
+        //getting all nominee from db if exist and reload tableview
         nomineeList = dbPresenter.featchAllNominees()
         self.nomineeTableView.reloadData()
-        print("view update")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,12 +42,12 @@ class NomineeViewController : UIViewController, UITableViewDelegate, UITableView
         edit.backgroundColor = .orange
         return [edit]
     }
-    
+    //Action which opens the edit nominee view
     @IBAction func addNomineeBtnClick(_ sender: Any) {
         passingNominee = Nominee()
         performSegue(withIdentifier: "editNomineeSegueue", sender: self)
     }
-    
+    //Override the default segue for include nominee data if a row is updated
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editNomineeSegueue" {
             let viewController = segue.destination as! EditNomeneeViewController

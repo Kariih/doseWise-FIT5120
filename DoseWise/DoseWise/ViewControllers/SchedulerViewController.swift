@@ -26,6 +26,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         scheduleTableView.backgroundColor = UIColor.white
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
+        //aks for permission to access notifications and location
         grantNotification()
         addDateToGUI()
         intakeCounterObj.resetByDate()
@@ -40,12 +41,12 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         disableAddScheBtn()
     }
     
+    //fetching schedules from db if someone exist
     private func getScheduleFromDb(){
         scheduleList = dbDrugSchedule.getSchedules()
-        //  scheduleList = scheduleList.sorted(by: {$0.timing > $1.timing})
         scheduleTableView.reloadData()
     }
-    
+    //open the trigger view next time app is brought to foreground
     @objc func willEnterForeground() {
         if Const.TIMER_IS_TRIGGERED{
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -53,16 +54,15 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             self.present(triggerViewController, animated: true, completion: nil)
         }
     }
-    
+    //lauch terms and condtions if the app is open for the first time.
     private func openFirstTimeLauchTC(){
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "isAppLaunched") == nil{
             defaults.set(true, forKey: "isAppLaunched")
-            print("App launched first time")
             self.performSegue(withIdentifier: "tcSegue", sender: self)
         }
     }
-    
+    //adding the date to the front page
     private func addDateToGUI(){
         let dateManager = DateManager()
         MonthLbl.text = dateManager.getCurrentMonthTxt()
@@ -75,6 +75,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //adding the medicine data to the tableview cell
         let cell = scheduleTableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         var detail = ""
         let numOfMedicines = scheduleList[indexPath.item].medicineName.count-1;
@@ -86,6 +87,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         cell.textLabel?.text = "\(scheduleList[indexPath.item].timing!)"
         cell.detailTextLabel?.text = "\(detail)"
         
+        //adding color if a row of medicine is taken, and disable click
         if clickedIndexes[indexPath.row] == 1{
             cell.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
             cell.isUserInteractionEnabled = false;
@@ -97,8 +99,9 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //functionality for when a cell is clicked.
+        //First check if the pill is taking withing resonable time of the shedule
         let hour = Calendar.current.component(.hour, from: Date())
-        print(hour)
         //parse current timing into hour
         let currentTiming:String = scheduleList[indexPath.row].timing
         let currentHour:String = currentTiming.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespacesAndNewlines)
@@ -107,6 +110,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         if differenece.magnitude <= 1 {
             pushReminder(rowIndex: indexPath.row)
         }else{
+            //notify is the schedule is wrong
             let title="Wrong schedule"
             let message="The pill isn't consumed according to your schedule, it is highly recommended that not to consume your drug outside of scheduled time"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -116,6 +120,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //adding the edit to table view
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
             Const.clickedSchedule = indexPath[1]
             self.performSegue(withIdentifier: "scheduleEditSegue", sender: self)
@@ -142,17 +147,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
-    func setTrigger(){
-        print("setting trigger")
-        triggerTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: {_ in
-            print("init SMS functionality")
-            _ = TriggerPresenter()
-            // tPresenter.executeSMS()
-            
-        });
-    }
-    
+
     //push notification outside the application.
     func launchNotification(){
         // 1.Create notification content
@@ -212,6 +207,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         self.present(alert,animated:true,completion:nil)
     }
     
+    //change the color of a row (taken schedule), call the save rows funtions and reload the tableView with new colors 
     private func addColorForRow(index: Int, colorType: Int){
         clickedIndexes[index] = colorType
         saveClickedToDefaults()
@@ -240,7 +236,7 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    //the following selectXXXX methods are using to registration of counter.
+    //the following select methods are using to registration of counter.
     func selectYes(rowIndex:Int) {
         intakeCounterObj.confirming(isTaken: true, rowIndex: rowIndex)
         print("yes")
@@ -275,21 +271,23 @@ class SchedulerViewController:UIViewController, UITableViewDelegate, UITableView
     @IBAction func addScheBtn(_ sender: Any) {
         addSchedule()
     }
-    
+    //open the edit schedule view programtically
     func addSchedule(){
         passingSchedule = Schedule()
         performSegue(withIdentifier: "scheduleEditSegue", sender: self)
     }
-    
+    // adding a schedule to the segue if a schedule cell is clicked
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "scheduleEditSegue" {
             let viewController = segue.destination as! EditScheduleViewController
             viewController.passedSchedule = passingSchedule
         }
     }
+    //dave the color coded (taken schedules) rows to default
     func saveClickedToDefaults(){
         UserDefaults.standard.set(clickedIndexes, forKey: "clickedIndexes")
     }
+    //get the color coded (taken schedules) rows from default
     func retireveClickedFromDefaults()->[Int]{
         return UserDefaults.standard.array(forKey: "clickedIndexes") as! [Int]
     }

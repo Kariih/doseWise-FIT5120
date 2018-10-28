@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+//a view contriller class for CRUD nominee
 class EditNomeneeViewController : UIViewController{
     
     @IBOutlet weak var nomNameLbl: UITextField!
@@ -14,27 +15,28 @@ class EditNomeneeViewController : UIViewController{
     override func viewDidLoad(){
         super.viewDidLoad();
         
+        //Setting nominee details if a nominee is passed
         if passedNominee.id != nil {
             nomNameLbl.text = passedNominee.name
             nomPhoneLbl.text = passedNominee.phoneNo
             deleteBtn.isHidden = false
         }
-     //   nomNameLbl.setBottomBorder()
-     //   nomPhoneLbl.setBottomBorder()
     }
-    
+    //remove view from forground
     private func dismissView(){
         dismiss(animated: true, completion: nil)
     }
+    //When clicking button which do not perfrom CRUD
     @IBAction func dismissNomineeView(_ sender: Any) {
         dismissView()
     }
     
+    //action connected to the delete bin btn, call nominee CRUD delete funtionality
     @IBAction func deleteNominee(_ sender: Any) {
         dbPresenter.deleteNominee(nominee: passedNominee)
         dismissView()
     }
-    
+     //action connected to the save btn, call nominee CRUD add/update funtionality
     @IBAction func addOrUpdateNominee(_ sender: Any) {
         let name = nomNameLbl.text!
         let phone = nomPhoneLbl.text!
@@ -45,30 +47,16 @@ class EditNomeneeViewController : UIViewController{
             }else{
                 dbPresenter.addNewNominee(nominee: Nominee(id: 0, name: name, phoneNo: phone));
             }
+            //dismiss (remove) the view if the update/create is valid
             dismiss(animated: true, completion: nil)
         }
-            //Chen's modification
-            //adding alert menu when validation failed
+
+        //adding alert menu when validation failed
         else{
             let alert = UIAlertController(title: "Invalid input", message: "Please type in valid name and phone number, thanks", preferredStyle: .alert)
-            
-            //            alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: {(alert: UIAlertAction!) in self.dismiss(animated: true, completion: nil)}))
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler:nil))
-            
             self.present(alert, animated: true)
         }
         
-    }
-}
-extension UITextField {
-    func setBottomBorder() {
-        self.borderStyle = .none
-        //self.layer.backgroundColor = UIColor.white.cgColor
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 0.0
     }
 }

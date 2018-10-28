@@ -23,9 +23,6 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     var clickedTimedBtn : UIButton!
     var numberOfMedicineOnSchedule : Int!
     
-    @IBOutlet weak var timePickerView: UIPickerView!
-    var pillLabels : [(DropDown, UITextField)] = []
-    
     override
     func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +35,36 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         pillLabels.append((medicineNameTxt3, amountLbl3))
         pillLabels.append((medicineNameTxt4, amountLbl4))
         
+        //Get meds if not loaded form server
         GetMeds.Shared.MED_DATA.sort()
         
+        
         let length = pillLabels.count-1
+        //adding the dropdown with pill names to pill dropdown label
         for i in 0...length{
             pillLabels[i].0.optionArray = GetMeds.Shared.MED_DATA
             self.view.bringSubview(toFront: pillLabels[length-i].0)
         }
         timePickerView.backgroundColor = UIColor.white
         
+        //check the id for schedule which is clicked. -1 mean no schedule cliked
         if Const.clickedSchedule != -1{
             deleteBtn.isHidden = false
             setDataForEdit()
         }
         self.hideKeyboardOrPickerWhenTappedAround()
     }
+    // add action to pickerView wich setting time
+    @IBOutlet weak var timePickerView: UIPickerView!
+    var pillLabels : [(DropDown, UITextField)] = []
     
+    //hide the picker view/keyboard for time of the click is outside the picker view/keyboard
     func hideKeyboardOrPickerWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditScheduleViewController.dismissKeyboardOrPicker))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+ 
     @objc func dismissKeyboardOrPicker() {
         view.endEditing(true)
         timePickerView.isHidden = true
@@ -68,6 +73,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     override
     func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //setting the dropdown labels to empty list is if the meds array isnt loaded
         for i in 0...pillLabels.count-1{
             if pillLabels[i].0.optionArray[0] == ""{
                 EmptyMedlistpopup()
@@ -77,9 +83,11 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override
     func viewWillDisappear(_ animated: Bool) {
+        //reset the clicked id when user exit the view
         Const.clickedSchedule = -1
     }
     
+    //if user update schedule, the schedule details are set to the labels
     private func setDataForEdit(){
         //        let dose = Const.dosages[Const.clickedSchedule]
         let dose = passedSchedule
@@ -95,13 +103,13 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    //action when click call the delete in the schduele CRUD class and remove reminder for the schedule
     @IBAction func deleteScheduleAction(_ sender: Any) {
         notificationManager.removeReminder(time:passedSchedule.timing)
         dbSchedule.deleteDrugSchedule(sche: passedSchedule)
-        Const.clickedSchedule = -1
         dismissView()
     }
-    
+    //adding the stepper which give user access to add medicines in the schedule
     @IBAction func addMedicineStepperAction(_ sender: UIStepper) {
         let previousValue = Int(timesLbl.text!)
         let currentValue = Int(sender.value)
@@ -121,24 +129,25 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
     }
-    
+    //Open the picker when the user want to set the time for schedule
     @IBAction func timeBtnOnClick(_ sender: UIButton) {
         clickedTimedBtn = sender
         timePickerView.isHidden = false
     }
     
+    //remove view if cancel is clicked
     @IBAction func cancelBtnClick(_ sender: Any) {
         dismissView()
     }
-    
+    //remove view if back is clicked
     @IBAction func backBtnClick(_ sender: Any) {
         dismissView()
     }
-    
+    //remove view from foreground
     private func dismissView(){
         dismiss(animated: true, completion: nil)
     }
-    
+    //ckeck that all information is present and then add or update a schedule
     func addOrUpdateSchedule(){
         var medicines: [String] = []
         var dosage: [String] = []
@@ -168,7 +177,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
             print("addOrUpdateSchedule failed, for validation not passed")
         }
     }
-    
+    //action for saving schedule, call the addOrUpdateSchedule function
     @IBAction func saveBtnClick(_ sender: Any) {
         addOrUpdateSchedule()
     }
@@ -210,6 +219,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //add details for every row in the picker view
         let hour = Const.TIMES_A_DAY[0][pickerView.selectedRow(inComponent: 0)]
         let minute = Const.TIMES_A_DAY[1][pickerView.selectedRow(inComponent: 1)]
         let theTiming:String = hour + ":" + minute
@@ -226,7 +236,7 @@ class EditScheduleViewController: UIViewController, UIPickerViewDelegate, UIPick
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
-    
+    //alert added if the schedule cant be succesfully added
     func cantAddScheduleAlert(message: String){
         let alert = UIAlertController(title: "Can't add Schedule", message:message ,preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))

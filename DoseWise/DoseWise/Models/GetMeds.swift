@@ -33,14 +33,14 @@ class GetMeds{
                     meds=jsonResponse.value(forKey: "name") as! [String]
                     print("Server Success")
                     completion(meds)
-                //
+                
                 case .failure(let error):
                     print("Server Failure")
                 }
         }
     }
-    
-    func searchmeds(searchstring: String,searchcompletion: @escaping ([String])-> Void){ // function to search for medicines
+    // function to search for medicines
+    func searchmeds(searchstring: String,searchcompletion: @escaping ([String])-> Void){
         var searchResult=[""]
         
         searchResult = MED_DATA.filter{$0.contains(searchstring)}

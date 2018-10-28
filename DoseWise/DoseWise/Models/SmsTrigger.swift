@@ -59,8 +59,6 @@ class SmsTrigger {
                     else {
                         
                         print("Subscribe Failure")
-                        // print(String: jsonResponse))
-                        // print(String(response.request))
                     }
                     
                 case .failure(let error):
@@ -83,13 +81,10 @@ class SmsTrigger {
                     
                     if jsonResponse["messageType"] != nil{
                         print("Sms Success")
-                        //print(jsonResponse) 
                     }
                     else {
                         
                         print("Sms Failure")
-                        // print(String: jsonResponse))
-                        // print(String(response.request))
                     }
                     
                 case .failure(let error):

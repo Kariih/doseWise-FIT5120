@@ -104,13 +104,16 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
         print()
     }
     
+    //check if the answer given for the question is correct when the answer btn is clicked.
     @IBAction func answerTriggerQuestion(_ sender: Any) {
         print("click answer btn")
         print(answerTxtLbl.text!)
         if quiz.verifyAnswer(ans: answerTxtLbl.text!){
+            //dismiss/remove view is the quiz is correctly answered
             print("correct")
             dismiss(animated: true, completion: nil)
         }else{
+            //if the question is answered incorrectly, a message to nominee is launched
             print("nom count: \(Const.nominees.count)")
             if Const.nominees.count != 0{
                
@@ -122,6 +125,7 @@ class TriggerViewController: UIViewController, CLLocationManagerDelegate {
                 
                 self.present(alert, animated: true)
             }else{
+                //If the answer is wrong, but there is no added nominee.
                 print("No nominee")
                 let alert = UIAlertController(title: "You seem unwell, you might need to get assistance", message: nil, preferredStyle: .alert)
                 
